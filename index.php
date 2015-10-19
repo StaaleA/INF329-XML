@@ -1,1 +1,5 @@
-Welcome world
+<?php
+
+phpinfo();
+
+?>
