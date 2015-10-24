@@ -1,24 +1,37 @@
 <?php
 
 function parseXML($url){
-
-$context  = stream_context_create(array('http' => array('header' => 'Accept: application/xml')));
-$xml = file_get_contents($url, false, $context);
-$xml = simplexml_load_string($xml);
+$xml = simplexml_load_file($url);
 
 //Hente ut lon og lat
-$locationArray = $xml->xpath('location'); //Finner node "Location" Return:array
-echo $xml->count();
-print_r($locationArray);
+$location = $xml->location->location; //Finner node "Location"
 
-foreach($locationArray as $res) {
-	$latitude= $res['latitude'];
-    $longitude = $res['longitude'];
-}
+//Henter ut lat og long fra array
+$latitude = $location["latitude"];
+$longitude = $location["longitude"];
+
+//Henter elevation fra kartverket basert på lat og long
+$url = "http://openwps.statkart.no/skwms1/wps.elevation?request=Execute&service=WPS&version=1.0.0&identifier=elevation&datainputs=[lat=".$latitude.";lon=".$longitude.";epsg=4326]";
+$xmlKartverket = simplexml_load_file($url);
+	if ($xmlKartverket->xpath('//wps:ExecuteResponse/wps:ProcessOutputs')) {          
+		$output = $xmlKartverket->xpath('//wps:ExecuteResponse/wps:ProcessOutputs')[0]; 
+        $elivation   = (float)$output->xpath('wps:Output[ows:Identifier/text()="elevation"]/wps:Data/wps:LiteralData')[0];
+		if ($elivation !== 'nan') { //Sjekker at $elevation har fått en tallverdi
+            $elivation  = round($elivation);  
+            $stedsnavn= (string)$output->xpath('wps:Output[ows:Identifier/text()="placename"]/wps:Data/wps:LiteralData')[0];
+            //$ssrid     = (int)$output->xpath('wps:Output[ows:Identifier/text()="ssrid"]/wps:Data/wps:LiteralData')[0];
+            $terreng  = (string)$output->xpath('wps:Output[ows:Identifier/text()="terrain"]/wps:Data/wps:LiteralData')[0];
+            echo "$stedsnavn $elivation $terreng";
+        }
+    } 
+    	else { echo "Noe gikk galt med følgende url: " + $url; };
+
+
+
 
 //Bearbeiding av XML-dokumentet
 $locationNode = $xml->location[0]; //Finner noden "Location" i XML-dokumentet fra YR
-$elevation = $locationNode->addChild('elevation','567'); //Legger til en node under Location
+$locationNode->addChild('elevation',$elivation ); //Legger til en node under Location
 $xml->asXML('varsel.xml'); //Lagre objektet som XML
 
 
