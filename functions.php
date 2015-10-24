@@ -36,14 +36,9 @@ return $xml->asXML(); //Returnerer en velformet XML string basert på SimpleXML 
 }
 
 function getGoogleStaticMap($lat,$long){
-return "http://maps.google.com/maps/api/staticmap?center=".$lat.",".$long."&zoom=14&size=300x200&maptype=roadmap&sensor=false";
+$url = "http://maps.google.com/?q=".$lat.",".$long;	
+return "<a href='".$url."'><img src='http://maps.google.com/maps/api/staticmap?center=".$lat.",".$long."&zoom=14&size=300x200&maptype=roadmap&sensor=false' width='300' height='200'></a>";
 }
-
-function getGoogleMapLink($lat,$long){
-$url = "http://maps.google.com/?q=".$lat.",".$long;
-return $url;
-}
-
 
 function getNorgeskart($lat,$long){
 $kart = "http://www.norgeskart.no/statisk.html#12/".$lat."/".$long."/+embedMaskLayer/+embed.box";
@@ -52,10 +47,7 @@ $iframe = "<a href='".$url ."'><iframe src='".$kart."' width='300' height='200' 
 return $iframe;
 }
 
-$GoogleStaticMap = getGoogleStaticMap("64.8654946456349","11.6046459447957");
-$GoogleMapLink = getGoogleMapLink("64.8654946456349","11.6046459447957");
-
-echo "<a href='".$GoogleMapLink ."'><img src='".$GoogleStaticMap."'></a>";	
+echo getGoogleStaticMap("64.8654946456349","11.6046459447957");	
 echo getNorgeskart("64.8654946456349","11.6046459447957");
 print_r(parseXML("http://www.yr.no/sted/Norge/Nord-Tr%C3%B8ndelag/N%C3%A6r%C3%B8y/Kolvereid/varsel.xml"));
 
