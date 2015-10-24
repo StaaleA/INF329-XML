@@ -22,7 +22,7 @@ http://om.yr.no/verdata/ -->
     <link id="radar" url="http://www.yr.no/sted/Norge/Nord-Trøndelag/Nærøy/Kolvereid/radar.html"/>
   </links>
   <meta>
-    <lastupdate>2015-10-24T10:55:00</lastupdate>
+    <lastupdate>2015-10-24T10:54:51</lastupdate>
     <nextupdate>2015-10-24T18:00:00</nextupdate>
   </meta>
   <sun rise="2015-10-24T08:33:25" set="2015-10-24T17:21:00"/>
@@ -56,15 +56,15 @@ http://om.yr.no/verdata/ -->
       </location>
     </text>
     <tabular>
-      <time from="2015-10-24T14:00:00" to="2015-10-24T18:00:00" period="2">
-        <!-- Valid from 2015-10-24T14:00:00 to 2015-10-24T18:00:00 -->
-        <symbol number="9" numberEx="9" name="Regn" var="09"/>
-        <precipitation value="1.0" minvalue="0.7" maxvalue="1.3"/>
-        <!-- Valid at 2015-10-24T14:00:00 -->
-        <windDirection deg="156.7" code="SSE" name="Sør-sørøst"/>
-        <windSpeed mps="2.0" name="Svak vind"/>
+      <time from="2015-10-24T16:00:00" to="2015-10-24T18:00:00" period="2">
+        <!-- Valid from 2015-10-24T16:00:00 to 2015-10-24T18:00:00 -->
+        <symbol number="4" numberEx="4" name="Skyet" var="04"/>
+        <precipitation value="0" minvalue="0" maxvalue="0.2"/>
+        <!-- Valid at 2015-10-24T16:00:00 -->
+        <windDirection deg="144.9" code="SE" name="Sørøst"/>
+        <windSpeed mps="1.7" name="Svak vind"/>
         <temperature unit="celsius" value="8"/>
-        <pressure unit="hPa" value="1000.2"/>
+        <pressure unit="hPa" value="999.2"/>
       </time>
       <time from="2015-10-24T18:00:00" to="2015-10-25T00:00:00" period="3">
         <!-- Valid from 2015-10-24T18:00:00 to 2015-10-25T00:00:00 -->
@@ -430,17 +430,17 @@ http://om.yr.no/verdata/ -->
   </forecast>
   <observations>
     <weatherstation stno="75220" sttype="eklima" name="Rørvik lufthavn" distance="22187" lat="64.83500" lon="11.14080" source="Meteorologisk Institutt">
-      <temperature unit="celsius" value="8.7" time="2015-10-24T11:00:00Z"/>
-      <windDirection deg="117.0" code="ESE" name="Øst-sørøst" time="2015-10-24T11:00:00Z"/>
-      <windSpeed mps="5.1" name="Lett bris" time="2015-10-24T11:00:00Z"/>
+      <temperature unit="celsius" value="9.2" time="2015-10-24T13:00:00Z"/>
+      <windDirection deg="113.0" code="ESE" name="Øst-sørøst" time="2015-10-24T13:00:00Z"/>
+      <windSpeed mps="6.1" name="Laber bris" time="2015-10-24T13:00:00Z"/>
     </weatherstation>
     <weatherstation stno="72580" sttype="eklima" name="Namsos lufthavn" distance="43930" lat="64.47080" lon="11.57050" source="Meteorologisk Institutt">
-      <temperature unit="celsius" value="8.0" time="2015-10-24T11:00:00Z"/>
-      <windDirection deg="81.0" code="E" name="Øst" time="2015-10-24T11:00:00Z"/>
-      <windSpeed mps="2.1" name="Svak vind" time="2015-10-24T11:00:00Z"/>
+      <temperature unit="celsius" value="8.6" time="2015-10-24T13:00:00Z"/>
+      <windDirection deg="87.0" code="E" name="Øst" time="2015-10-24T13:00:00Z"/>
+      <windSpeed mps="5.6" name="Laber bris" time="2015-10-24T13:00:00Z"/>
     </weatherstation>
     <weatherstation stno="72710" sttype="eklima" name="Overhalla (Skogmo)" distance="44163" lat="64.51030" lon="12.01970" source="Meteorologisk Institutt">
-      <temperature unit="celsius" value="6.9" time="2015-10-24T10:00:00Z"/>
+      <temperature unit="celsius" value="7.7" time="2015-10-24T12:00:00Z"/>
     </weatherstation>
   </observations>
 </weatherdata>
