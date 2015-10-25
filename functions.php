@@ -43,13 +43,14 @@ $xsl = simplexml_load_file("varsel.xsl");
 $xslt = new XSLTProcessor();
 $xslt->importStylesheet($xsl);
 $xslt->transformToURI($xml,'varsel.xml');
+$nyxml = $xslt->transformToXML($xml);
 
 //Faktaark om sted fra KARTVERKET
 //$url = "http://faktaark.statkart.no/SSRFakta/faktaarkfraobjektid?enhet=".$ssrid."&format=xml";
 //$xmlFaktaarkSted = simplexml_load_file($url);
 
-$nyxml = simplexml_load_file('varsel.xml');
-return $nyxml; //Returnerer et SimpleXMLElement basert på den nye XML-fila
+$nyxml2 = simplexml_load_string($nyxml);
+return $nyxml2; //Returnerer et SimpleXMLElement basert på den nye XML-fila
 
 }
 
@@ -66,7 +67,7 @@ return $iframe;
 }
 
 
-print_r(parseXML("http://www.yr.no/sted/Norge/Nord-Tr%C3%B8ndelag/N%C3%A6r%C3%B8y/Kolvereid/varsel.xml"));
+//print_r(parseXML("http://www.yr.no/sted/Norge/Nord-Tr%C3%B8ndelag/N%C3%A6r%C3%B8y/Kolvereid/varsel.xml"));
 
 // echo "<h2>Google Maps</h2>";
 // echo getGoogleStaticMap("64.8654946456349","11.6046459447957");	

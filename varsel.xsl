@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method='xml' version='1.0' indent='yes' encoding="iso-8859-1"/>
+<xsl:output method='xml' version='1.0' indent='yes' encoding="UTF-8"/>
 
 <xsl:template match="/">
 
@@ -41,7 +41,19 @@ Denne siden er kontrollert av Ståle Andre Volden, siste gang 25.10.2015</xsl:co
 					<xsl:attribute name="tiltid">
 						<xsl:value-of select="@to"/>
 					</xsl:attribute>
+						<xsl:attribute name="periode">
+						<xsl:value-of select="@period"/>
+					</xsl:attribute>
+					<symbol>
+						<xsl:attribute name="nr">
+						<xsl:value-of select="symbol/@var"/>
+						</xsl:attribute>
 
+						<xsl:attribute name="tekst">
+						<xsl:value-of select="symbol/@name"/>
+						</xsl:attribute>
+
+					</symbol>
 					<temperatur>
 						<xsl:value-of select="temperature/@value"/>
 					</temperatur>
