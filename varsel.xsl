@@ -8,6 +8,9 @@
 	<stedsnavn>
 		<xsl:value-of select="weatherdata/location/name"/>
 	</stedsnavn>
+	<type>
+		<xsl:value-of select="weatherdata/location/type"/>
+	</type>
 
 	<kordinater>
 		<xsl:attribute name="latitude">
@@ -79,6 +82,14 @@
 				</tidspunkt>
 			</xsl:for-each>
 		</tekst>
+		<oppdatert>
+			<xsl:attribute name="sist">
+				<xsl:value-of select="weatherdata/meta/lastupdate"/>
+			</xsl:attribute>
+			<xsl:attribute name="neste">
+				<xsl:value-of select="weatherdata/meta/nextupdate"/>
+			</xsl:attribute>
+		</oppdatert>
 	</melding>
 	<credit>
 		<xsl:attribute name="tekst">

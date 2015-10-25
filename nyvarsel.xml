@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <sted>
   <stedsnavn>Kolvereid</stedsnavn>
+  <type>By</type>
   <kordinater latitude="64.8654946456349" longitude="11.6046459447957" elevation="64"/>
   <melding>
     <detaljert>
@@ -154,7 +155,7 @@
         <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Sørvest periodevis liten kuling på kysten, dreiande vestleg. Regnbyer og haglbyer, snøbyer over 400-700 meter. Utrygt for torever. I kveld minkande vind i sør.</tekst>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26" tiltid="2015-10-26">
-        <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Økning til sørøst liten kuling utsatte steder, fra mandag ettermiddag sørvest sterk kuling på kysten, om kvelden dreining til nordlig frisk bris. Regn, mandag kveld etter hvert snø over 500-600 m i nord. Lite nedbør i indre Sør-Trøndelag.</tekst>
+        <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Sørleg frisk bris utsette stader, måndag føremiddag auking til sørvest stiv kuling på kysten. Regn, snø over omlag 1000 m. Måndag kveld dreiing til nordleg frisk bris. Regnbyer, snøbyer over 400-600 m i nord.</tekst>
       </tidspunkt>
       <tidspunkt fratid="2015-10-27" tiltid="2015-10-27">
         <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Etter hvert nordøstlig bris, først på dagen kuling på kysten. Regn, senere oppholdsvær. Lavere temperatur.</tekst>
@@ -166,6 +167,7 @@
         <tekst>&lt;strong&gt;Sør-Norge:&lt;/strong&gt; Vind mellom sørøst og sørvest, periodevis kuling på kysten. Det blir lange perioder med oppholdsvær, men det kan av og til komme litt nedbør. Omtrent uendret temperatur.</tekst>
       </tidspunkt>
     </tekst>
+    <oppdatert sist="2015-10-25T09:32:00" neste="2015-10-25T11:00:00"/>
   </melding>
   <credit tekst="Værvarsel fra yr.no, levert av NRK og Meteorologisk institutt" url="http://www.yr.no/sted/Norge/Nord-Trøndelag/Nærøy/Kolvereid/"/>
 </sted>
