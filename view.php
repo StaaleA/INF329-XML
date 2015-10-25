@@ -5,24 +5,24 @@
 	
 body{
 font-family: arial,sans-serif;
+color:grey;
+margin-left:10px;
 }
 #idagnum{
-font-size: 20px;
-text-align: center;
+font-size: 68px;
 float:left;
 
 margin-right:5px;
 }
 h1{
 margin-bottom:1px;
-
 }
 #idagtekst{
+	margin-bottom:20px;
 font-size: 14px;
-height:100px;
 float:left;
 width:300px;
-
+clear:both;
 }
 .dag{
 	font-size: 13px;
@@ -30,11 +30,21 @@ width:300px;
 	/*background-color:#EEE;*/
 	margin-right:5px;
 	margin-bottom:5px;
-	color:grey;
 	float:left;
 	width:65px;
 	height:85px;
 	padding:5px;
+}
+
+#ikonnaa{
+float:left;
+
+}
+#gradernaa{
+margin-left:10px;
+float:right;
+	padding-top:20px;
+	color:#333;
 }
 </style>
 <?php
@@ -49,8 +59,8 @@ $string = $sted->melding->detaljert->tidspunkt[0]["fratid"];
 $timestamp = strtotime($string);
 echo date("l", $timestamp);
 
-echo "<div><div id='idagnum'><img src='b100/".$sted->melding->detaljert->tidspunkt->symbol["nr"].".png'><br>";
-echo $sted->melding->detaljert->tidspunkt->temperatur . "&#8451</div><div id='idagtekst'>";
+echo "<div><div id='idagnum'><div id='ikonnaa'><img src='b100/".$sted->melding->detaljert->tidspunkt->symbol["nr"].".png'><div id='gradernaa'>";
+echo $sted->melding->detaljert->tidspunkt->temperatur . "&#8451</div></div><div id='idagtekst'>";
 echo $sted->melding->tekst->tidspunkt[0]->tekst;
 echo "</div></div><div style='clear:both;'></div>";
 foreach ($sted->melding->detaljert->tidspunkt as $melding){
