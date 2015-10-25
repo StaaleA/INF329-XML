@@ -48,7 +48,8 @@ $xslt->transformToURI($xml,'varsel.xml');
 //$url = "http://faktaark.statkart.no/SSRFakta/faktaarkfraobjektid?enhet=".$ssrid."&format=xml";
 //$xmlFaktaarkSted = simplexml_load_file($url);
 
-return "varsel.xml"; //Returnerer en velformet XML string basert på SimpleXML elementet
+$nyxml = simplexml_load_file('varsel.xml');
+return $nyxml; //Returnerer et SimpleXMLElement basert på den nye XML-fila
 
 }
 
