@@ -42,15 +42,13 @@ $link->addAttribute('tekst', 'Norgeskart');
 $xsl = simplexml_load_file("varsel.xsl");
 $xslt = new XSLTProcessor();
 $xslt->importStylesheet($xsl);
-$xslt->transformToURI($xml,'nyvarsel.xml');
+$xslt->transformToURI($xml,'varsel.xml');
 
 //Faktaark om sted fra KARTVERKET
 //$url = "http://faktaark.statkart.no/SSRFakta/faktaarkfraobjektid?enhet=".$ssrid."&format=xml";
 //$xmlFaktaarkSted = simplexml_load_file($url);
 
-
-//$xml->asXML('varsel.xml'); //Lagre objektet som XML
-return $xml->asXML(); //Returnerer en velformet XML string basert på SimpleXML elementet
+return "varsel.xml"; //Returnerer en velformet XML string basert på SimpleXML elementet
 
 }
 
