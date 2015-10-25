@@ -4,53 +4,53 @@
   <kordinater latitude="64.8654946456349" longitude="11.6046459447957" elevation="64"/>
   <melding>
     <detaljert>
-      <tidspunkt fratid="2015-10-25T09:00:00" tiltid="2015-10-25T12:00:00">
-        <temperatur>6</temperatur>
-        <vind mps="3.5" tekst="Lett bris" retningKode="S" retningTekst="Sør"/>
+      <tidspunkt fratid="2015-10-25T11:00:00" tiltid="2015-10-25T12:00:00">
+        <temperatur>7</temperatur>
+        <vind mps="3.9" tekst="Lett bris" retningKode="SW" retningTekst="Sørvest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-25T12:00:00" tiltid="2015-10-25T18:00:00">
-        <temperatur>6</temperatur>
-        <vind mps="3.1" tekst="Svak vind" retningKode="WSW" retningTekst="Vest-sørvest"/>
+        <temperatur>7</temperatur>
+        <vind mps="5.4" tekst="Lett bris" retningKode="WSW" retningTekst="Vest-sørvest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-25T18:00:00" tiltid="2015-10-26T00:00:00">
         <temperatur>5</temperatur>
-        <vind mps="1.9" tekst="Svak vind" retningKode="SSW" retningTekst="Sør-sørvest"/>
+        <vind mps="3.6" tekst="Lett bris" retningKode="W" retningTekst="Vest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26T00:00:00" tiltid="2015-10-26T06:00:00">
         <temperatur>5</temperatur>
-        <vind mps="2.7" tekst="Svak vind" retningKode="WNW" retningTekst="Vest-nordvest"/>
+        <vind mps="3.4" tekst="Lett bris" retningKode="WNW" retningTekst="Vest-nordvest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26T06:00:00" tiltid="2015-10-26T12:00:00">
-        <temperatur>3</temperatur>
-        <vind mps="2.6" tekst="Svak vind" retningKode="SE" retningTekst="Sørøst"/>
+        <temperatur>4</temperatur>
+        <vind mps="2.6" tekst="Svak vind" retningKode="SSE" retningTekst="Sør-sørøst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26T12:00:00" tiltid="2015-10-26T18:00:00">
         <temperatur>5</temperatur>
-        <vind mps="6.8" tekst="Laber bris" retningKode="S" retningTekst="Sør"/>
+        <vind mps="6.5" tekst="Laber bris" retningKode="S" retningTekst="Sør"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26T18:00:00" tiltid="2015-10-27T00:00:00">
         <temperatur>9</temperatur>
-        <vind mps="7.7" tekst="Laber bris" retningKode="WSW" retningTekst="Vest-sørvest"/>
+        <vind mps="6.2" tekst="Laber bris" retningKode="WSW" retningTekst="Vest-sørvest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-27T00:00:00" tiltid="2015-10-27T06:00:00">
         <temperatur>4</temperatur>
-        <vind mps="4.7" tekst="Lett bris" retningKode="NNE" retningTekst="Nord-nordøst"/>
+        <vind mps="3.6" tekst="Lett bris" retningKode="NNE" retningTekst="Nord-nordøst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-27T06:00:00" tiltid="2015-10-27T12:00:00">
         <temperatur>1</temperatur>
-        <vind mps="2.8" tekst="Svak vind" retningKode="NNE" retningTekst="Nord-nordøst"/>
+        <vind mps="2.6" tekst="Svak vind" retningKode="NNE" retningTekst="Nord-nordøst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-27T12:00:00" tiltid="2015-10-27T18:00:00">
         <temperatur>2</temperatur>
-        <vind mps="1.5" tekst="Flau vind" retningKode="NE" retningTekst="Nordøst"/>
+        <vind mps="1.2" tekst="Flau vind" retningKode="ENE" retningTekst="Øst-nordøst"/>
       </tidspunkt>
-      <tidspunkt fratid="2015-10-27T19:00:00" tiltid="2015-10-28T01:00:00">
+      <tidspunkt fratid="2015-10-27T18:00:00" tiltid="2015-10-28T00:00:00">
         <temperatur>0</temperatur>
-        <vind mps="2.2" tekst="Svak vind" retningKode="E" retningTekst="Øst"/>
+        <vind mps="2.3" tekst="Svak vind" retningKode="E" retningTekst="Øst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-28T01:00:00" tiltid="2015-10-28T07:00:00">
         <temperatur>1</temperatur>
-        <vind mps="2.8" tekst="Svak vind" retningKode="E" retningTekst="Øst"/>
+        <vind mps="1.8" tekst="Svak vind" retningKode="ESE" retningTekst="Øst-sørøst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-28T07:00:00" tiltid="2015-10-28T13:00:00">
         <temperatur>1</temperatur>
@@ -151,7 +151,7 @@
     </detaljert>
     <tekst>
       <tidspunkt fratid="2015-10-25" tiltid="2015-10-25">
-        <tekst>&lt;strong&gt;Møre og Romsdal og Trøndelag:&lt;/strong&gt; Sørvest periodevis stiv kuling på kysten, i ettermiddag dreiende vestlig. Regnbyger og haglbyger, snøbyger over 500-800 meter. Utrygt for torden. I kveld minkende vind først i sør.</tekst>
+        <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Sørvest periodevis liten kuling på kysten, dreiande vestleg. Regnbyer og haglbyer, snøbyer over 400-700 meter. Utrygt for torever. I kveld minkande vind i sør.</tekst>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26" tiltid="2015-10-26">
         <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Økning til sørøst liten kuling utsatte steder, fra mandag ettermiddag sørvest sterk kuling på kysten, om kvelden dreining til nordlig frisk bris. Regn, mandag kveld etter hvert snø over 500-600 m i nord. Lite nedbør i indre Sør-Trøndelag.</tekst>
@@ -167,4 +167,5 @@
       </tidspunkt>
     </tekst>
   </melding>
+  <credit tekst="Værvarsel fra yr.no, levert av NRK og Meteorologisk institutt" url="http://www.yr.no/sted/Norge/Nord-Trøndelag/Nærøy/Kolvereid/"/>
 </sted>

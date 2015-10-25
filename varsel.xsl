@@ -4,7 +4,7 @@
 
 <xsl:template match="/">
 
-<sted>
+<sted>	
 	<stedsnavn>
 		<xsl:value-of select="weatherdata/location/name"/>
 	</stedsnavn>
@@ -25,7 +25,7 @@
 
 	<melding>
 		<detaljert>
-			<xsl:for-each select="/weatherdata/forecast/tabular/time">
+			<xsl:for-each select="weatherdata/forecast/tabular/time">
 			
 				<tidspunkt>
 					<xsl:attribute name="fratid">
@@ -61,7 +61,7 @@
 			</xsl:for-each>	
 		</detaljert>
 		<tekst>
-			<xsl:for-each select="/weatherdata/forecast/text/location/time">
+			<xsl:for-each select="weatherdata/forecast/text/location/time">
 			
 				<tidspunkt>
 					<xsl:attribute name="fratid">
@@ -80,8 +80,16 @@
 			</xsl:for-each>
 		</tekst>
 	</melding>
-
+	<credit>
+		<xsl:attribute name="tekst">
+		<xsl:value-of select="weatherdata/credit/link/@text"/>
+		</xsl:attribute>
+		<xsl:attribute name="url">
+			<xsl:value-of select="weatherdata/credit/link/@url"/>
+		</xsl:attribute>
+	</credit>
 </sted>
 
 </xsl:template>
+
 </xsl:stylesheet>
