@@ -3,10 +3,6 @@
 function parseXML($url){
 
 $xml = simplexml_load_file($url);
-$xsl = simplexml_load_file("varsel.xsl");
-
-
-
 
 //Hente ut lon og lat
 $location = $xml->location->location; //Finner node "Location"
@@ -21,7 +17,7 @@ $xmlKartverket = simplexml_load_file($url);
 	if ($xmlKartverket->xpath('//wps:ExecuteResponse/wps:ProcessOutputs')) { //Sjekker at  det finnes en ProcessOutputs.  
 		$output = $xmlKartverket->xpath('//wps:ExecuteResponse/wps:ProcessOutputs')[0]; 
         $elevation = round((float)$output->xpath('wps:Output[ows:Identifier/text()="elevation"]/wps:Data/wps:LiteralData')[0]);
-        //$ssrid     = (int)$output->xpath('wps:Output[ows:Identifier/text()="ssrid"]/wps:Data/wps:LiteralData')[0];
+        //$ssrid     = (int)$output->xpath('wps:Output[ows:Identifier/text()="ssrid"]/wps:Data/wps:LiteralData')[0]; //$ssrid brukes opp mot Faktaark
     } 
     	else { echo "Noe gikk galt med følgende url: " + $url; };
 
@@ -29,6 +25,8 @@ $xmlKartverket = simplexml_load_file($url);
 $locationNode = $xml->location[0]; //Finner noden "Location" i XML-dokumentet fra YR
 $locationNode->addChild('elevation',$elevation ); //Legger til en node under Location
 
+//Benytter en XSL-fil for å lage den sammensatte xml-fila
+$xsl = simplexml_load_file("varsel.xsl");
 $xslt = new XSLTProcessor();
 $xslt->importStylesheet($xsl);
 $xslt->transformToURI($xml,'nyvarsel.xml');
