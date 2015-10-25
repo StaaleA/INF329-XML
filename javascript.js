@@ -18,21 +18,17 @@ vår i en JavaScript-variabel på index.php som vi henter.
 */
 
 function searchJson(input) {
-
-	// alert(liste[2].navn);
-	// var lengde = liste.length();
-	//alert("he");
-	//alert(liste[1643].url);
-	var obj = JSON.parse(liste);
-	alert(obj.steder[2].navn + " " + obj.steder[2].url);
+	var funnet = false;
+	var i = 0;
+	while(i < liste.length && !funnet) {
+		if(input === liste[i].navn) {
+			funnet = true;
+			document.getElementById("ut").innerHTML="Resultat: "+liste[i].navn+" - URL: " + liste[i].url;
+			//return liste[i].navn;
+		}
+		i++;
+	}
 }
-
-// alert("ikke");
-// alert(liste[3].navn);
-// // var obj = JSON.parse(text);
-// var stedObjekt = JSON.parse(nyliste);
-// alert(stedObjekt.steder[4].navn);
-
 
 // Dette kunne blitt noe fint...
 var xmlhttp = new XMLHttpRequest();

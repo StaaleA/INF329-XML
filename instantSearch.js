@@ -19,7 +19,6 @@ function showResult(str) {
       
     }
   }
-  
   xmlhttp.open("GET","instantsearch.php?q="+str,true);
   xmlhttp.send();
 }
