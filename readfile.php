@@ -25,7 +25,7 @@ class Yrdata
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$row       = 0;
+$row = 0;
 $stedListe = array();
 
 // Leser filen php sine innebygde funksjoner for lesing av fil
