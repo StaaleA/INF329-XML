@@ -1,5 +1,6 @@
 <?php
-
+//Denne siden er utviklet av Ståle Andre Volden siste gang endret 25.10.2015
+//Denne siden er kontrollert av Ståle Andre Volden, siste gang 25.10.2015
 function parseXML($url){
 
 $xml = simplexml_load_file($url);
@@ -24,6 +25,18 @@ $xmlKartverket = simplexml_load_file($url);
 //Bearbeiding av XML-dokumentet
 $locationNode = $xml->location[0]; //Finner noden "Location" i XML-dokumentet fra YR
 $locationNode->addChild('elevation',$elevation ); //Legger til en node under Location
+
+//Lager link node til google maps
+$link = $xml->addChild('googlemap');
+$link->addAttribute('type', 'bilde');
+$link->addAttribute('url', 'http://maps.google.com/?q='.$latitude.','.$longitude);
+$link->addAttribute('tekst', 'Google Maps');
+
+//Lager link node til norgeskart
+$link = $xml->addChild('norgeskart');
+$link->addAttribute('type', 'iframe');
+$link->addAttribute('url', 'http://www.norgeskart.no/statisk.html#12/'.$latitude.'/'.$longitude.'/+embedMaskLayer/+embed.box');
+$link->addAttribute('tekst', 'Norgeskart');
 
 //Benytter en XSL-fil for å lage den sammensatte xml-fila
 $xsl = simplexml_load_file("varsel.xsl");
