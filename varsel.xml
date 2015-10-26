@@ -7,70 +7,65 @@ Denne siden er kontrollert av Ståle Andre Volden, siste gang 25.10.2015-->
   <kordinater latitude="64.8654946456349" longitude="11.6046459447957" elevation="64"/>
   <melding>
     <detaljert>
-      <tidspunkt fratid="2015-10-25T17:00:00" tiltid="2015-10-25T18:00:00" periode="2">
-        <symbol nr="04" tekst="Skyet"/>
+      <tidspunkt fratid="2015-10-25T23:00:00" tiltid="2015-10-26T00:00:00" periode="3">
+        <symbol nr="mf/03n.41" tekst="Delvis skyet"/>
         <temperatur>6</temperatur>
-        <vind mps="3.0" tekst="Svak vind" retningKode="WSW" retningTekst="Vest-sørvest"/>
-      </tidspunkt>
-      <tidspunkt fratid="2015-10-25T18:00:00" tiltid="2015-10-26T00:00:00" periode="3">
-        <symbol nr="04" tekst="Skyet"/>
-        <temperatur>6</temperatur>
-        <vind mps="3.2" tekst="Svak vind" retningKode="W" retningTekst="Vest"/>
+        <vind mps="4.6" tekst="Lett bris" retningKode="WNW" retningTekst="Vest-nordvest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26T00:00:00" tiltid="2015-10-26T06:00:00" periode="0">
-        <symbol nr="mf/03n.44" tekst="Delvis skyet"/>
+        <symbol nr="04" tekst="Skyet"/>
         <temperatur>5</temperatur>
-        <vind mps="2.8" tekst="Svak vind" retningKode="W" retningTekst="Vest"/>
+        <vind mps="3.2" tekst="Svak vind" retningKode="WNW" retningTekst="Vest-nordvest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26T06:00:00" tiltid="2015-10-26T12:00:00" periode="1">
         <symbol nr="09" tekst="Regn"/>
-        <temperatur>2</temperatur>
-        <vind mps="2.3" tekst="Svak vind" retningKode="SE" retningTekst="Sørøst"/>
+        <temperatur>4</temperatur>
+        <vind mps="1.7" tekst="Svak vind" retningKode="ESE" retningTekst="Øst-sørøst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26T12:00:00" tiltid="2015-10-26T18:00:00" periode="2">
         <symbol nr="10" tekst="Kraftig regn"/>
-        <temperatur>4</temperatur>
-        <vind mps="5.2" tekst="Lett bris" retningKode="S" retningTekst="Sør"/>
+        <temperatur>5</temperatur>
+        <vind mps="4.7" tekst="Lett bris" retningKode="S" retningTekst="Sør"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-26T18:00:00" tiltid="2015-10-27T00:00:00" periode="3">
-        <symbol nr="09" tekst="Regn"/>
+        <symbol nr="10" tekst="Kraftig regn"/>
         <temperatur>9</temperatur>
-        <vind mps="6.7" tekst="Laber bris" retningKode="WSW" retningTekst="Vest-sørvest"/>
+        <vind mps="5.8" tekst="Laber bris" retningKode="WSW" retningTekst="Vest-sørvest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-27T00:00:00" tiltid="2015-10-27T06:00:00" periode="0">
-        <symbol nr="04" tekst="Skyet"/>
+        <symbol nr="46" tekst="Lett regn"/>
         <temperatur>4</temperatur>
-        <vind mps="3.8" tekst="Lett bris" retningKode="NNE" retningTekst="Nord-nordøst"/>
+        <vind mps="3.6" tekst="Lett bris" retningKode="N" retningTekst="Nord"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-27T06:00:00" tiltid="2015-10-27T12:00:00" periode="1">
-        <symbol nr="01d" tekst="Klarvær"/>
-        <temperatur>1</temperatur>
-        <vind mps="2.6" tekst="Svak vind" retningKode="NNE" retningTekst="Nord-nordøst"/>
+        <symbol nr="02d" tekst="Lettskyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="0.8" tekst="Flau vind" retningKode="NW" retningTekst="Nordvest"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-27T12:00:00" tiltid="2015-10-27T18:00:00" periode="2">
-        <symbol nr="01d" tekst="Klarvær"/>
-        <temperatur>2</temperatur>
-        <vind mps="1.1" tekst="Flau vind" retningKode="ENE" retningTekst="Øst-nordøst"/>
+        <symbol nr="02d" tekst="Lettskyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="1.5" tekst="Flau vind" retningKode="ESE" retningTekst="Øst-sørøst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-27T18:00:00" tiltid="2015-10-28T00:00:00" periode="3">
-        <symbol nr="mf/01n.48" tekst="Klarvær"/>
-        <temperatur>0</temperatur>
-        <vind mps="2.0" tekst="Svak vind" retningKode="E" retningTekst="Øst"/>
+        <symbol nr="mf/02n.48" tekst="Lettskyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="2.2" tekst="Svak vind" retningKode="SE" retningTekst="Sørøst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-28T00:00:00" tiltid="2015-10-28T06:00:00" periode="0">
         <symbol nr="mf/03n.51" tekst="Delvis skyet"/>
-        <temperatur>0</temperatur>
-        <vind mps="2.0" tekst="Svak vind" retningKode="ESE" retningTekst="Øst-sørøst"/>
+        <temperatur>2</temperatur>
+        <vind mps="1.6" tekst="Svak vind" retningKode="E" retningTekst="Øst"/>
       </tidspunkt>
-      <tidspunkt fratid="2015-10-28T07:00:00" tiltid="2015-10-28T13:00:00" periode="1">
+      <tidspunkt fratid="2015-10-28T06:00:00" tiltid="2015-10-28T12:00:00" periode="1">
         <symbol nr="03d" tekst="Delvis skyet"/>
-        <temperatur>0</temperatur>
-        <vind mps="1.5" tekst="Flau vind" retningKode="E" retningTekst="Øst"/>
+        <temperatur>1</temperatur>
+        <vind mps="1.7" tekst="Svak vind" retningKode="E" retningTekst="Øst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-28T13:00:00" tiltid="2015-10-28T19:00:00" periode="2">
         <symbol nr="03d" tekst="Delvis skyet"/>
         <temperatur>5</temperatur>
-        <vind mps="2.5" tekst="Svak vind" retningKode="SE" retningTekst="Sørøst"/>
+        <vind mps="0.5" tekst="Flau vind" retningKode="E" retningTekst="Øst"/>
       </tidspunkt>
       <tidspunkt fratid="2015-10-28T19:00:00" tiltid="2015-10-29T01:00:00" periode="3">
         <symbol nr="mf/03n.51" tekst="Delvis skyet"/>
@@ -213,7 +208,7 @@ Denne siden er kontrollert av Ståle Andre Volden, siste gang 25.10.2015-->
         <tekst>&lt;strong&gt;Sør-Norge:&lt;/strong&gt; Det ventes for det meste vind fra sørvest, periodevis kuling utsatte steder. Nedbør av og til, mest nedbør på Vestlandet. Litt stigende temperatur.</tekst>
       </tidspunkt>
     </tekst>
-    <oppdatert sist="2015-10-25T15:32:00" neste="2015-10-25T17:00:00"/>
+    <oppdatert sist="2015-10-25T21:45:00" neste="2015-10-25T23:00:00"/>
   </melding>
   <linker>
     <googlemap type="bilde" tekst="Google Maps" url="http://maps.google.com/?q=64.8654946456349,11.6046459447957"/>
