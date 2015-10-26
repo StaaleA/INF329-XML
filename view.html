@@ -48,29 +48,33 @@ float:right;
 }
 </style>
 
+
+<div id="melding">
+<h1 id=""></h1>
+
+</div>
+<span id="laster"></span>
+<a href="varsel.xml">Link til den nye XML-fila</a></div>
+
 <script>
 var http = new XMLHttpRequest();
 var url = "nyxml.php";
 
-http.onreadystatechange=function() {
+http.onreadystatechange = function() {
     if (http.readyState == 4 && http.status == 200) {
-        hentJson(http.responseText);
+    	document.getElementById("laster").innerHTML = ''; 
+        liste = JSON.parse(http.responseText);
+        document.getElementById("melding").innerHTML = liste.stedsnavn;
     }
 }
 
 var XMLurl = "http://www.yr.no/sted/Norge/Nord-Tr%C3%B8ndelag/N%C3%A6r%C3%B8y/Kolvereid/varsel.xml";
-
+document.getElementById("laster").innerHTML = '<img src="laster.gif" />';
 http.open("GET", url+"?url="+XMLurl, true);
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 http.send(null);
 
-function hentJson(response) {
-    liste = JSON.parse(response);
-}
+
 </script>
-
-
-<a href="varsel.xml">Link til den nye XML-fila</a></div>
-
 </body>
 </html>
