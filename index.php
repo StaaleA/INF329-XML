@@ -19,7 +19,7 @@
       </style>
       <title>Hello</title>
    </head>
-   <body>
+   <body onload="hentJson()">
       <h1>Hejsann alla i hopa</h1>
       <div id="boks" style="width:30;">
 	      <form autocomplete="off">

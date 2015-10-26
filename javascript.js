@@ -5,9 +5,6 @@
 */
 
 /*
-
-
-/*
 == SØKE-funksjon som går igjennom JSON-filen
 ================================================================================
 == Ved denne funksjonen oppnår vi et livesøk, som lister ut et oppdatert søk på 
@@ -48,9 +45,10 @@ vår i en JavaScript-variabel på index.php som vi henter.
 Dette kunne blitt noe fint...
 */
 var xmlhttp = new XMLHttpRequest();
-var url = "readfile.php";
+var url = "localhost:8888/INF329-XML/readfile.php";
 
 xmlhttp.onreadystatechange=function() {
+	alert("j");
     if (xmlhttp.readyState == 4 || xmlhttp.status == 200) {
         hentJson(xmlhttp.responseText);
         alert("hei");
@@ -67,18 +65,11 @@ function hentJson(response) {
 
     for(i = 0; i < arr.length; i++) {
         ut += "<tr><td>" +
-        arr[i] +
+        arr[i].navn +
         "</td><td>" +
-        arr[i].Country +
+        arr[i].url +
         "</td></tr>";
     }
     ut += "</table>";
     document.getElementById("ut").innerHTML = ut;
 }
-
-
-/*
-== File API from HTML5 - An attemt to test out the new File API from HTML5
-===========================================================================
-*/
-
