@@ -16,17 +16,18 @@ til å hente json-filen, og fått en "renere" kode. Men JavaScript tillater ikke
 å hente filer lokalt på grunn av sikkerhetshensyn. Derfor har vi lagt json-filen
 vår i en JavaScript-variabel på index.php som vi henter.
 */
-
 function searchJson(input) {
 	var funnet = false;
 	var i = 0;
-	while(i < liste.length && !funnet) {
-		if(input === liste[i].navn) {
-			funnet = true;
-			document.getElementById("ut").innerHTML="Resultat: "+liste[i].navn+" - URL: " + liste[i].url;
-			//return liste[i].navn;
+	var hint ="";
+	document.getElementById("livesok").style.border="1px solid #A5ACB2";
+	document.getElementById("livesok").innerHTML=hint;
+	for(i = 0; i < liste.length; i++) {
+		var sokDenne = liste[i].navn;
+		if(sokDenne.includes(input)) {
+			hint=hint+sokDenne+"\n";
+			document.getElementById("livesok").innerHTML=hint;
 		}
-		i++;
 	}
 }
 
