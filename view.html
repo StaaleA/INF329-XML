@@ -1,5 +1,7 @@
 <html>
-<header></header>
+<header>
+<meta charset="UTF-8">
+</header>
 <body>
 <style>
 	
@@ -17,13 +19,7 @@ margin-right:5px;
 h1{
 margin-bottom:1px;
 }
-#idagtekst{
-	margin-bottom:20px;
-font-size: 14px;
-float:left;
-width:300px;
-clear:both;
-}
+
 .dag{
 	font-size: 13px;
 	text-align:center;
@@ -46,17 +42,62 @@ float:right;
 	padding-top:20px;
 	color:#333;
 }
+#laster{
+text-align: center;
+
+}
+#vaerikonnaa{
+float:left;
+
+width:100px;
+}
+#gradernaa{
+float:left;
+font-size: 64px;
+
+width:50px;
+}
+
+#dagenstekst{
+margin:10px;
+padding-top:10px;
+font-size: 14px;
+clear:both;
+}
+
+#ikonoggrader{
+
+	width:600px;
+
+}
 </style>
 
 
 <div id="melding">
-<h1 id=""></h1>
+	<h1 id="overskrift"></h1>
+	<span id="dagensdato"></span>
+
+	<div id="ikonoggrader">
+		<div id="vaerikonnaa"></div>
+		<div id="gradernaa"></div>
+	</div>
+
+	<p id="dagenstekst"></p>
 
 </div>
 <span id="laster"></span>
-<a href="varsel.xml">Link til den nye XML-fila</a></div>
+
 
 <script>
+var ukedag = new Array(7);
+ukedag[0]=  "Søndag";
+ukedag[1] = "Mandag";
+ukedag[2] = "Tirsdag";
+ukedag[3] = "Onsdag";
+ukedag[4] = "Torsdag";
+ukedag[5] = "Fredag";
+ukedag[6] = "Lørdag";
+
 var http = new XMLHttpRequest();
 var url = "nyxml.php";
 
@@ -64,17 +105,26 @@ http.onreadystatechange = function() {
     if (http.readyState == 4 && http.status == 200) {
     	document.getElementById("laster").innerHTML = ''; 
         liste = JSON.parse(http.responseText);
-        document.getElementById("melding").innerHTML = liste.stedsnavn;
+
+        //Overskrift
+        document.getElementById("overskrift").innerHTML = liste.stedsnavn;
+
+        //Dagens dato (navn)
+        var dagensdato = new Date(liste.melding.detaljert.tidspunkt[0]["@attributes"].fratid);
+        document.getElementById("dagensdato").innerHTML = ukedag[dagensdato.getDay()];
+        //Dagens tekstvarsel
+       document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + liste.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
+       document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur;
+  		document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
+
     }
 }
 
 var XMLurl = "http://www.yr.no/sted/Norge/Nord-Tr%C3%B8ndelag/N%C3%A6r%C3%B8y/Kolvereid/varsel.xml";
-document.getElementById("laster").innerHTML = '<img src="laster.gif" />';
+document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
 http.open("GET", url+"?url="+XMLurl, true);
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 http.send(null);
-
-
 </script>
 </body>
 </html>
