@@ -84,6 +84,7 @@ clear:both;
 
 	<p id="dagenstekst"></p>
 
+<div id="dagvarsel"></div>
 </div>
 <span id="laster"></span>
 
@@ -115,10 +116,27 @@ http.onreadystatechange = function() {
         //Dagens tekstvarsel
        document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + liste.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
        document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur;
-  		document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
+  	   document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
+var dagvarsel;
+for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
+		var obj = liste.melding.detaljert.tidspunkt[i];
+		if (obj["@attributes"].periode == 2){
+		divstart = "<div class='dag'>";
+		divslutt ="</div>";
+  	 	var fratid = obj["@attributes"].fratid;
+  	 	var dagsymbol = "<img src='b38/"+obj.symbol["@attributes"].nr +".png'><br>"
+  	 	var daggrader = obj.temperatur;
+  	 	dagvarsel += divstart + fratid + dagsymbol + daggrader +divslutt;
+  	 }
 
+  	 }
+  	 document.getElementById("dagvarsel").innerHTML = dagvarsel;
+  
     }
 }
+
+
+
 
 var XMLurl = "http://www.yr.no/sted/Norge/Nord-Tr%C3%B8ndelag/N%C3%A6r%C3%B8y/Kolvereid/varsel.xml";
 document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
