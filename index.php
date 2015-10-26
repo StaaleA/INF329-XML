@@ -12,14 +12,19 @@
       </script>
       <script type="text/javascript" src="javascript.js"></script>
       <script type="text/javascript" src="instantSearch.js"></script>
+      <style>
+      	a{
+      		color:black;
+      	}
+      </style>
       <title>Hello</title>
    </head>
    <body>
       <h1>Hejsann alla i hopa</h1>
       <div id="boks" style="width:30;">
 	      <form autocomplete="off">
-	         <input type="search" size="30" id="search" placeholder="søk her i JSON" onkeyup="searchJson(this.value)">
-	         <div id="livesok" style="width:100%;"></div>
+	         <input type="search" style="width:250px;" id="search" placeholder="søk her i JSON" onkeyup="searchJson(this.value)">
+	         <div id="livesok" style="width:250px;"></div>
 	         <div id="ut"></div>
 	      </form>
       </div>
