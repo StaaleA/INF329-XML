@@ -27,7 +27,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 $row = 0;
-$stedListe['steder'] = array();
+$stedListe = array();
 
 // Leser filen php sine innebygde funksjoner for lesing av fil
 if (($leseFil = fopen("noreg.txt", "r")) !== FALSE) {
@@ -45,7 +45,6 @@ if (($leseFil = fopen("noreg.txt", "r")) !== FALSE) {
     } // next
     fclose($leseFil);
 } // end if
-
 echo json_encode($stedListe);
 ?>
 

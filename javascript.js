@@ -7,12 +7,12 @@
 
 /*
 ====================================================================================
+Benytter 
 Om php-filen hadde ligget på en online-server kunne vi ha brukt XMLHttpRequest 
 til å hente json-filen, og fått en "renere" kode. Men JavaScript tillater ikke
 å hente filer lokalt på grunn av sikkerhetshensyn. Derfor har vi lagt json-filen
 vår i en JavaScript-variabel på index.php som vi henter.
 ====================================================================================
-Dette kunne blitt noe fint...
 */
 var xmlhttp = new XMLHttpRequest();
 var url = "readfile.php";
@@ -22,13 +22,13 @@ xmlhttp.onreadystatechange=function() {
         hentJson(xmlhttp.responseText);
     }
 }
+
 xmlhttp.open("GET", url, true);
 xmlhttp.send();
 var headers = xmlhttp.getAllResponseHeaders().toLowerCase();
 
 function hentJson(response) {
-    liste = response;
-    console.log(liste);
+    liste = JSON.parse(response);
 }
 /*
 == SØKE-funksjon som går igjennom JSON-filen
@@ -47,9 +47,7 @@ function searchJson(input) {
 	søkefelt.style.border="1px solid #A5ACB2";
 	søkefelt.innerHTML=hint;
 	if(!input.length==0) {
-		alert("hei");
 		for(i = 0; i < liste.length; i++) {
-			alert(liste[i].navn);
 			var sokDenne = liste[i].navn;
 			if(sokDenne.includes(input) && teller<20) {
 				url = liste[i].url;
