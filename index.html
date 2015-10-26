@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html>
-   <head>
-   <meta charset=utf-8>
-   <meta name=viewport content="width=device-width, initial-scale=1">
-   <script type="text/javascript" src="javascript.js"></script>
-      
-      <style>
-      	a{
-      		color:black;
-      	}
-      </style>
-      <title>Hello</title>
-   </head>
-   <body>
-      <h1>Hejsann alla i hopa</h1>
-      <div id="boks" style="width:30;">
-	      <form autocomplete="off">
-	         <input type="search" style="width:250px;" id="search" placeholder="søk her i JSON" onkeyup="searchJson(this.value)">
-	         <div id="livesok" style="width:250px;"></div>
-	         <div id="ut"></div>
-	      </form>
-      </div>
-      <br>
-      <br>
-      <form>
-         <input type="text" size="30" placeholder="søk her i XML" onkeyup="showResult(this.value)">
-         <div id="livesearch"></div>
-      </form>
-      <br>
-      <br>
-   </body>
-   
+
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="javascript.js"></script>
+    <link rel=stylesheet href="stylesheet.css">
+    <title>Hello</title>
+</head>
+
+<body onload="document.form.søk.focus()">
+    <h1>Hejsann alla i hopa</h1>
+    <div id="sokWrapper" style="width:30;">
+        <form autocomplete="off" name="form">
+            <input type="search" name="søk" style="width:250px;" id="search" placeholder="søk her i JSON" onkeyup="searchJson(this.value)">
+            <div id="livesok" style="width:250px;"></div>
+        </form>
+    </div>
+    <div id="ut"></div>
+</body>
+
 </html>

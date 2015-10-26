@@ -1,0 +1,19 @@
+    a {
+        color: black;
+    }
+
+    
+	a:hover, a:hover span {
+        background-color: red;
+    }
+    
+    span{
+    	width: 100%;
+    	display: block;
+    	margin: 0;
+    	padding: 0;
+    	bottom: 0;
+    }
+    span:focus {
+        background-color: red;
+    }
