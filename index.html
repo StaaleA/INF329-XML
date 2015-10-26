@@ -10,14 +10,16 @@
 </head>
 
 <body onload="document.form.søk.focus()">
-    <h1>Hejsann alla i hopa</h1>
-    <div id="sokWrapper" style="width:30;">
-        <form autocomplete="off" name="form">
-            <input type="search" name="søk" style="width:250px;" id="search" placeholder="søk her i JSON" onkeyup="searchJson(this.value)">
-            <div id="livesok" style="width:250px;"></div>
-        </form>
+    <div class="overlay">
+        <div id="sokWrapper">
+            <h1>Værvasel fra Ståle</h1>
+            <form autocomplete="off" name="form">
+                <input type="search" name="søk" id="search" placeholder="søk på steder i Norge" onkeyup="searchJson(this.value)">
+                <div id="livesok"></div>
+            </form>
+        </div>
+        <div id="ut"></div>
     </div>
-    <div id="ut"></div>
 </body>
 
 </html>

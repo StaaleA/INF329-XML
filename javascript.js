@@ -60,7 +60,7 @@ function searchJson(input) {
     var teller = 0;
     var hint = '';
     var søkefelt = document.getElementById('livesok');
-    søkefelt.style.border = '1px solid #A5ACB2';
+    // søkefelt.style.border = '1px solid #A5ACB2';
     søkefelt.innerHTML = hint;
     if (!input.length == 0) {
         input = input.toUpperCase()
@@ -68,7 +68,7 @@ function searchJson(input) {
             var sokDenne = liste[i].navn.toUpperCase();
             if (sokDenne.includes(input) && teller < 20) {
                 url = liste[i].url;
-                hint = hint + '<a href=' + url + '><div id=' + teller + '>' + liste[i].navn + '</div></a>';
+                hint = hint + '<div class="forslag" id=' + teller + '><a href=' + url + '>' + liste[i].navn + '</a></div>';
                 søkefelt.innerHTML = hint;
                 teller++;
             }
