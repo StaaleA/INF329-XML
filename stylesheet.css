@@ -1,0 +1,61 @@
+body,
+html {
+    /*    background-color: #FCFFF5;*/
+    background-image: url('bilder/geiranger.jpg');
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+    color: white;
+}
+
+a {
+    color: white;
+}
+a:link {
+    text-decoration: none;
+}
+
+form, input{
+	width: 100%;
+	opacity: 0.7;
+	font-size: 1.1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 10px;
+}
+.forslag {
+	width: 100%;
+	background-color: black;
+	font-family: 'Arial, Helvetica', sans-serif;
+	font-weight: 100;
+	padding-bottom: 0.3em;
+	padding-left: 10px;
+}
+
+.main-wrapper {
+	width: 100%;
+}
+
+.main-wrapper h1 {
+	text-align: center;
+}
+
+#sokWrapper {
+	max-width: 600px;
+    height: 40%;
+    margin: 0 auto; /* Denne som sørger for å midtstille søk */
+}
+
+.overlay {
+	height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(62, 96, 111, 0.5);
+}
+
