@@ -9,16 +9,37 @@
     <title>Hello</title>
 </head>
 
-<body onload="document.form.søk.focus()">
+<body onload="document.form.sokefelt.focus()">
     <div class="overlay">
-        <div id="sokWrapper">
-            <h1>Værvasel fra Ståle</h1>
-            <form autocomplete="off" name="form">
-                <input type="search" name="søk" id="search" placeholder="søk på steder i Norge" onkeyup="searchJson(this.value)">
-                <div id="livesok"></div>
-            </form>
+        <div class="main-wrapper">
+            <div id="sokWrapper">
+                <h1>Værvarsel</h1>
+                  
+                  <form autocomplete="off">
+                        <input type="search" name="søk" id="search" placeholder="søker uten bla-muligheter | enkleste versjonen" onkeyup="searchJson(this.value)">
+                        <div id="livesok"></div>
+                    </form>
+
+
+
+
+                <div id="testID">
+                    <form autocomplete="off">
+                        <input type="search" name="søk" id="sok" placeholder="søk med div'er | fungerer ikke enda.." onkeyup="searchDivs(this.value, event)">
+                        <div id="instantsearch"></div>
+                    </form>
+                </div>
+
+                
+
+
+                <form name="form" action="demo_form.asp" method="get" style="width:585px;">
+                    <input id="inputSok" list="steder" name="sokefelt" placeholder="søk med datalist | funker fett" onkeyup="searchSteder(this.value, event)" autocomplete="off">
+                    <datalist id="steder">
+                    </datalist>
+                </form>
+            </div>
         </div>
-        <div id="ut"></div>
     </div>
 </body>
 

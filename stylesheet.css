@@ -36,10 +36,18 @@ form, input{
 	padding-left: 10px;
 }
 
+.main-wrapper {
+	width: 100%;
+}
+
+.main-wrapper h1 {
+	text-align: center;
+}
+
 #sokWrapper {
-	margin-left: 20%;
-    margin-right: 20%;
+	max-width: 600px;
     height: 40%;
+    margin: 0 auto; /* Denne som sørger for å midtstille søk */
 }
 
 .overlay {
@@ -48,6 +56,6 @@ form, input{
     position: fixed;
     left: 0;
     top: 0;
-    background-color: rgba(62, 96, 111, 0.2);
+    background-color: rgba(62, 96, 111, 0.5);
 }
 
