@@ -106,5 +106,14 @@ if (!String.prototype.includes) {
   };
 }
 
-// Setter fokus til søk-feltet ved innlastning
+/*
+== Setter fokus til søk-feltet ved innlastning
+====================================================================================
+*/
 document.getElementById('sok').focus();
+
+
+
+
+
+

@@ -10,7 +10,7 @@
     <meta name=viewport content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="javascript.js"></script>
     <link rel=stylesheet href="stylesheet.css">
-    <title>Hello</title>
+    <title>Værvarsel</title>
 </head>
 
 <body onload="document.form.sokefelt.focus()">
@@ -19,10 +19,11 @@
             <div id="sokWrapper">
                 <h1>Værvarsel</h1>
                 <form autocomplete="off">
-                    <input type="search" name="søk" id="sok" placeholder="søk med div'er | fungerer ikke enda.." onkeyup="searchDivs(this.value, event)">
+                    <input type="search" name="søk" id="sok" placeholder="søk" onkeyup="searchDivs(this.value, event)">
                     <div id="instantsearch"></div>
                 </form>
             </div>
+            <div id="out"></div>
         </div>
     </div>
     <script type="text/javascript" src="search.js"></script>
