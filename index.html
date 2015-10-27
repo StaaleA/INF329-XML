@@ -14,25 +14,16 @@
         <div class="main-wrapper">
             <div id="sokWrapper">
                 <h1>Værvarsel</h1>
-                  
-                  <form autocomplete="off">
-                        <input type="search" name="søk" id="search" placeholder="søker uten bla-muligheter | enkleste versjonen" onkeyup="searchJson(this.value)">
-                        <div id="livesok"></div>
-                    </form>
+                <form autocomplete="off">
+                    <input type="search" name="søk" id="search" placeholder="søker uten bla-muligheter | enkleste versjonen" onkeyup="searchJson(this.value)">
+                    <div id="livesok"></div>
+                </form>
 
-
-
-
-                <div id="testID">
-                    <form autocomplete="off">
-                        <input type="search" name="søk" id="sok" placeholder="søk med div'er | fungerer ikke enda.." onkeydown="searchDivs(this.value, event)">
-                        <div id="instantsearch"></div>
-                    </form>
-                </div>
-
+                <form autocomplete="off">
+                    <input type="search" name="søk" id="sok" placeholder="søk med div'er | fungerer ikke enda.." onkeyup="searchDivs(this.value, event)">
+                    <div id="instantsearch"></div>
+                </form>
                 
-
-
                 <form name="form" action="demo_form.asp" method="get" style="width:585px;">
                     <input id="inputSok" list="steder" name="sokefelt" placeholder="søk med datalist | funker fett" onkeyup="searchSteder(this.value, event)" autocomplete="off">
                     <datalist id="steder">
@@ -44,3 +35,4 @@
 </body>
 
 </html>
+

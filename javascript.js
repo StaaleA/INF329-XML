@@ -109,7 +109,6 @@ function searchDivs(input, event) {
     var e = event.which || event.keyCode;
     if (e != 40) {
         var funnet = false;
-        var i = 0;
         var url;
         var teller = 0;
         var hint = '';
@@ -117,9 +116,9 @@ function searchDivs(input, event) {
         søkefelt.innerHTML = hint;
         if (!input.length == 0) {
             input = input.toUpperCase()
-            for (i = 0; i < liste.length; i++) {
+            for (i = 1; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
-                if (sokDenne.includes(input) && teller < 20) {
+                if (sokDenne.includes(input) && teller < 10) {
                     url = liste[i].url;
                     hint = hint + '<div class="forslag" id=' + teller + '><a href=' + url + '>' + liste[i].navn + '</a></div>';
                     søkefelt.innerHTML = hint;
@@ -132,24 +131,24 @@ function searchDivs(input, event) {
         } else {
             søkefelt.innerHTML = '';
         }
-    }
-    // Innhentet kode som kan navigere blant div'er
-    var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
-        selectedDiv = 0,
-        i;
+    } else {
+        // Innhentet kode som kan navigere blant div'er
+        var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
+            selectedDiv = 0,
+            i;
 
-    for (i = 0; i < divs.length; i++)
-        divs[i].onclick = (function(i) {
-            return function() {
-                divs[selectedDiv].style.backgroundColor = '';
-                selectedDiv = i;
-                divs[selectedDiv].style.backgroundColor = '#68F';
-            }
-        })(i);
+        for (i = 0; i < divs.length; i++)
+            divs[i].onclick = (function(i) {
+                return function() {
+                    divs[selectedDiv].style.backgroundColor = '';
+                    selectedDiv = i;
+                    divs[selectedDiv].style.backgroundColor = '#68F';
+                }
+            })(i);
 
-    divs[selectedDiv].style.backgroundColor = '#68F';
+        divs[selectedDiv].style.backgroundColor = '#68F';
 
-    document.getElementById('sok').onkeydown = function(e) {
+    	document.getElementById('sok').onkeyup = function(e) {
         var x = 0;
         if (e.keyCode == 38)
             x = -1;
@@ -163,7 +162,13 @@ function searchDivs(input, event) {
             divs.length + selectedDiv : selectedDiv;
         divs[selectedDiv].style.backgroundColor = '#68F';
     }
+    }
+    if(e == 27) {
+    	alert("est");
+    	document.getElementById('instantsearch').innerHTML = "";
+    }
 }
+
 
 /*
 == searchSteder(e) | Navigering med <datalist>
