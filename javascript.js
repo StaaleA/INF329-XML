@@ -134,7 +134,7 @@ function searchDivs(input, event) {
         }
     }
     // Innhentet kode som kan navigere blant div'er
-    var divs = document.getElementById('testID').getElementsByTagName('div'),
+    var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
         selectedDiv = 0,
         i;
 
@@ -149,7 +149,7 @@ function searchDivs(input, event) {
 
     divs[selectedDiv].style.backgroundColor = '#68F';
 
-    document.getElementById('testID').getElementsByTagName('input')[0].onkeydown = function(e) {
+    document.getElementById('sok').onkeydown = function(e) {
         var x = 0;
         if (e.keyCode == 38)
             x = -1;
@@ -184,6 +184,9 @@ function searchSteder(input, event) {
     var x = event.which || event.keyCode;
     if (x != 40) {
         var datalist = document.getElementById('steder');
+        while(datalist.firstChild){
+            datalist.removeChild(datalist.firstChild);
+        }
         var funnet = false;
         var i = 0;
         var url;
