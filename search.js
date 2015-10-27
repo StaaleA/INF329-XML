@@ -112,7 +112,30 @@ if (!String.prototype.includes) {
 */
 document.getElementById('sok').focus();
 
+/*
+EVENT 
+*/
+document.getElementById("instantsearch").addEventListener("onkeyup", displayDate);
 
+function displayDate() {
+    alert("hei");
+}
+
+document.addEventListener("click", function (e) {
+  var level = 0;
+  for (var element = e.target; element; element = element.parentNode) {
+    if (element.id === 'instantsearch') {
+        document.getElementById("out").innerHTML = (level ? "inner " : "") + "x clicked";
+      return;
+    }
+    level++;
+  }
+  document.getElementById("out").innerHTML = "not x clicked";
+});
+
+function keyEvent(event) {
+  console.log("Location of key pressed: " + event.location);
+}
 
 
 
