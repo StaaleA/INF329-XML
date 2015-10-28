@@ -88,13 +88,27 @@ function searchDivs(input, event) {
         selectedDiv = selectedDiv < 0 ?
             divs.length + selectedDiv : selectedDiv;
         divs[selectedDiv].style.backgroundColor = '#68F';
+
+        function send() {
+            return divs[selectedDiv].innerHTML;
+        }
+        searchDivs.send = send;
     }
+    
     }
     if(e == 27) {
         alert("est");
         document.getElementById('instantsearch').innerHTML = "";
     }
 }
+// function send (x) {
+            
+//             return x;
+//         }
+function sendValgt(args) {
+            // body...
+             return hentValgt.apply(this, arguments);
+        }
 
 /*
 == Polyfill for String.includes()
@@ -113,29 +127,91 @@ if (!String.prototype.includes) {
 document.getElementById('sok').focus();
 
 /*
-EVENT 
+== EVENT 
+====================================================================================
 */
-document.getElementById("instantsearch").addEventListener("onkeyup", displayDate);
 
-function displayDate() {
-    alert("hei");
-}
+// document.getElementById("instantsearch").addEventListener("click", noe);
 
-document.addEventListener("click", function (e) {
-  var level = 0;
-  for (var element = e.target; element; element = element.parentNode) {
-    if (element.id === 'instantsearch') {
-        document.getElementById("out").innerHTML = (level ? "inner " : "") + "x clicked";
-      return;
+// function noe () {
+//     // body...
+//     var classname = document.getElementsByClassName("forslag");
+
+//     var myFunction = function() {
+//         // var attribute = this.getAttribute("data-myattribute");
+//         // alert(attribute);
+//         alert("heiee");
+//     };
+
+//     for(var i=0;i<classname.length;i++){
+//         classname[i].addEventListener('onkeyup', myFunction, false);
+//     }
+// }
+
+// Sjekker at bruker har begynt å søke
+document.getElementById('sok').addEventListener("keyup", skrik);
+
+function skrik() {
+    var n = document.getElementById('sok').value;
+    
+    if(n.length>3) {
+        alert("funksjon skrik");
+        var x = searchDivs.send(); 
+        alert(x);
+
+        // alert("riktig");
+        // var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
+        //     selectedDiv = 0,
+        //     i;
+
+        // for (i = 0; i < divs.length; i++)
+        //     divs[i].onclick = (function(i) {
+        //         return function() {
+        //             divs[selectedDiv].style.backgroundColor = '';
+        //             selectedDiv = i;
+        //             divs[selectedDiv].style.backgroundColor = '#68F';
+        //         }
+        //     })(i);
+        //     alert(divs[3].innerHTML);
     }
-    level++;
-  }
-  document.getElementById("out").innerHTML = "not x clicked";
-});
+       
 
-function keyEvent(event) {
-  console.log("Location of key pressed: " + event.location);
+
+
+    // alert("hei");
 }
+
+
+// var n = divs[selectedDiv];
+
+
+// function displayDate() {
+ 
+// }
+
+// function keyEvent(event) {
+//   alert("Location of key pressed: " + event.location);
+// }
+
+// document.addEventListener("click", function (e) {
+//   alert("Location of key pressed: " + e.location);
+// });
+
+// document.addEventListener("click", function (e) {
+//   var level = 0;
+//   for (var element = e.target; element; element = element.parentNode) {
+//     if (element.id === 'instantsearch') {
+//         document.getElementById("out").innerHTML = (level ? "inner " : "") + "x clicked";
+//       return;
+//     }
+//     level++;
+//   }
+//   document.getElementById("out").innerHTML = "not x clicked";
+// });
+
+// function keyEvent(event) {
+//   console.log("Location of key pressed: " + event.location);
+// }
 
 
 
