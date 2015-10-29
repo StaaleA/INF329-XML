@@ -74,6 +74,7 @@ function searchDivs(input, event) {
                 }
             })(i);
 
+
         divs[selectedDiv].style.backgroundColor = '#68F';
         document.getElementById('sok').onkeyup = function(e) {
             if(!(e.keyCode == 38 || e.keyCode == 40)) {
@@ -109,6 +110,41 @@ if (!String.prototype.includes) {
   String.prototype.includes = function() {'use strict';
     return String.prototype.indexOf.apply(this, arguments) !== -1;
   };
+}
+
+/*
+== Tøm forslags-listen
+====================================================================================
+*/
+function clearForslag() {
+    var fjernMeg = document.getElementsByClassName('forslag');
+    while(fjernMeg[0]) {
+        fjernMeg[0].parentNode.removeChild(fjernMeg[0]);
+    }
+}
+
+function celarID() {
+    var node = document.getElementById('instantsearch');
+    while (node.hasChildNodes()) {
+        node.removeChild(node.lastChild);
+    }
+}
+
+function refresh() {
+    var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
+            selectedDiv = 0,
+            i;
+    for (i = 0; i < divs.length; i++)
+            divs[i].style.backgroundColor = '';
+            divs[i] = null;
+            divs[selectedDiv].style.backgroundColor = '#68F';
+            divs[i].onkeyup = (function(i) {
+                return function() {
+                    divs[selectedDiv].style.backgroundColor = '';
+                    selectedDiv = i;
+                    divs[selectedDiv].style.backgroundColor = '#68F';
+                }
+            })(i);
 }
 
 /*
@@ -189,8 +225,9 @@ function skrik(event) {
     else if (!(e == 40 || e == 38)) { 
         // om bruker skriver OG divs[selectedDiv] er satt
         if(x) {
-            document.getElementById('sok').focus();
-            document.getElementById('instantsearch').innerHTML = '';
+            // clearForslag();
+            // celarID();
+            refresh();
             searchDivs(sokeord, event);
         }
     }
