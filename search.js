@@ -33,6 +33,8 @@
 ====================================================================================
 */
 function searchDivs(input, event) {
+
+
     var e = event.which || event.keyCode;
     if (e != 40) {
         var funnet = false;
@@ -41,7 +43,7 @@ function searchDivs(input, event) {
         var hint = '';
         var søkefelt = document.getElementById('instantsearch');
         søkefelt.innerHTML = hint;
-        if (!input.length == 0) {
+        if (input.length != 0) {
             input = input.toUpperCase()
             for (i = 1; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
@@ -57,12 +59,32 @@ function searchDivs(input, event) {
             }
         } else {
             søkefelt.innerHTML = '';
+            // divs[selectedDiv].style.backgroundColor = '#68F';
         }
+
+            var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
+            selectedDiv = 0,
+            i;
+             for (i = 0; i < divs.length; i++)
+            divs[i].onclick = (function(i) {
+                return function() {
+                    divs[selectedDiv].style.backgroundColor = '';
+                    selectedDiv = i;
+                    divs[selectedDiv].style.backgroundColor = '#68F';
+                }
+            })(i);
+            divs[selectedDiv] = 0;
+            alert(divs[selectedDiv].innerHTML);
+
     } else {
+
+
         // Innhentet kode som kan navigere blant div'er
+
         var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
             selectedDiv = 0,
             i;
+
 
         for (i = 0; i < divs.length; i++)
             divs[i].onclick = (function(i) {
@@ -88,18 +110,20 @@ function searchDivs(input, event) {
         selectedDiv = selectedDiv < 0 ?
             divs.length + selectedDiv : selectedDiv;
         divs[selectedDiv].style.backgroundColor = '#68F';
+        
+        alert(divs[selectedDiv].innerHTML);
 
-        function send() {
-            return divs[selectedDiv].innerHTML;
-        }
-        searchDivs.send = send;
     }
+    function getSelected() {
+            return divs[selectedDiv];
+        }
+        searchDivs.getSelected = getSelected;
     
     }
-    if(e == 27) {
-        alert("est");
-        document.getElementById('instantsearch').innerHTML = "";
-    }
+    // if(e == 27) {
+    //     alert("est");
+    //     document.getElementById('instantsearch').innerHTML = "";
+    // }
 }
 // function send (x) {
             
@@ -136,7 +160,6 @@ document.getElementById('sok').focus();
 // function noe () {
 //     // body...
 //     var classname = document.getElementsByClassName("forslag");
-
 //     var myFunction = function() {
 //         // var attribute = this.getAttribute("data-myattribute");
 //         // alert(attribute);
@@ -148,17 +171,63 @@ document.getElementById('sok').focus();
 //     }
 // }
 
+// document.getElementById('sok').addEventListener("keyup", test2);
+
+// function test2 () {
+//     document.onkeyup = function(event) {
+//         var el = event.which || event.keyCode;
+//         alert(el);
+//     };
+// }
+
 // Sjekker at bruker har begynt å søke
 document.getElementById('sok').addEventListener("keyup", skrik);
 
-function skrik() {
-    var n = document.getElementById('sok').value;
-    
-    if(n.length>3) {
-        alert("funksjon skrik");
-        var x = searchDivs.send(); 
-        alert(x);
+function skrik(event) {
+    var e = event.which || event.keyCode;
+ // alert(e);
+ // var nybokstav = String.fromCharCode(e);
+ // alert(nybokstav);
+// sokeord+= e;
+var n = document.getElementById('sok').value;
+// alert(n);
+var x = searchDivs.getSelected(); 
 
+// alert(x.innerHTML);
+// alert(n);
+// var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
+//             selectedDiv = 0,
+//             i;
+
+var sokeord = document.getElementById('sok').value;
+// alert(sokeord);
+    
+    if(e==8){
+searchDivs(sokeord, event);
+    }
+
+    else if(!(e == 40 || e == 38)) {
+            if(x) {
+                //x = x[0];
+                document.getElementById('sok').focus();
+
+                // alert(sokeord);
+                document.getElementById('instantsearch').innerHTML = '';
+                searchDivs(sokeord, event);
+                
+                // alert(x);
+                // x = null;
+                // alert(x);
+            }
+
+            //document.getElementById('instantsearch').innerHTML = '';
+        } 
+        if(sokeord==="") {
+            searchDivs(sokeord, event);
+        }
+
+        // alert(n);
+        
         // alert("riktig");
         // var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
         //     selectedDiv = 0,
@@ -173,7 +242,7 @@ function skrik() {
         //         }
         //     })(i);
         //     alert(divs[3].innerHTML);
-    }
+
        
 
 
