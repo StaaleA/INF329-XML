@@ -33,8 +33,6 @@
 ====================================================================================
 */
 function searchDivs(input, event) {
-
-
     var e = event.which || event.keyCode;
     if (e != 40) {
         var funnet = false;
@@ -43,8 +41,8 @@ function searchDivs(input, event) {
         var hint = '';
         var søkefelt = document.getElementById('instantsearch');
         søkefelt.innerHTML = hint;
-        if (input.length != 0) {
-            input = input.toUpperCase()
+        if (input.length !== 0) {
+            input = input.toUpperCase();
             for (i = 1; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
                 if (sokDenne.includes(input) && teller < 10) {
@@ -59,32 +57,12 @@ function searchDivs(input, event) {
             }
         } else {
             søkefelt.innerHTML = '';
-            // divs[selectedDiv].style.backgroundColor = '#68F';
         }
-
-            var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
-            selectedDiv = 0,
-            i;
-             for (i = 0; i < divs.length; i++)
-            divs[i].onclick = (function(i) {
-                return function() {
-                    divs[selectedDiv].style.backgroundColor = '';
-                    selectedDiv = i;
-                    divs[selectedDiv].style.backgroundColor = '#68F';
-                }
-            })(i);
-            divs[selectedDiv] = 0;
-            alert(divs[selectedDiv].innerHTML);
-
     } else {
-
-
         // Innhentet kode som kan navigere blant div'er
-
         var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
             selectedDiv = 0,
             i;
-
 
         for (i = 0; i < divs.length; i++)
             divs[i].onclick = (function(i) {
@@ -96,7 +74,6 @@ function searchDivs(input, event) {
             })(i);
 
         divs[selectedDiv].style.backgroundColor = '#68F';
-
         document.getElementById('sok').onkeyup = function(e) {
         var x = 0;
         if (e.keyCode == 38)
@@ -110,29 +87,14 @@ function searchDivs(input, event) {
         selectedDiv = selectedDiv < 0 ?
             divs.length + selectedDiv : selectedDiv;
         divs[selectedDiv].style.backgroundColor = '#68F';
-        
-        alert(divs[selectedDiv].innerHTML);
-
     }
+
     function getSelected() {
             return divs[selectedDiv];
         }
         searchDivs.getSelected = getSelected;
-    
     }
-    // if(e == 27) {
-    //     alert("est");
-    //     document.getElementById('instantsearch').innerHTML = "";
-    // }
 }
-// function send (x) {
-            
-//             return x;
-//         }
-function sendValgt(args) {
-            // body...
-             return hentValgt.apply(this, arguments);
-        }
 
 /*
 == Polyfill for String.includes()
@@ -151,137 +113,78 @@ if (!String.prototype.includes) {
 document.getElementById('sok').focus();
 
 /*
-== EVENT 
+== EVENT LISTENER - Denne funksjonen skal erstatt kallet vi gjør i index.html 
+====================================================================================
+== Her har vi en god oversikt over hva vi sender vidre til funksjonen. 
+====================================================================================
+*/
+// document.getElementById('sok').addEventListener("keyup", function(){searchDivs(this.value, event)});
+// document.getElementById('stedsok').onsubmit = function() {return false;}
+
+// Sjekker at bruker har begynt å søke
+//document.getElementById('sok').addEventListener("keyup", skrik);
+
+function skrik(event) {
+    var e = event.which || event.keyCode;
+    var sokeord = document.getElementById('sok').value;
+    var x;
+
+    if(e==8){
+        // trykk på <- knappen
+        searchDivs(sokeord, event);
+    } 
+    else if (e==27) {
+        // Trykk på 'esc'
+        document.getElementById('sok').focus();
+        document.getElementById('instantsearch').innerHTML = '';
+        searchDivs('', event);
+    }
+    else if(e==13) {
+        // trykk på ENTER
+        x = searchDivs.getSelected();
+        document.getElementById('sok').innerHTML = x;
+        document.getElementById('stedsok').submit();
+        alert(x);
+    }
+    else if(e == 40 || e == 38) {
+        // Om piltastene er brukt, oppdaterer vi valg forslag
+        searchDivs(sokeord, event);
+    }
+    else if(x && !(e==40 || e==38)) {
+        // Om forslag er satt, og vi skriver
+        alert("heu");
+    }
+    else {
+        searchDivs(sokeord, event);
+    }
+}
+
+
+/*
+== DET FØRSTE FORSØKET - SOM NESTEN GIKK... 
+== Her funker alt bortsett fra å nullstille divs[selecteDiv] når vi skriver noe nytt
 ====================================================================================
 */
 
-// document.getElementById("instantsearch").addEventListener("click", noe);
-
-// function noe () {
-//     // body...
-//     var classname = document.getElementsByClassName("forslag");
-//     var myFunction = function() {
-//         // var attribute = this.getAttribute("data-myattribute");
-//         // alert(attribute);
-//         alert("heiee");
-//     };
-
-//     for(var i=0;i<classname.length;i++){
-//         classname[i].addEventListener('onkeyup', myFunction, false);
-//     }
-// }
-
-// document.getElementById('sok').addEventListener("keyup", test2);
-
-// function test2 () {
-//     document.onkeyup = function(event) {
-//         var el = event.which || event.keyCode;
-//         alert(el);
-//     };
-// }
-
-// Sjekker at bruker har begynt å søke
 document.getElementById('sok').addEventListener("keyup", skrik);
 
 function skrik(event) {
     var e = event.which || event.keyCode;
- // alert(e);
- // var nybokstav = String.fromCharCode(e);
- // alert(nybokstav);
-// sokeord+= e;
-var n = document.getElementById('sok').value;
-// alert(n);
-var x = searchDivs.getSelected(); 
-
-// alert(x.innerHTML);
-// alert(n);
-// var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
-//             selectedDiv = 0,
-//             i;
-
-var sokeord = document.getElementById('sok').value;
-// alert(sokeord);
+    var x = searchDivs.getSelected(); 
+    var sokeord = document.getElementById('sok').value;
+    // alert(sokeord);
     
-    if(e==8){
-searchDivs(sokeord, event);
+    if (e==8) { // tilbake-knappen <-
+        searchDivs(sokeord, event);
     }
-
-    else if(!(e == 40 || e == 38)) {
+    else if(!(e == 40 || e == 38)) { // om bruker skriver OG divs[selectedDiv] er satt
             if(x) {
-                //x = x[0];
                 document.getElementById('sok').focus();
-
-                // alert(sokeord);
                 document.getElementById('instantsearch').innerHTML = '';
                 searchDivs(sokeord, event);
-                
-                // alert(x);
-                // x = null;
-                // alert(x);
             }
-
-            //document.getElementById('instantsearch').innerHTML = '';
         } 
-        if(sokeord==="") {
+        if (sokeord==="") {
             searchDivs(sokeord, event);
         }
-
-        // alert(n);
-        
-        // alert("riktig");
-        // var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
-        //     selectedDiv = 0,
-        //     i;
-
-        // for (i = 0; i < divs.length; i++)
-        //     divs[i].onclick = (function(i) {
-        //         return function() {
-        //             divs[selectedDiv].style.backgroundColor = '';
-        //             selectedDiv = i;
-        //             divs[selectedDiv].style.backgroundColor = '#68F';
-        //         }
-        //     })(i);
-        //     alert(divs[3].innerHTML);
-
-       
-
-
-
-    // alert("hei");
 }
-
-
-// var n = divs[selectedDiv];
-
-
-// function displayDate() {
- 
-// }
-
-// function keyEvent(event) {
-//   alert("Location of key pressed: " + event.location);
-// }
-
-// document.addEventListener("click", function (e) {
-//   alert("Location of key pressed: " + e.location);
-// });
-
-// document.addEventListener("click", function (e) {
-//   var level = 0;
-//   for (var element = e.target; element; element = element.parentNode) {
-//     if (element.id === 'instantsearch') {
-//         document.getElementById("out").innerHTML = (level ? "inner " : "") + "x clicked";
-//       return;
-//     }
-//     level++;
-//   }
-//   document.getElementById("out").innerHTML = "not x clicked";
-// });
-
-// function keyEvent(event) {
-//   console.log("Location of key pressed: " + event.location);
-// }
-
-
-
-
