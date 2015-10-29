@@ -47,7 +47,9 @@ function searchDivs(input, event) {
                 var sokDenne = liste[i].navn.toUpperCase();
                 if (sokDenne.includes(input) && teller < 10) {
                     url = liste[i].url;
-                    hint = hint + '<div class="forslag" id=' + teller + '><a href=' + url + '>' + liste[i].navn + '</a></div>';
+                    // Tar vekk URL, lag heller klasse, lettere å hente ut etterpå
+                    // hint = hint + '<div class="forslag" id=' + teller + '><a href=' + url + '>' + liste[i].navn + '</a></div>';
+                    hint = hint + '<div class="forslag" id=' + teller + '>' + liste[i].navn + '</div>';
                     søkefelt.innerHTML = hint;
                     teller++;
                 }
@@ -192,7 +194,29 @@ function skrik(event) {
             searchDivs(sokeord, event);
         }
     }
+    else if(e==13) {
+        // trykk på ENTER
+        x = searchDivs.getSelected();
+        alert(x);
+        document.getElementById('sok').innerHTML = x;
+        document.getElementById('stedsok').submit();
+        alert(x);
+    }
         if (sokeord==="") {
             searchDivs(sokeord, event);
         }
 }
+
+function send () {
+    x = searchDivs.getSelected();
+        alert(x.innerHTML);
+        document.getElementById('sok').value = x.innerHTML;
+        document.getElementById('stedsok').submit();
+        alert(x);
+}
+
+function sjekk () {
+    send();
+    return true;
+}
+
