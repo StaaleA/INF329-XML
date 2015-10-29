@@ -41,8 +41,8 @@ function searchDivs(input, event) {
         var hint = '';
         var søkefelt = document.getElementById('instantsearch');
         søkefelt.innerHTML = hint;
-        if (!input.length == 0) {
-            input = input.toUpperCase()
+        if (input.length !== 0) {
+            input = input.toUpperCase();
             for (i = 1; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
                 if (sokDenne.includes(input) && teller < 10) {
@@ -74,7 +74,6 @@ function searchDivs(input, event) {
             })(i);
 
         divs[selectedDiv].style.backgroundColor = '#68F';
-
         document.getElementById('sok').onkeyup = function(e) {
         var x = 0;
         if (e.keyCode == 38)
@@ -89,10 +88,11 @@ function searchDivs(input, event) {
             divs.length + selectedDiv : selectedDiv;
         divs[selectedDiv].style.backgroundColor = '#68F';
     }
-    }
-    if(e == 27) {
-        alert("est");
-        document.getElementById('instantsearch').innerHTML = "";
+
+    function getSelected() {
+            return divs[selectedDiv];
+        }
+        searchDivs.getSelected = getSelected;
     }
 }
 
@@ -112,8 +112,79 @@ if (!String.prototype.includes) {
 */
 document.getElementById('sok').focus();
 
+/*
+== EVENT LISTENER - Denne funksjonen skal erstatt kallet vi gjør i index.html 
+====================================================================================
+== Her har vi en god oversikt over hva vi sender vidre til funksjonen. 
+====================================================================================
+*/
+// document.getElementById('sok').addEventListener("keyup", function(){searchDivs(this.value, event)});
+// document.getElementById('stedsok').onsubmit = function() {return false;}
+
+// Sjekker at bruker har begynt å søke
+//document.getElementById('sok').addEventListener("keyup", nyInput);
+
+function nyInput(event) {
+    var e = event.which || event.keyCode;
+    var sokeord = document.getElementById('sok').value;
+    var x;
+
+    if(e==8){
+        // trykk på <- knappen
+        searchDivs(sokeord, event);
+    } 
+    else if (e==27) {
+        // Trykk på 'esc'
+        document.getElementById('sok').focus();
+        document.getElementById('instantsearch').innerHTML = '';
+        searchDivs('', event);
+    }
+    else if(e==13) {
+        // trykk på ENTER
+        x = searchDivs.getSelected();
+        document.getElementById('sok').innerHTML = x;
+        document.getElementById('stedsok').submit();
+        alert(x);
+    }
+    else if(e == 40 || e == 38) {
+        // Om piltastene er brukt, oppdaterer vi valg forslag
+        searchDivs(sokeord, event);
+    }
+    else if(x && !(e==40 || e==38)) {
+        // Om forslag er satt, og vi skriver
+        alert("heu");
+    }
+    else {
+        searchDivs(sokeord, event);
+    }
+}
 
 
+/*
+== DET FØRSTE FORSØKET - SOM NESTEN GIKK... 
+== Her funker alt bortsett fra å nullstille divs[selecteDiv] når vi skriver noe nytt
+====================================================================================
+*/
 
+document.getElementById('sok').addEventListener("keyup", skrik);
 
-
+function skrik(event) {
+    var e = event.which || event.keyCode;
+    var x = searchDivs.getSelected(); 
+    var sokeord = document.getElementById('sok').value;
+    // alert(sokeord);
+    
+    if (e==8) { // tilbake-knappen <-
+        searchDivs(sokeord, event);
+    }
+    else if(!(e == 40 || e == 38)) { // om bruker skriver OG divs[selectedDiv] er satt
+            if(x) {
+                document.getElementById('sok').focus();
+                document.getElementById('instantsearch').innerHTML = '';
+                searchDivs(sokeord, event);
+            }
+        } 
+        if (sokeord==="") {
+            searchDivs(sokeord, event);
+        }
+}
