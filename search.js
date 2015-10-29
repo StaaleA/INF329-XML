@@ -63,9 +63,8 @@ function searchDivs(input, event) {
         var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
             selectedDiv = 0,
             i;
-
         for (i = 0; i < divs.length; i++)
-            divs[i].onclick = (function(i) {
+            divs[i].onkeyup = (function(i) {
                 return function() {
                     divs[selectedDiv].style.backgroundColor = '';
                     selectedDiv = i;
@@ -75,18 +74,22 @@ function searchDivs(input, event) {
 
         divs[selectedDiv].style.backgroundColor = '#68F';
         document.getElementById('sok').onkeyup = function(e) {
-        var x = 0;
-        if (e.keyCode == 38)
-            x = -1;
-        else if (e.keyCode == 40)
-            x = 1;
-        else
-            return;
-        divs[selectedDiv].style.backgroundColor = '';
-        selectedDiv = ((selectedDiv + x) % divs.length);
-        selectedDiv = selectedDiv < 0 ?
-            divs.length + selectedDiv : selectedDiv;
-        divs[selectedDiv].style.backgroundColor = '#68F';
+            if(!(e.keyCode == 38 || e.keyCode == 40)) {
+                selectedDiv = 0;
+                divs[selectedDiv].style.backgroundColor = '#68F';
+            } else {
+                if (e.keyCode == 38)
+                    x = -1;
+                else if (e.keyCode == 40)
+                    x = 1;
+                else
+                    return;
+                divs[selectedDiv].style.backgroundColor = '';
+                selectedDiv = ((selectedDiv + x) % divs.length);
+                selectedDiv = selectedDiv < 0 ?
+                    divs.length + selectedDiv : selectedDiv;
+                divs[selectedDiv].style.backgroundColor = '#68F';
+            }
     }
 
     function getSelected() {
@@ -177,13 +180,18 @@ function skrik(event) {
     if (e==8) { // tilbake-knappen <-
         searchDivs(sokeord, event);
     }
-    else if(!(e == 40 || e == 38)) { // om bruker skriver OG divs[selectedDiv] er satt
-            if(x) {
-                document.getElementById('sok').focus();
-                document.getElementById('instantsearch').innerHTML = '';
-                searchDivs(sokeord, event);
-            }
-        } 
+    else if (e==27) {
+        // Trykk på 'esc'
+        searchDivs('', event);
+    }
+    else if (!(e == 40 || e == 38)) { 
+        // om bruker skriver OG divs[selectedDiv] er satt
+        if(x) {
+            document.getElementById('sok').focus();
+            document.getElementById('instantsearch').innerHTML = '';
+            searchDivs(sokeord, event);
+        }
+    }
         if (sokeord==="") {
             searchDivs(sokeord, event);
         }
