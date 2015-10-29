@@ -122,9 +122,9 @@ document.getElementById('sok').focus();
 // document.getElementById('stedsok').onsubmit = function() {return false;}
 
 // Sjekker at bruker har begynt å søke
-//document.getElementById('sok').addEventListener("keyup", skrik);
+//document.getElementById('sok').addEventListener("keyup", nyInput);
 
-function skrik(event) {
+function nyInput(event) {
     var e = event.which || event.keyCode;
     var sokeord = document.getElementById('sok').value;
     var x;
