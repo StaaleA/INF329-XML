@@ -225,9 +225,9 @@ function skrik(event) {
     else if (!(e == 40 || e == 38)) { 
         // om bruker skriver OG divs[selectedDiv] er satt
         if(x) {
-            // clearForslag();
+            clearForslag();
             // celarID();
-            refresh();
+            // refresh();
             searchDivs(sokeord, event);
         }
     }
@@ -239,8 +239,8 @@ function skrik(event) {
         document.getElementById('stedsok').submit();
         alert(x);
     }
-        if (sokeord==="") {
-            searchDivs(sokeord, event);
+        if (sokeord=="") {
+            searchDivs('a', event);
         }
 }
 
