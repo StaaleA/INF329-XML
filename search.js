@@ -1,5 +1,5 @@
 /*
-== This page is developed by Christian Rennemo, last time changed: 27th of October 2015
+== This page is developed by Christian Rennemo, last time changed: 30th of October 2015
 == This page was initiated 27th of October 2015.
 ==
 */
@@ -65,7 +65,8 @@ function searchDivs(input, event) {
                     var etsted = new Sted(liste[i].navn, liste[i].url);
                     // url = liste[i].url;
                     // Tar vekk URL, lag heller klasse, lettere å hente ut etterpå
-                    // hint = hint + '<div class="forslag" id=' + teller + '><a href=' + url + '>' + liste[i].navn + '</a></div>';
+                    // hint = hint + '<div class="forslag" id=' + teller + '><a href=' + 
+                    //url + '>' + liste[i].navn + '</a></div>';
                     hint = hint + '<div class="forslag" id=' + teller + '>' + etsted.navn + '</div>';
                     søkefelt.innerHTML = hint;
                     teller++;
@@ -113,7 +114,7 @@ function searchDivs(input, event) {
     }
 
     function getSelected() {
-        return divs[selectedDiv].navn;
+        return divs[selectedDiv];
     }
     searchDivs.getSelected = getSelected;
     }
@@ -260,11 +261,26 @@ function skrik(event) {
         }
 }
 
+/*
+== KONTROLL før sending
+====================================================================================
+== Ulike funksjoner som foretar kontroll som sørger for at vi sender riktig info
+====================================================================================
+====================================================================================
+====================================================================================
+====================================================================================
+====================================================================================
+*/
+
 function send (x) {
     document.getElementById('sok').value = x;
     document.getElementById('stedsok').submit();
 }
 
+/*
+== sjekk()
+====================================================================================
+*/
 function sjekk () {
     var divs = document.getElementById('instantsearch').getElementsByTagName('div');
 
@@ -279,15 +295,19 @@ function sjekk () {
         i++;
     }
 
-    // Funnet om forslag er valgt
+    // Forslag er brukt
     if(funnet) {
         x = searchDivs.getSelected();
-        send(x.innerHTML);
+        var url = getURL(x.innerHTML);
+        senderURL(url);
+        send(url);
     } else {
-        // Else om !forslag - da utfører vi en enkelt søk
+        // Ingen forslag - utfører ENKELT søk
         var ord = document.getElementById('sok').value;
         var res = simpleSearch(ord);
-        send(res);
+        var url = getURL(res);
+        senderURL(url);
+        send(url);
     }
     // x = searchDivs.getSelected();
     // send(x.innerHTML);
@@ -296,7 +316,6 @@ function sjekk () {
 
 // Enkel søkefunksjon som kun søker på inputfelt
 function simpleSearch (string) {
-    alert(string);
     var funnet = false;
     var i = 0;
     var soktreff;
@@ -304,6 +323,18 @@ function simpleSearch (string) {
         if(liste[i].navn.includes(string)) {
             funnet = true;
             return liste[i].navn;
+        }
+        i++;
+    }
+}
+
+function getURL (sted) {
+    var funnet = false;
+    var i = 0;
+    while(!funnet) {
+        if(liste[i].navn.includes(sted)) {
+            funnet = true;
+            return liste[i].url;
         }
         i++;
     }

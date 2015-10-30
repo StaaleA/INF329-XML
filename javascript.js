@@ -1,5 +1,5 @@
 /*
-== This page is developed by Christian Rennemo, last time changed: 27th of October 2015
+== This page is developed by Christian Rennemo, last time changed: 30th of October 2015
 == This page was initiated 23rd of October 2015.
 ==
 */
@@ -41,6 +41,9 @@ function hentJson(response) {
 == TAR i mot URL fra søk
 ====================================================================================
 */
-function getURL (url) {
-	alert(url);
+function senderURL (url) {
+	alert("url'en ble mottatt her. Nå kan vi laste neste side med riktig informasjon: " 
+		+ "\n" 
+		+ "URL: " + url);
 }
+
