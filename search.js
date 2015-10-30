@@ -3,7 +3,17 @@
 == This page was initiated 27th of October 2015.
 ==
 */
+// class steder {
+//   constructor(navn, url) {
+//     this.navn = navn;
+//     this.url = url;
+//   }
+// }
 
+function Sted(navn, url) {
+  this.navn = navn;
+  this.url = url;
+}
 /*
 == SØKE-funksjon som går igjennom JSON-filen
 ====================================================================================
@@ -46,10 +56,17 @@ function searchDivs(input, event) {
             for (i = 1; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
                 if (sokDenne.includes(input) && teller < 10) {
-                    url = liste[i].url;
+
+                    // Prøver objekter
+                    // var sted = {
+                    //     navn: liste[i].navn,
+                    //     url: liste[i].url
+                    // };
+                    var etsted = new Sted(liste[i].navn, liste[i].url);
+                    // url = liste[i].url;
                     // Tar vekk URL, lag heller klasse, lettere å hente ut etterpå
                     // hint = hint + '<div class="forslag" id=' + teller + '><a href=' + url + '>' + liste[i].navn + '</a></div>';
-                    hint = hint + '<div class="forslag" id=' + teller + '>' + liste[i].navn + '</div>';
+                    hint = hint + '<div class="forslag" id=' + teller + '>' + etsted.navn + '</div>';
                     søkefelt.innerHTML = hint;
                     teller++;
                 }
@@ -96,9 +113,9 @@ function searchDivs(input, event) {
     }
 
     function getSelected() {
-            return divs[selectedDiv];
-        }
-        searchDivs.getSelected = getSelected;
+        return divs[selectedDiv].navn;
+    }
+    searchDivs.getSelected = getSelected;
     }
 }
 
@@ -237,23 +254,58 @@ function skrik(event) {
         alert(x);
         document.getElementById('sok').innerHTML = x;
         document.getElementById('stedsok').submit();
-        alert(x);
     }
         if (sokeord=="") {
             searchDivs('a', event);
         }
 }
 
-function send () {
-    x = searchDivs.getSelected();
-        alert(x.innerHTML);
-        document.getElementById('sok').value = x.innerHTML;
-        document.getElementById('stedsok').submit();
-        alert(x);
+function send (x) {
+    document.getElementById('sok').value = x;
+    document.getElementById('stedsok').submit();
 }
 
 function sjekk () {
-    send();
+    var divs = document.getElementById('instantsearch').getElementsByTagName('div');
+
+    // Sjekker om du har valgt et forslag
+    var funnet = false;
+    var i = 0;
+    while(i < divs.length && !funnet) {
+        farge = divs[i].style.backgroundColor;
+        if(farge === 'rgb(102, 136, 255)') {
+            funnet = true;
+        }
+        i++;
+    }
+
+    // Funnet om forslag er valgt
+    if(funnet) {
+        x = searchDivs.getSelected();
+        send(x.innerHTML);
+    } else {
+        // Else om !forslag - da utfører vi en enkelt søk
+        var ord = document.getElementById('sok').value;
+        var res = simpleSearch(ord);
+        send(res);
+    }
+    // x = searchDivs.getSelected();
+    // send(x.innerHTML);
     return true;
+}
+
+// Enkel søkefunksjon som kun søker på inputfelt
+function simpleSearch (string) {
+    alert(string);
+    var funnet = false;
+    var i = 0;
+    var soktreff;
+    while(!funnet) {
+        if(liste[i].navn.includes(string)) {
+            funnet = true;
+            return liste[i].navn;
+        }
+        i++;
+    }
 }
 

@@ -36,3 +36,11 @@ var headers = xmlhttp.getAllResponseHeaders().toLowerCase();
 function hentJson(response) {
     liste = JSON.parse(response);
 }
+
+/*
+== TAR i mot URL fra søk
+====================================================================================
+*/
+function getURL (url) {
+	alert(url);
+}
