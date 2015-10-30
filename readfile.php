@@ -17,10 +17,12 @@
 == værdataen som vi legger i en JSON.  
 ========================================================================================
 */ 
-class Yrdata
+class Yrdata // 9 10
 {
     public $navn = "";
     public $url = "";
+    public $kommune = "";
+    public $fylke = "";
 }
 
 ini_set('display_errors', 1);
@@ -37,9 +39,14 @@ if (($leseFil = fopen("noreg.txt", "r")) !== FALSE) {
         $num = count($innData);
         $row++;
         $sted = $innData[1];
+        $kommuner = $innData[6];
+        $fylker = $innData[7];
         $url = $innData[12];
+
         $liste = new Yrdata();
         $liste->navn = $sted;
+        $liste->kommune  = $kommuner;
+        $liste->fylke  = $fylker;
         $liste->url  = $url;
         array_push($stedListe, $liste);
     } // next

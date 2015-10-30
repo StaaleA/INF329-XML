@@ -11,8 +11,10 @@
 // }
  steder = [];
 
-function Sted(navn, url) {
+function Sted(navn, kommune, fylke, url) {
   this.navn = navn;
+  this.kommune = kommune;
+  this.fylke = fylke;
   this.url = url;
 }
 /*
@@ -61,16 +63,16 @@ function searchDivs(input, event) {
 
             input = input.toUpperCase();
             steder = [];
-            for (i = 0; i < liste.length; i++) {
+            for (i = 1; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
-                if (sokDenne.includes(input) && teller < 9) {
+                if (sokDenne.indexOf(input, 0) === 0 && teller < 9) {
 
                     // Prøver objekter
                     // var sted = {
                     //     navn: liste[i].navn,
                     //     url: liste[i].url
                     // };
-                    var etsted = new Sted(liste[i].navn, liste[i].url);
+                    var etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].url);
                     steder.push(etsted);
 
                     
@@ -78,10 +80,12 @@ function searchDivs(input, event) {
                     // Tar vekk URL, lag heller klasse, lettere å hente ut etterpå
                     // hint = hint + '<div class="forslag" id=' + teller + '><a href=' + 
                     //url + '>' + liste[i].navn + '</a></div>';
-                    hint = hint + '<div class="forslag" id=' + teller + '>' + etsted.navn + " " + etsted.url + '</div>';
+                    hint = hint + '<div class="forslag" id=' + teller + '>' 
+                    + etsted.navn + '<br><span class="info">' + etsted.kommune 
+                    + ' / ' + etsted.fylke + '</span></div>';
                     søkefelt.innerHTML = hint;
                    
-                    document.getElementById('instantsearch').getElementsByTagName('div')[0].style.backgroundColor = '#68F';
+                    søkefelt.getElementsByTagName('div')[0].style.backgroundColor = '#68F';
                     teller++;
 
                 }

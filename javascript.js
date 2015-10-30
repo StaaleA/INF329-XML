@@ -35,6 +35,7 @@ var headers = xmlhttp.getAllResponseHeaders().toLowerCase();
 
 function hentJson(response) {
     liste = JSON.parse(response);
+    // alert(liste[1].kommune);
 }
 
 /*
