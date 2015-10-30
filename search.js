@@ -43,6 +43,7 @@ function Sted(navn, url) {
 ====================================================================================
 */
 function searchDivs(input, event) {
+
     var e = event.which || event.keyCode;
     if (e != 40) {
         var funnet = false;
@@ -52,6 +53,7 @@ function searchDivs(input, event) {
         var søkefelt = document.getElementById('instantsearch');
         søkefelt.innerHTML = hint;
         if (input.length !== 0) {
+
             input = input.toUpperCase();
             for (i = 1; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
@@ -69,6 +71,7 @@ function searchDivs(input, event) {
                     //url + '>' + liste[i].navn + '</a></div>';
                     hint = hint + '<div class="forslag" id=' + teller + '>' + etsted.navn + '</div>';
                     søkefelt.innerHTML = hint;
+                    document.getElementById('instantsearch').getElementsByTagName('div')[0].style.backgroundColor = "red";
                     teller++;
                 }
             }
@@ -83,15 +86,7 @@ function searchDivs(input, event) {
         var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
             selectedDiv = 0,
             i;
-        for (i = 0; i < divs.length; i++)
-            divs[i].onkeyup = (function(i) {
-                return function() {
-                    divs[selectedDiv].style.backgroundColor = '';
-                    selectedDiv = i;
-                    divs[selectedDiv].style.backgroundColor = '#68F';
-                }
-            })(i);
-
+        
 
         divs[selectedDiv].style.backgroundColor = '#68F';
         document.getElementById('sok').onkeyup = function(e) {
