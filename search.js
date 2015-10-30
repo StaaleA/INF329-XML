@@ -286,6 +286,7 @@ function skrik(event) {
 
 function send (x) {
     document.getElementById('sok').value = x.navn;
+    document.getElementById('formStedstype').value = x.stedstype;
     document.getElementById('stedsok').submit();
 }
 
@@ -309,9 +310,10 @@ function sjekk () {
 
     // Forslag er brukt
     if(funnet) {
-        x = searchDivs.getSelected();
-        var obj = steder[x.id];
+        //x = searchDivs.getSelected();
+        var obj = steder[i-1];
         senderURL(obj);
+
         send(obj);
     } else {
         // Ingen forslag - utfører ENKELT søk
@@ -335,6 +337,21 @@ function simpleSearch (string) {
         if(liste[i].navn.includes(string)) {
             funnet = true;
             return liste[i].navn;
+        }
+        i++;
+    }
+}
+
+function simpleSearch2 (sted, stedstype) {
+    var funnet = false;
+    var i = 1;
+    var soktreff;
+
+    while(!funnet) {
+        if(liste[i].navn.includes(sted) && liste[i].stedstype.includes(stedstype)) {
+            funnet = true;
+
+            return liste[i];
         }
         i++;
     }

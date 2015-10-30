@@ -1,12 +1,13 @@
 <html>
 <head>
-    <meta charset=utf-8>
+    <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="javascript.js"></script>
+
     <link rel=stylesheet href="stylesheet.css">
     <title>Værvarsel</title>
 </head>
 <body onload="onload();">
+
 <style>
 	
 body{
@@ -76,6 +77,12 @@ clear:both;
 	width:600px;
 
 }
+
+#melding{
+	width:50%;
+margin: 0 auto;
+
+}
 </style>
 
 <div class="overlay">
@@ -83,6 +90,7 @@ clear:both;
             <div id="sokWrapper">
                 <a href="http://localhost:8888/INF329-XML/"><h1>Værvarsel</h1></a>
                 <form autocomplete="off" name="stedsok" onsubmit="return sjekk()">
+                <input type="hidden" id="formStedstype" name="stedstype" value="" />
                     <input type="search" name="sok" id="sok" placeholder="søk" onkeyup="searchDivs(this.value, event)">
                     <div id="instantsearch"></div>
                 </form>
@@ -103,9 +111,11 @@ clear:both;
 <span id="laster"></span>
         </div>
     </div>
-
+    <script type="text/javascript" src="search.js"></script>
+    <script type="text/javascript" src="javascript.js"></script>
 
 <script>
+var liste;
 function getUrlVars() {
 var vars = {};
 var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -115,11 +125,23 @@ return vars;
 }
 
 function onload(){
-var sokeord = getUrlVars()["sok"];
-alert(sokeord);
-  // var res = simpleSearch(sokeord);
+var xmlhttp = new XMLHttpRequest();
+var url = "readfile.php";
 
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+         liste = JSON.parse(xmlhttp.responseText);
 
+ var sokeord = getUrlVars()["sok"];
+ var stedstype = getUrlVars()["stedstype"];
+var ut = simpleSearch2(sokeord, stedstype)
+
+getMelding(ut);
+
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
 }
 
 function getMelding(StedObj){
@@ -175,6 +197,6 @@ http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 http.send(null);
 }
 </script>
-    <script type="text/javascript" src="search.js"></script>
+
 </body>
 </html>

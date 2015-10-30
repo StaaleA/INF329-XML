@@ -21,23 +21,18 @@
 == Kilde: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 ====================================================================================
 */
-var xmlhttp = new XMLHttpRequest();
-var url = "readfile.php";
+// var xmlhttp = new XMLHttpRequest();
+// var url = "readfile.php";
 
-xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        hentJson(xmlhttp.responseText);
-    }
-}
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
-var headers = xmlhttp.getAllResponseHeaders().toLowerCase();
+// xmlhttp.onreadystatechange = function() {
+//     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+//          liste = JSON.parse(xmlhttp.responseText);
 
-function hentJson(response) {
-    liste = JSON.parse(response);
-    // alert(liste[1].kommune);
-}
-
+//     }
+// }
+// xmlhttp.open("GET", url, true);
+// xmlhttp.send();
+// var headers = xmlhttp.getAllResponseHeaders().toLowerCase();
 /*
 == TAR i mot URL fra søk
 ====================================================================================
