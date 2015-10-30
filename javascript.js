@@ -43,6 +43,6 @@ function hentJson(response) {
 ====================================================================================
 */
 function senderURL (obj) {
-	alert(obj.navn);
+	getMelding(obj);
 }
 

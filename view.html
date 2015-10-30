@@ -1,13 +1,17 @@
 <html>
-<header>
-<meta charset="UTF-8">
-</header>
-<body>
+<head>
+    <meta charset=utf-8>
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="javascript.js"></script>
+    <link rel=stylesheet href="stylesheet.css">
+    <title>Værvarsel</title>
+</head>
+<body onload="onload();">
 <style>
 	
 body{
 font-family: arial,sans-serif;
-color:grey;
+color:white;
 margin-left:10px;
 }
 #idagnum{
@@ -74,8 +78,16 @@ clear:both;
 }
 </style>
 
-
-<div id="melding">
+<div class="overlay">
+        <div class="main-wrapper">
+            <div id="sokWrapper">
+                <a href="http://localhost:8888/INF329-XML/"><h1>Værvarsel</h1></a>
+                <form autocomplete="off" name="stedsok" onsubmit="return sjekk()">
+                    <input type="search" name="sok" id="sok" placeholder="søk" onkeyup="searchDivs(this.value, event)">
+                    <div id="instantsearch"></div>
+                </form>
+            </div>
+         <div id="melding">
 	<h1 id="overskrift"></h1>
 	<span id="dagensdato"></span>
 
@@ -89,9 +101,28 @@ clear:both;
 <div id="dagvarsel"></div>
 </div>
 <span id="laster"></span>
+        </div>
+    </div>
 
 
 <script>
+function getUrlVars() {
+var vars = {};
+var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+vars[key] = value;
+});
+return vars;
+}
+
+function onload(){
+var sokeord = getUrlVars()["sok"];
+alert(sokeord);
+  // var res = simpleSearch(sokeord);
+
+
+}
+
+function getMelding(StedObj){
 var ukedag = new Array(7);
 ukedag[0]=  "Søndag";
 ukedag[1] = "Mandag";
@@ -138,13 +169,12 @@ for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
 }
 
 
-
-
-var XMLurl = "http://www.yr.no/sted/Norge/Nord-Tr%C3%B8ndelag/N%C3%A6r%C3%B8y/Kolvereid/varsel.xml";
 document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
-http.open("GET", url+"?url="+XMLurl, true);
+http.open("GET", url+"?url="+StedObj.url, true);
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 http.send(null);
+}
 </script>
+    <script type="text/javascript" src="search.js"></script>
 </body>
 </html>

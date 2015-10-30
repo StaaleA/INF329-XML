@@ -11,10 +11,11 @@
 // }
  steder = [];
 
-function Sted(navn, kommune, fylke, url) {
+function Sted(navn, kommune, fylke, stedstype, url) {
   this.navn = navn;
   this.kommune = kommune;
   this.fylke = fylke;
+  this.stedstype = stedstype;
   this.url = url;
 }
 /*
@@ -63,7 +64,7 @@ function searchDivs(input, event) {
 
             input = input.toUpperCase();
             steder = [];
-            for (i = 1; i < liste.length; i++) {
+            for (i = 0; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
                 if (sokDenne.indexOf(input, 0) === 0 && teller < 9) {
 
@@ -72,7 +73,7 @@ function searchDivs(input, event) {
                     //     navn: liste[i].navn,
                     //     url: liste[i].url
                     // };
-                    var etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].url);
+                    var etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].stedstype, liste[i].url);
                     steder.push(etsted);
 
                     
@@ -80,9 +81,7 @@ function searchDivs(input, event) {
                     // Tar vekk URL, lag heller klasse, lettere å hente ut etterpå
                     // hint = hint + '<div class="forslag" id=' + teller + '><a href=' + 
                     //url + '>' + liste[i].navn + '</a></div>';
-                    hint = hint + '<div class="forslag" id=' + teller + '>' 
-                    + etsted.navn + '<br><span class="info">' + etsted.kommune 
-                    + ' / ' + etsted.fylke + '</span></div>';
+                    hint = hint + '<div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype +'<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div>';
                     søkefelt.innerHTML = hint;
                    
                     søkefelt.getElementsByTagName('div')[0].style.backgroundColor = '#68F';
@@ -286,7 +285,7 @@ function skrik(event) {
 */
 
 function send (x) {
-    document.getElementById('sok').value = x;
+    document.getElementById('sok').value = x.navn;
     document.getElementById('stedsok').submit();
 }
 

@@ -22,6 +22,7 @@ class Yrdata // 9 10
     public $navn = "";
     public $url = "";
     public $kommune = "";
+    public $stedstype = "";
     public $fylke = "";
 }
 
@@ -39,6 +40,7 @@ if (($leseFil = fopen("noreg.txt", "r")) !== FALSE) {
         $num = count($innData);
         $row++;
         $sted = $innData[1];
+        $stedstype = $innData[4];
         $kommuner = $innData[6];
         $fylker = $innData[7];
         $url = $innData[12];
@@ -47,6 +49,7 @@ if (($leseFil = fopen("noreg.txt", "r")) !== FALSE) {
         $liste->navn = $sted;
         $liste->kommune  = $kommuner;
         $liste->fylke  = $fylker;
+        $liste->stedstype  = $stedstype;
         $liste->url  = $url;
         array_push($stedListe, $liste);
     } // next
