@@ -284,10 +284,10 @@ function skrik(event) {
 ====================================================================================
 */
 
-function send (x) {
+function send(x) {
     document.getElementById('sok').value = x.navn;
     document.getElementById('formStedstype').value = x.stedstype;
-    document.getElementById('stedsok').submit();
+    //document.getElementById('stedsok').submit();
 }
 
 /*
@@ -348,7 +348,7 @@ function simpleSearch2 (sted, stedstype) {
     var soktreff;
 
     while(!funnet) {
-        if(liste[i].navn.includes(sted) && liste[i].stedstype.includes(stedstype)) {
+        if(liste[i].navn == sted && liste[i].stedstype == stedstype) {
             funnet = true;
 
             return liste[i];

@@ -12,7 +12,7 @@
 	
 body{
 font-family: arial,sans-serif;
-color:white;
+color:#eee;
 margin-left:10px;
 }
 #idagnum{
@@ -28,7 +28,7 @@ margin-bottom:1px;
 .dag{
 	font-size: 13px;
 	text-align:center;
-	background-color:#EEE;
+	/*background-color:#EEE;*/
 	margin-right:5px;
 	margin-bottom:5px;
 	float:left;
@@ -60,7 +60,7 @@ width:100px;
 #gradernaa{
 float:left;
 font-size: 64px;
-
+color:#eee;
 width:50px;
 }
 
@@ -69,7 +69,7 @@ width:50px;
 margin:10px;
 padding-top:10px;
 font-size: 14px;
-clear:both;
+
 }
 
 #ikonoggrader{
@@ -79,8 +79,8 @@ clear:both;
 }
 
 #melding{
-	width:50%;
-margin: 0 auto;
+	width:80%;
+	margin: 0 auto;
 
 }
 </style>
@@ -91,11 +91,12 @@ margin: 0 auto;
                 <a href="http://localhost:8888/INF329-XML/"><h1>Værvarsel</h1></a>
                 <form autocomplete="off" name="stedsok" onsubmit="return sjekk()">
                 <input type="hidden" id="formStedstype" name="stedstype" value="" />
-                    <input type="search" name="sok" id="sok" placeholder="søk" onkeyup="searchDivs(this.value, event)">
+                    <input type="search" name="sok" id="sok" placeholder="Stedsnavn" onkeyup="searchDivs(this.value, event)">
                     <div id="instantsearch"></div>
                 </form>
             </div>
          <div id="melding">
+         <span id="laster"></span>
 	<h1 id="overskrift"></h1>
 	<span id="dagensdato"></span>
 
@@ -105,10 +106,10 @@ margin: 0 auto;
 	</div>
 
 	<p id="dagenstekst"></p>
-
+<div style="clear:both;"></div>
 <div id="dagvarsel"></div>
 </div>
-<span id="laster"></span>
+
         </div>
     </div>
     <script type="text/javascript" src="search.js"></script>
@@ -135,7 +136,7 @@ xmlhttp.onreadystatechange = function() {
  var sokeord = getUrlVars()["sok"];
  var stedstype = getUrlVars()["stedstype"];
 var ut = simpleSearch2(sokeord, stedstype)
-
+send(ut);
 getMelding(ut);
 
     }
@@ -170,7 +171,7 @@ http.onreadystatechange = function() {
         document.getElementById("dagensdato").innerHTML = ukedag[dagensdato.getDay()];
         //Dagens tekstvarsel
        document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + liste.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
-       document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur;
+       document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur + "<span style='font-size:14px;line-height:65px;'>&#8451;</span>";
   	   document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
 var utTekst = "";
 for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
@@ -182,6 +183,7 @@ for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
   	 	dagsymbol = "<img src='b38/"+obj.symbol["@attributes"].nr +".png'><br>"
   	 	daggrader = obj.temperatur + "&#8451;";
   	 	utTekst += divstart + fratid.getDate() + "<br>" + dagsymbol + daggrader + divslutt;
+  	 	console.log(liste);
   	 }
 
   	 }
@@ -196,6 +198,7 @@ http.open("GET", url+"?url="+StedObj.url, true);
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 http.send(null);
 }
+
 </script>
 
 </body>
