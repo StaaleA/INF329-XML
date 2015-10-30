@@ -41,9 +41,7 @@ function hentJson(response) {
 == TAR i mot URL fra søk
 ====================================================================================
 */
-function senderURL (url) {
-	alert("url'en ble mottatt her. Nå kan vi laste neste side med riktig informasjon: " 
-		+ "\n" 
-		+ "URL: " + url);
+function senderURL (obj) {
+	alert(obj.navn);
 }
 
