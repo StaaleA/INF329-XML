@@ -40,13 +40,23 @@ margin-bottom:1px;
 
 #ikonnaa{
 float:left;
+background-color: green;
 
 }
 #gradernaa{
-margin-left:10px;
-float:right;
-	padding-top:20px;
-	color:#333;
+margin-top:5px;
+float:left;
+font-size: 64px;
+color:#eee;
+width:50px;
+}
+
+#gradernaasymbol{
+	margin-left:-15px;
+float:left;
+font-size: 14px;
+margin-top:17px;
+color:#eee;
 }
 #laster{
 text-align: center;
@@ -57,30 +67,26 @@ float:left;
 
 width:100px;
 }
-#gradernaa{
-float:left;
-font-size: 64px;
-color:#eee;
-width:50px;
-}
-
-#dagenstekst{
-	width:400px;
-margin:10px;
-padding-top:10px;
-font-size: 14px;
-
-}
-
 #ikonoggrader{
 
 	width:600px;
 
 }
 
+#dagenstekst{
+float:left;
+margin:20px;
+width:400px;
+font-size: 14px;
+
+}
+
+
+
 #melding{
 	width:80%;
 	margin: 0 auto;
+
 
 }
 </style>
@@ -103,6 +109,7 @@ font-size: 14px;
 	<div id="ikonoggrader">
 		<div id="vaerikonnaa"></div>
 		<div id="gradernaa"></div>
+		<div id="gradernaasymbol"></div>
 	</div>
 
 	<p id="dagenstekst"></p>
@@ -155,6 +162,20 @@ ukedag[4] = "Torsdag";
 ukedag[5] = "Fredag";
 ukedag[6] = "Lørdag";
 
+var maaned = new Array(11);
+maaned[0]=  "jan";
+maaned[1] = "feb";
+maaned[2] = "mar";
+maaned[3] = "apr";
+maaned[4] = "mai";
+maaned[5] = "jun";
+maaned[6] = "jul";
+maaned[7] = "aug";
+maaned[8] = "sep";
+maaned[9] = "okt";
+maaned[10] = "nov";
+maaned[11] = "des";
+
 var http = new XMLHttpRequest();
 var url = "nyxml.php";
 
@@ -171,7 +192,8 @@ http.onreadystatechange = function() {
         document.getElementById("dagensdato").innerHTML = ukedag[dagensdato.getDay()];
         //Dagens tekstvarsel
        document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + liste.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
-       document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur + "<span style='font-size:14px;line-height:65px;'>&#8451;</span>";
+       document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur;
+       document.getElementById("gradernaasymbol").innerHTML = "&#8451";
   	   document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
 var utTekst = "";
 for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
@@ -182,8 +204,8 @@ for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
 		fratid = new Date(obj["@attributes"].fratid);
   	 	dagsymbol = "<img src='b38/"+obj.symbol["@attributes"].nr +".png'><br>"
   	 	daggrader = obj.temperatur + "&#8451;";
-  	 	utTekst += divstart + fratid.getDate() + "<br>" + dagsymbol + daggrader + divslutt;
-  	 	console.log(liste);
+  	 	utTekst += divstart + "<b>" + ukedag[fratid.getDay()] + "</b><br> " + fratid.getDate() + ". " + maaned[1] + ".<br>" + dagsymbol + daggrader + divslutt;
+
   	 }
 
   	 }
