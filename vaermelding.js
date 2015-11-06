@@ -1,3 +1,4 @@
+var arrayMelding;
 var liste;
 var sokeord;
 var stedstype;
@@ -76,20 +77,20 @@ var url = "nyxml.php";
 http.onreadystatechange = function() {
     if (http.readyState == 4 && http.status == 200) {
       document.getElementById("laster").innerHTML = ''; 
-        liste = JSON.parse(http.responseText);
+        arrayMelding = JSON.parse(http.responseText);
         //Overskrift
-        document.getElementById("overskrift").innerHTML = liste.stedsnavn;
+        document.getElementById("overskrift").innerHTML = arrayMelding.stedsnavn;
         //Dagens dato (navn)
-        var dagensdato = new Date(liste.melding.detaljert.tidspunkt[0]["@attributes"].fratid);
+        var dagensdato = new Date(arrayMelding.melding.detaljert.tidspunkt[0]["@attributes"].fratid);
         document.getElementById("dagensdato").innerHTML = ukedag[dagensdato.getDay()];
         //Dagens tekstvarsel
-       document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + liste.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
-       document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur;
+       document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + arrayMelding.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
+       document.getElementById("gradernaa").innerHTML = arrayMelding.melding.detaljert.tidspunkt[0].temperatur;
        document.getElementById("gradernaasymbol").innerHTML = "&#8451";
-       document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
+       document.getElementById("dagenstekst").innerHTML = arrayMelding.melding.tekst.tidspunkt[0].tekst;
 var utTekst = "";
-for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
-    var obj = liste.melding.detaljert.tidspunkt[i];
+for ( var i = 0; i < arrayMelding.melding.detaljert.tidspunkt.length; i++) {
+    var obj = arrayMelding.melding.detaljert.tidspunkt[i];
     if (obj["@attributes"].periode == 2){
     divstart = "<div class='dag'>";
     divslutt ="</div>";

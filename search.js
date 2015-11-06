@@ -131,7 +131,7 @@ function searchDivs(input, event) {
     function getSelected() {
         return divs[selectedDiv];
     }
-    searchDivs.getSelected = getSelected;
+    searchDivs.getSelected = getSelected();
     }
 }
 
@@ -243,6 +243,7 @@ function nyInput(event) {
 document.getElementById('sok').addEventListener("keyup", skrik);
 
 function skrik(event) {
+    console.log(liste);
     var e = event.which || event.keyCode;
     var x = searchDivs.getSelected(); 
     var sokeord = document.getElementById('sok').value;
