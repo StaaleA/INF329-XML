@@ -44,7 +44,7 @@ function senderURL (obj) {
 function onload(){
 
 var xmlhttp = new XMLHttpRequest();
-var url = "steder.txt";
+var url = "results.json";
 
 xmlhttp.open("GET", url, true);
 xmlhttp.onreadystatechange = function() {
