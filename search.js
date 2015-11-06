@@ -322,6 +322,7 @@ function sjekk () {
         var url = getURL(res);
         senderURL(url);
         send(url);
+
     }
     // x = searchDivs.getSelected();
     // send(x.innerHTML);

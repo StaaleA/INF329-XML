@@ -13,7 +13,7 @@
 body{
 font-family: arial,sans-serif;
 color:#eee;
-margin-left:10px;
+
 }
 #idagnum{
 font-size: 68px;
@@ -59,17 +59,17 @@ margin-top:17px;
 color:#eee;
 }
 #laster{
-text-align: center;
+/*text-align: center;*/
 
 }
 #vaerikonnaa{
 float:left;
 
-width:100px;
+/*width:100px;*/
 }
 #ikonoggrader{
 
-	width:600px;
+	/*width:600px;*/
 
 }
 
@@ -84,10 +84,17 @@ font-size: 14px;
 
 
 #melding{
-	width:80%;
 	margin: 0 auto;
+	padding-left:20px;
+	padding-top:20px;
+  background-color: rgba(0, 0, 0, 0.6);
+ 
+  /*fix for at div med float tar ikke opp vertical space.
+  Kilde: http://stackoverflow.com/questions/5774315/div-not-expanding-even-with-content-inside*/ 
 
-
+}
+#dagvarsel{
+  overflow: hidden; /*fix for at div med float tar ikke opp vertical space.*/
 }
 </style>
 
@@ -100,128 +107,33 @@ font-size: 14px;
                     <input type="search" name="sok" id="sok" placeholder="Stedsnavn" onkeyup="searchDivs(this.value, event)">
                     <div id="instantsearch"></div>
                 </form>
-            </div>
-         <div id="melding">
+
+                <!-- Her kommer RESULTAT!  -->
+                 <div id="melding">
          <span id="laster"></span>
-	<h1 id="overskrift"></h1>
-	<span id="dagensdato"></span>
+  <h1 id="overskrift"></h1>
+  <span id="dagensdato"></span>
 
-	<div id="ikonoggrader">
-		<div id="vaerikonnaa"></div>
-		<div id="gradernaa"></div>
-		<div id="gradernaasymbol"></div>
-	</div>
+  <div id="ikonoggrader">
+    <div id="vaerikonnaa"></div>
+    <div id="gradernaa"></div>
+    <div id="gradernaasymbol"></div>
+  </div>
 
-	<p id="dagenstekst"></p>
+  <p id="dagenstekst"></p>
 <div style="clear:both;"></div>
-<div id="dagvarsel"></div>
+<div id="dagvarsel">
+</div>
 </div>
 
+            </div>
+        
         </div>
     </div>
+    <script type="text/javascript" src="vaermelding.js"></script>
     <script type="text/javascript" src="search.js"></script>
     <script type="text/javascript" src="javascript.js"></script>
 
-<script>
-var liste;
-function getUrlVars() {
-var vars = {};
-var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-vars[key] = value;
-});
-return vars;
-}
-
-function onload(){
-var xmlhttp = new XMLHttpRequest();
-var url = "readfile.php";
-
-xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-         liste = JSON.parse(xmlhttp.responseText);
-
- var sokeord = getUrlVars()["sok"];
- var stedstype = getUrlVars()["stedstype"];
-var ut = simpleSearch2(sokeord, stedstype)
-send(ut);
-getMelding(ut);
-
-    }
-}
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
-}
-
-function getMelding(StedObj){
-var ukedag = new Array(7);
-ukedag[0]=  "Søndag";
-ukedag[1] = "Mandag";
-ukedag[2] = "Tirsdag";
-ukedag[3] = "Onsdag";
-ukedag[4] = "Torsdag";
-ukedag[5] = "Fredag";
-ukedag[6] = "Lørdag";
-
-var maaned = new Array(11);
-maaned[0]=  "jan";
-maaned[1] = "feb";
-maaned[2] = "mar";
-maaned[3] = "apr";
-maaned[4] = "mai";
-maaned[5] = "jun";
-maaned[6] = "jul";
-maaned[7] = "aug";
-maaned[8] = "sep";
-maaned[9] = "okt";
-maaned[10] = "nov";
-maaned[11] = "des";
-
-var http = new XMLHttpRequest();
-var url = "nyxml.php";
-
-http.onreadystatechange = function() {
-    if (http.readyState == 4 && http.status == 200) {
-    	document.getElementById("laster").innerHTML = ''; 
-        liste = JSON.parse(http.responseText);
-
-        //Overskrift
-        document.getElementById("overskrift").innerHTML = liste.stedsnavn;
-
-        //Dagens dato (navn)
-        var dagensdato = new Date(liste.melding.detaljert.tidspunkt[0]["@attributes"].fratid);
-        document.getElementById("dagensdato").innerHTML = ukedag[dagensdato.getDay()];
-        //Dagens tekstvarsel
-       document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + liste.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
-       document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur;
-       document.getElementById("gradernaasymbol").innerHTML = "&#8451";
-  	   document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
-var utTekst = "";
-for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
-		var obj = liste.melding.detaljert.tidspunkt[i];
-		if (obj["@attributes"].periode == 2){
-		divstart = "<div class='dag'>";
-		divslutt ="</div>";
-		fratid = new Date(obj["@attributes"].fratid);
-  	 	dagsymbol = "<img src='b38/"+obj.symbol["@attributes"].nr +".png'><br>"
-  	 	daggrader = obj.temperatur + "&#8451;";
-  	 	utTekst += divstart + "<b>" + ukedag[fratid.getDay()] + "</b><br> " + fratid.getDate() + ". " + maaned[1] + ".<br>" + dagsymbol + daggrader + divslutt;
-
-  	 }
-
-  	 }
-  	 document.getElementById("dagvarsel").innerHTML = utTekst;
-  
-    }
-}
-
-
-document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
-http.open("GET", url+"?url="+StedObj.url, true);
-http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-http.send(null);
-}
-
-</script>
 
 </body>
 </html>

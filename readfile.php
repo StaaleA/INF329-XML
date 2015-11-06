@@ -55,6 +55,10 @@ if (($leseFil = fopen("noreg.txt", "r")) !== FALSE) {
     } // next
     fclose($leseFil);
 } // end if
-echo json_encode($stedListe);
+$fil = json_encode($stedListe);
+echo $fil;
+$fp = fopen('results.json', 'w');
+fwrite($fp, json_encode($fil));
+fclose($fp);
 ?>
 

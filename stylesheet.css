@@ -1,5 +1,8 @@
-body,
-html {
+html{
+
+ height: 100%;
+}
+body {
     /*    background-color: #FCFFF5;*/
     background-image: url('bilder/geiranger.jpg');
     background-size: cover;
@@ -7,9 +10,12 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     height: 100%;
-    overflow: hidden;
+    /*overflow: hidden;*/
     font-family: 'Lato', sans-serif;
     color: white;
+    margin:0;
+    font-family: arial,sans-serif;
+    color:#eee;
 }
 
 a {
@@ -22,7 +28,7 @@ a:link {
 form, input{
     -webkit-appearance: none;
     -moz-appearance: none;
-	width: 600px;
+	width: 100%;
 	opacity: 0.7;
 	font-size: 1.1em;
 	padding-top: 0.5em;
@@ -48,21 +54,97 @@ form, input{
 }
 
 #sokWrapper {
-	max-width: 80%;
+	max-width: 740px;
     margin: 0 auto; /* Denne som sørger for å midtstille søk */
 }
 
-.overlay {
-	height: 100%;
-    width: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background-color: rgba(62, 96, 111, 0.5);
-}
+
 
 .info {
     font-size: 0.8em;
+}
+
+
+  #idagnum{
+font-size: 68px;
+float:left;
+
+margin-right:5px;
+}
+h1{
+margin-bottom:1px;
+}
+
+.dag{
+    font-size: 13px;
+    text-align:center;
+    /*background-color:#EEE;*/
+    margin-right:5px;
+    margin-bottom:5px;
+    float:left;
+    width:65px;
+    height:85px;
+    padding:5px;
+}
+
+
+#ikonnaa{
+float:left;
+background-color: green;
+
+}
+#gradernaa{
+margin-top:5px;
+float:left;
+font-size: 64px;
+color:#eee;
+width:50px;
+}
+
+#gradernaasymbol{
+    margin-left:-15px;
+float:left;
+font-size: 14px;
+margin-top:17px;
+color:#eee;
+}
+#laster{
+/*text-align: center;*/
+
+}
+#vaerikonnaa{
+float:left;
+
+/*width:100px;*/
+}
+#ikonoggrader{
+
+    /*width:600px;*/
+
+}
+
+#dagenstekst{
+float:left;
+margin:20px;
+width:400px;
+font-size: 14px;
+
+}
+
+
+
+#melding{
+    margin: 0 auto;
+    padding-left:20px;
+    padding-top:20px;
+  background-color: rgba(0, 0, 0, 0.6);
+ 
+  /*fix for at div med float tar ikke opp vertical space.
+  Kilde: http://stackoverflow.com/questions/5774315/div-not-expanding-even-with-content-inside*/ 
+
+}
+#dagvarsel{
+  overflow: hidden; /*fix for at div med float tar ikke opp vertical space.*/
 }
 
 

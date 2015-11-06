@@ -1,32 +1,55 @@
-<!-- 
-== This page is developed by Christian Rennemo, last time changed: 30th of October 2015
-== This page was initiated 27th of October 2015.
-== -->
 <!DOCTYPE html>
+<!-- 
+== This page is developed by Christian Rennemo and Ståle Andre Volden, last time changed: 6th of November 2015
+== Page controlled by Ståle Andre Volden, last time 6th of November
+== -->
 <html>
-
 <head>
-    <meta charset=utf-8>
+    <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="javascript.js"></script>
+
     <link rel=stylesheet href="stylesheet.css">
     <title>Værvarsel</title>
 </head>
+<body onload="onload();">
 
-<body>
-    <div class="overlay">
+
         <div class="main-wrapper">
             <div id="sokWrapper">
-                <a href="http://localhost:8888/INF329-XML/"><h1>Værvarsel</h1></a>
+                <a href="index.html"><h1>Værvarsel</h1></a>
                 <form autocomplete="off" name="stedsok" onsubmit="return sjekk()">
-                    <input type="search" name="søk" id="sok" placeholder="søk" onkeyup="searchDivs(this.value, event)">
+                <input type="hidden" id="formStedstype" name="stedstype" value="" />
+                    <input type="search" name="sok" id="sok" placeholder="Stedsnavn" onkeyup="searchDivs(this.value, event)">
                     <div id="instantsearch"></div>
                 </form>
-            </div>
-            <div id="out"></div>
-        </div>
-    </div>
-    <script type="text/javascript" src="search.js"></script>
-</body>
 
+                <!-- Her kommer RESULTAT!  -->
+                 <div id="melding">
+         <span id="laster"></span>
+  <h1 id="overskrift"></h1>
+  <span id="dagensdato"></span>
+
+  <div id="ikonoggrader">
+    <div id="vaerikonnaa"></div>
+    <div id="gradernaa"></div>
+    <div id="gradernaasymbol"></div>
+  </div>
+
+  <div id="dagenstekst"></div>
+<div style="clear:both;"></div>
+<div id="dagvarsel">
+</div>
+</div>
+
+            </div>
+        
+        </div>
+   
+    <script type="text/javascript" src="vaermelding.js"></script>
+    <script type="text/javascript" src="search.js"></script>
+    <script type="text/javascript" src="javascript.js"></script>
+
+
+</body>
+</html>
 </html>
