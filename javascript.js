@@ -41,34 +41,4 @@ function senderURL (obj) {
 	getMelding(obj);
 }
 
-function onload(){
 
-var xmlhttp = new XMLHttpRequest();
-var url = "results.json";
-
-xmlhttp.open("GET", url, true);
-xmlhttp.onreadystatechange = function() {
-
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    
-         liste = JSON.parse(xmlhttp.responseText);
-         console.log(liste);
-        
-
-
-//Hvis vars er satt (get fra url) så last inn værmeldingen
-if(vars){
-    var sokeord = getUrlVars()["sok"];
-    var stedstype = getUrlVars()["stedstype"];
-    var ut = simpleSearch2(sokeord, stedstype)
-    document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
-    send(ut);
-  }
-
-getMelding(ut);
-
-    }
-}
-
-xmlhttp.send(null);
-}

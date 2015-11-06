@@ -1,5 +1,38 @@
 var liste;
-var vars = {};
+var vars;
+
+function onload(){
+
+var xmlhttp = new XMLHttpRequest();
+var url = "steder.json";
+
+xmlhttp.open("GET", url, true);
+xmlhttp.overrideMimeType("application/json");
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {  
+
+       liste = JSON.parse(xmlhttp.responseText);
+       console.log(liste[4]);
+        
+//Hvis vars er satt (get fra url) så last inn værmeldingen
+if(vars){
+    var sokeord = getUrlVars()["sok"];
+    var stedstype = getUrlVars()["stedstype"];
+    var ut = simpleSearch2(sokeord, stedstype)
+    document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
+    console.log("hei");
+    send(ut);
+    getMelding(ut);
+  } //vars
+
+
+
+    } //if
+} //onreadystatechange
+
+xmlhttp.send(null);
+}
+
 function getUrlVars() {
 var uri = decodeURI(window.location.href); //Håndtere spesial characters
 var parts = uri.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
@@ -14,6 +47,7 @@ return vars;
 }
 
 function getMelding(StedObj){
+  console.log("Henter værmelding");
 var ukedag = new Array(7);
 ukedag[0]=  "Søndag";
 ukedag[1] = "Mandag";
@@ -22,7 +56,6 @@ ukedag[3] = "Onsdag";
 ukedag[4] = "Torsdag";
 ukedag[5] = "Fredag";
 ukedag[6] = "Lørdag";
-
 var maaned = new Array(11);
 maaned[0]=  "jan";
 maaned[1] = "feb";
@@ -36,18 +69,14 @@ maaned[8] = "sep";
 maaned[9] = "okt";
 maaned[10] = "nov";
 maaned[11] = "des";
-
 var http = new XMLHttpRequest();
 var url = "nyxml.php";
-
 http.onreadystatechange = function() {
     if (http.readyState == 4 && http.status == 200) {
-    	document.getElementById("laster").innerHTML = ''; 
-        
-
+      document.getElementById("laster").innerHTML = ''; 
+        liste = JSON.parse(http.responseText);
         //Overskrift
         document.getElementById("overskrift").innerHTML = liste.stedsnavn;
-
         //Dagens dato (navn)
         var dagensdato = new Date(liste.melding.detaljert.tidspunkt[0]["@attributes"].fratid);
         document.getElementById("dagensdato").innerHTML = ukedag[dagensdato.getDay()];
@@ -55,28 +84,24 @@ http.onreadystatechange = function() {
        document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + liste.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
        document.getElementById("gradernaa").innerHTML = liste.melding.detaljert.tidspunkt[0].temperatur;
        document.getElementById("gradernaasymbol").innerHTML = "&#8451";
-  	   document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
+       document.getElementById("dagenstekst").innerHTML = liste.melding.tekst.tidspunkt[0].tekst;
 var utTekst = "";
 for ( var i = 0; i < liste.melding.detaljert.tidspunkt.length; i++) {
-		var obj = liste.melding.detaljert.tidspunkt[i];
-		if (obj["@attributes"].periode == 2){
-		divstart = "<div class='dag'>";
-		divslutt ="</div>";
-		fratid = new Date(obj["@attributes"].fratid);
-  	 	dagsymbol = "<img src='b38/"+obj.symbol["@attributes"].nr +".png'><br>"
-  	 	daggrader = obj.temperatur + "&#8451;";
-  	 	utTekst += divstart + "<b>" + ukedag[fratid.getDay()] + "</b><br> " + fratid.getDate() + ". " + maaned[1] + ".<br>" + dagsymbol + daggrader + divslutt;
-
-  	 }
-
-  	 }
-  	 document.getElementById("dagvarsel").innerHTML = utTekst;
+    var obj = liste.melding.detaljert.tidspunkt[i];
+    if (obj["@attributes"].periode == 2){
+    divstart = "<div class='dag'>";
+    divslutt ="</div>";
+    fratid = new Date(obj["@attributes"].fratid);
+      dagsymbol = "<img src='b38/"+obj.symbol["@attributes"].nr +".png'><br>"
+      daggrader = obj.temperatur + "&#8451;";
+      utTekst += divstart + "<b>" + ukedag[fratid.getDay()] + "</b><br> " + fratid.getDate() + ". " + maaned[1] + ".<br>" + dagsymbol + daggrader + divslutt;
+     }
+     }
+     document.getElementById("dagvarsel").innerHTML = utTekst;
   
     }
 }
-
-
-
+document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
 http.open("GET", url+"?url="+StedObj.url, true);
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 http.send(null);
