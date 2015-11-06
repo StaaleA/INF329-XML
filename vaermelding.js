@@ -1,10 +1,14 @@
 var liste;
-var vars;
+var sokeord;
+var stedstype;
+var vars = [];
 
 function onload(){
-
+var urlVars = getUrlVars();
 var xmlhttp = new XMLHttpRequest();
 var url = "steder.json";
+        
+
 
 xmlhttp.open("GET", url, true);
 xmlhttp.overrideMimeType("application/json");
@@ -12,15 +16,13 @@ xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {  
 
        liste = JSON.parse(xmlhttp.responseText);
-       console.log(liste[4]);
-        
+
 //Hvis vars er satt (get fra url) så last inn værmeldingen
-if(vars){
-    var sokeord = getUrlVars()["sok"];
-    var stedstype = getUrlVars()["stedstype"];
+if(urlVars["sok"] != null){
+     sokeord = urlVars["sok"];
+     stedstype = urlVars["stedstype"];
     var ut = simpleSearch2(sokeord, stedstype)
     document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
-    console.log("hei");
     send(ut);
     getMelding(ut);
   } //vars
@@ -35,19 +37,19 @@ xmlhttp.send(null);
 
 function getUrlVars() {
 var uri = decodeURI(window.location.href); //Håndtere spesial characters
+
 var parts = uri.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
 
 value = value.split("+").join(" ");
 value = value.split("%2C").join(",");
 
 vars[key] = value;
-console.log(vars);
+
 });
 return vars;
 }
 
 function getMelding(StedObj){
-  console.log("Henter værmelding");
 var ukedag = new Array(7);
 ukedag[0]=  "Søndag";
 ukedag[1] = "Mandag";
