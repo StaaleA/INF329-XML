@@ -46,9 +46,9 @@ function Sted(navn, kommune, fylke, stedstype, url) {
 == Kilde: http://jsfiddle.net/uEBSV/
 ====================================================================================
 */
-
+var divs = [];
 function searchDivs(input, event) {
-    var e = event.which || event.keyCode;
+    var e = event.which;
 
     if (e != 40) {
       
@@ -100,7 +100,7 @@ function searchDivs(input, event) {
 
 
         // Innhentet kode som kan navigere blant div'er
-        var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
+         divs = document.getElementById('instantsearch').getElementsByTagName('div'),
             selectedDiv = 1;
             i;
         document.getElementById('instantsearch').getElementsByTagName('div')[0].style.backgroundColor = "";
@@ -115,7 +115,6 @@ function searchDivs(input, event) {
                 if (e.keyCode == 38)
                     x = -1;
                 else if (e.keyCode == 40)
-
                     x = 1;
                 else
                     return;
@@ -128,12 +127,12 @@ function searchDivs(input, event) {
             }
     }
 
-    function getSelected() {
-        return divs[selectedDiv];
-    }
-    searchDivs.getSelected = getSelected();
+    
     }
 }
+function getSelected() {
+        return divs[selectedDiv];
+    }
 
 /*
 == Polyfill for String.includes()
@@ -215,7 +214,7 @@ function nyInput(event) {
     }
     else if(e==13) {
         // trykk på ENTER
-        x = searchDivs.getSelected();
+        x = searchDivs().getSelected();
         document.getElementById('sok').innerHTML = x;
         document.getElementById('stedsok').submit();
         alert(x);
@@ -243,9 +242,8 @@ function nyInput(event) {
 document.getElementById('sok').addEventListener("keyup", skrik);
 
 function skrik(event) {
-    console.log(liste);
     var e = event.which || event.keyCode;
-    var x = searchDivs.getSelected(); 
+    var x = getSelected(); 
     var sokeord = document.getElementById('sok').value;
     // alert(sokeord);
        
@@ -264,7 +262,7 @@ function skrik(event) {
     }
     else if(e==13) {
         // trykk på ENTER
-        x = searchDivs.getSelected();
+        x = getSelected();
        
         document.getElementById('sok').innerHTML = x;
         document.getElementById('stedsok').submit();

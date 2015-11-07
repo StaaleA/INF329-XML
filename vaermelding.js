@@ -100,6 +100,7 @@ for ( var i = 0; i < arrayMelding.melding.detaljert.tidspunkt.length; i++) {
       utTekst += divstart + "<b>" + ukedag[fratid.getDay()] + "</b><br> " + fratid.getDate() + ". " + maaned[1] + ".<br>" + dagsymbol + daggrader + divslutt;
      }
      }
+     document.getElementById("melding").style.display = "block";
      document.getElementById("dagvarsel").innerHTML = utTekst;
   
     }
