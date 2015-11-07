@@ -63,6 +63,11 @@ form, input{
 .info {
     font-size: 0.8em;
 }
+#stedsinfo {
+    font-size: 0.8em;
+    display: block;
+    margin-bottom:10px;
+}
 
 
   #idagnum{
@@ -84,7 +89,6 @@ margin-bottom:1px;
     float:left;
     width:65px;
     height:85px;
-    padding:5px;
 }
 
 
@@ -138,7 +142,7 @@ font-size: 14px;
     display:none;
     margin: 0 auto;
     padding-left:20px;
-    padding-top:20px;
+    padding-top:1px;
     background-color: rgba(0, 0, 0, 0.6);
  
   /*fix for at div med float tar ikke opp vertical space.
