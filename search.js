@@ -286,6 +286,7 @@ function skrik(event) {
 function send(x) {
     document.getElementById('sok').value = x.navn;
     document.getElementById('formStedstype').value = x.stedstype;
+    document.getElementById('formKommune').value = x.kommune;
     //document.getElementById('stedsok').submit();
 }
 
@@ -342,15 +343,14 @@ function simpleSearch (string) {
     }
 }
 
-function simpleSearch2 (sted, stedstype) {
+function getAtrSok(sted, stedstype, kommune) {
     var funnet = false;
     var i = 1;
     var soktreff;
 
     while(!funnet) {
-        if(liste[i].navn == sted && liste[i].stedstype == stedstype) {
+        if(liste[i].navn == sted && liste[i].stedstype == stedstype && liste[i].kommune == kommune) {
             funnet = true;
-
             return liste[i];
         }
         i++;

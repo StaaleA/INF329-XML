@@ -25,8 +25,8 @@ xmlhttp.onreadystatechange = function() {
 if(urlVars["sok"] != null){
      sokeord = urlVars["sok"];
      stedstype = urlVars["stedstype"];
-     ut = simpleSearch2(sokeord, stedstype)
-     kommune = ut.kommune;
+     kommune = urlVars["kommune"];
+     ut = getAtrSok(sokeord, stedstype, kommune);
      fylke = ut.fylke;
     document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
     send(ut);
@@ -50,7 +50,7 @@ value = value.split("+").join(" ");
 value = value.split("%2C").join(",");
 
 vars[key] = value;
-
+console.log(vars);
 });
 return vars;
 }
