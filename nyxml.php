@@ -34,7 +34,7 @@ $link->addAttribute('tekst', 'Google Maps');
 //Lager link node til norgeskart
 $link = $xml->addChild('norgeskart');
 $link->addAttribute('type', 'iframe');
-$link->addAttribute('url', 'http://www.norgeskart.no/statisk.html#12/'.$latitude.'/'.$longitude.'/+embedMaskLayer/+embed.box');
+$link->addAttribute('url', 'http://www.norgeskart.no/statisk.html#10/'.$latitude.'/'.$longitude.'/+embedMaskLayer/+embed.box');
 $link->addAttribute('tekst', 'Norgeskart');
 
 //Benytter en XSL-fil for å lage den sammensatte xml-fila

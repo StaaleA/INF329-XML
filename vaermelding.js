@@ -3,6 +3,7 @@ var liste;
 var sokeord;
 var stedstype;
 var vars = [];
+var ut;
 
 function onload(){
 var urlVars = getUrlVars();
@@ -22,7 +23,7 @@ xmlhttp.onreadystatechange = function() {
 if(urlVars["sok"] != null){
      sokeord = urlVars["sok"];
      stedstype = urlVars["stedstype"];
-    var ut = simpleSearch2(sokeord, stedstype)
+     ut = simpleSearch2(sokeord, stedstype)
     document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
     send(ut);
     getMelding(ut);
@@ -102,6 +103,24 @@ for ( var i = 0; i < arrayMelding.melding.detaljert.tidspunkt.length; i++) {
      }
      document.getElementById("melding").style.display = "block";
      document.getElementById("dagvarsel").innerHTML = utTekst;
+
+    //Lager link til linkboksene
+    yrLink = arrayMelding.credit['@attributes'].url;
+    lat = arrayMelding.kordinater['@attributes'].latitude;
+    lon = arrayMelding.kordinater['@attributes'].longitude;
+
+    googlelink = arrayMelding.linker.googlemap["@attributes"].url;
+    norgeskartIframeLink = arrayMelding.linker.norgeskart["@attributes"].url;
+    norgeskartLink = "http://www.norgeskart.no/#12/"+lat+"/"+lon;
+    document.getElementById("yrLink").href = yrLink;
+    document.getElementById("googleLink").href = googlelink;
+    document.getElementById("norgeskartLink").href = norgeskartLink;
+    document.getElementById("utLinker").style.display = "block";
+    document.getElementById("overskriftUtLinker").style.display = "block"; 
+    console.log(arrayMelding);
+    document.getElementById("norgeskartIframe").src = norgeskartIframeLink;
+    document.getElementById("googleBoks").style.backgroundImage = "url('https://maps.googleapis.com/maps/api/staticmap?center="+ lat + "," + lon +  "&zoom=10&size=250x150')";
+
   
     }
 }
