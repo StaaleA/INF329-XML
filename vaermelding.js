@@ -4,6 +4,8 @@ var sokeord;
 var stedstype;
 var vars = [];
 var ut;
+var fylke;
+var kommune;
 
 function onload(){
 var urlVars = getUrlVars();
@@ -24,6 +26,8 @@ if(urlVars["sok"] != null){
      sokeord = urlVars["sok"];
      stedstype = urlVars["stedstype"];
      ut = simpleSearch2(sokeord, stedstype)
+     kommune = ut.kommune;
+     fylke = ut.fylke;
     document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
     send(ut);
     getMelding(ut);
@@ -81,7 +85,7 @@ http.onreadystatechange = function() {
         arrayMelding = JSON.parse(http.responseText);
         //Overskrift
         document.getElementById("overskrift").innerHTML = arrayMelding.stedsnavn;
-        document.getElementById("stedsinfo").innerHTML = arrayMelding.kordinater["@attributes"].elevation + " moh.";
+        document.getElementById("stedsinfo").innerHTML = kommune + " (" + fylke + ")<br>" + arrayMelding.kordinater["@attributes"].elevation + " moh.";
         //Dagens dato (navn)
         var dagensdato = new Date(arrayMelding.melding.detaljert.tidspunkt[0]["@attributes"].fratid);
         document.getElementById("dagensdato").innerHTML = "<b>I dag</b> " + [dagensdato.getDate()] + ". " + maaned[dagensdato.getMonth()];
@@ -118,7 +122,6 @@ for ( var i = 0; i < arrayMelding.melding.detaljert.tidspunkt.length; i++) {
     document.getElementById("norgeskartLink").href = norgeskartLink;
     document.getElementById("utLinker").style.display = "block";
     document.getElementById("overskriftUtLinker").style.display = "block"; 
-    console.log(arrayMelding);
     document.getElementById("norgeskartIframe").src = norgeskartIframeLink;
     document.getElementById("googleBoks").style.backgroundImage = "url('https://maps.googleapis.com/maps/api/staticmap?center="+ lat + "," + lon +  "&zoom=10&size=250x150')";
 
