@@ -113,7 +113,7 @@ for ( var i = 0; i < arrayMelding.melding.detaljert.tidspunkt.length; i++) {
     yrLink = arrayMelding.credit['@attributes'].url;
     lat = arrayMelding.kordinater['@attributes'].latitude;
     lon = arrayMelding.kordinater['@attributes'].longitude;
-
+console.log(arrayMelding);
     googlelink = arrayMelding.linker.googlemap["@attributes"].url;
     norgeskartIframeLink = arrayMelding.linker.norgeskart["@attributes"].url;
     norgeskartLink = "http://www.norgeskart.no/#12/"+lat+"/"+lon;
@@ -125,6 +125,8 @@ for ( var i = 0; i < arrayMelding.melding.detaljert.tidspunkt.length; i++) {
     document.getElementById("norgeskartIframe").src = norgeskartIframeLink;
     document.getElementById("googleBoks").style.backgroundImage = "url('https://maps.googleapis.com/maps/api/staticmap?center="+ lat + "," + lon +  "&zoom=10&size=250x150')";
 
+    document.getElementById("credits").innerHTML = "<a href='"+yrLink+"'>"+ arrayMelding.credit['@attributes'].tekst; +"</a>";
+    document.getElementById("credits").style.display = "block"; 
   
     }
 }

@@ -131,7 +131,7 @@ float:left;
 #dagenstekst{
 float:left;
 margin:20px;
-width:400px;
+max-width: 300px;
 font-size: 14px;
 
 }
@@ -142,6 +142,7 @@ font-size: 14px;
     display:none;
     margin: 0 auto;
     padding-left:20px;
+    padding-right:20px;
     padding-top:1px;
     background-color: rgba(0, 0, 0, 0.6);
  
@@ -202,5 +203,18 @@ background-repeat: no-repeat;
     width:33%;
     height:20px;
     text-align: center;
+}
+
+#credits{
+    display: none;
+    margin-top:5px;
+    height:30px;
+    width:98%;
+    padding:1%;
+    background-color: rgba(0, 0, 0, 0.6);
+    font-size: small;
+    color:#eee;
+    text-align: center;
+    line-height: 30px;
 }
 
