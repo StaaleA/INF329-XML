@@ -81,7 +81,7 @@ function searchDivs(input, event) {
                     // Tar vekk URL, lag heller klasse, lettere å hente ut etterpå
                     // hint = hint + '<div class="forslag" id=' + teller + '><a href=' + 
                     //url + '>' + liste[i].navn + '</a></div>';
-                    hint = hint + '<div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype +'<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div>';
+                    hint = hint + '<a href="?stedstype='+etsted.stedstype+'&kommune='+etsted.kommune+'&sok='+etsted.navn+'"><div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype +'<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div></a>';
                     søkefelt.innerHTML = hint;
                    
                     søkefelt.getElementsByTagName('div')[0].style.backgroundColor = '#68F';
@@ -217,7 +217,6 @@ function nyInput(event) {
         x = searchDivs().getSelected();
         document.getElementById('sok').innerHTML = x;
         document.getElementById('stedsok').submit();
-        alert(x);
     }
     else if(e == 40 || e == 38) {
         // Om piltastene er brukt, oppdaterer vi valg forslag
@@ -225,7 +224,6 @@ function nyInput(event) {
     }
     else if(x && !(e==40 || e==38)) {
         // Om forslag er satt, og vi skriver
-        alert("heu");
     }
     else {
         searchDivs(sokeord, event);
@@ -240,6 +238,11 @@ function nyInput(event) {
 */
 
 document.getElementById('sok').addEventListener("keyup", skrik);
+
+document.getElementById("instantsearch").addEventListener("click", function(){
+    //Definere hvor det blir klikket 
+});
+
 
 function skrik(event) {
     var e = event.which || event.keyCode;
@@ -263,7 +266,6 @@ function skrik(event) {
     else if(e==13) {
         // trykk på ENTER
         x = getSelected();
-       
         document.getElementById('sok').innerHTML = x;
         document.getElementById('stedsok').submit();
     }
