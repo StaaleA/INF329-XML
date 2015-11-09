@@ -135,3 +135,7 @@ http.open("GET", url+"?url="+StedObj.url, true);
 http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 http.send(null);
 }
+
+function senderURL (obj) {
+  getMelding(obj);
+}

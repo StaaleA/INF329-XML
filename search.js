@@ -239,11 +239,6 @@ function nyInput(event) {
 
 document.getElementById('sok').addEventListener("keyup", skrik);
 
-document.getElementById("instantsearch").addEventListener("click", function(){
-    //Definere hvor det blir klikket 
-});
-
-
 function skrik(event) {
     var e = event.which || event.keyCode;
     var x = getSelected(); 
