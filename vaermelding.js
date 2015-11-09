@@ -39,6 +39,28 @@ if(urlVars["sok"] != null){
 } //onreadystatechange
 
 xmlhttp.send(null);
+
+        var bildeurl;
+        var xhrHentBilde = new XMLHttpRequest();
+        sokeord = urlVars["sok"];
+        kommune = sokeord = urlVars["kommune"];
+        sokeord = sokeord.split(" ").join("");
+        sokeord = sokeord.split(",").join("");
+        var url = "hentbilde.php?sted="+sokeord+"&kommune="+kommune;
+ 
+
+        xhrHentBilde.open("GET", url, true);
+        xhrHentBilde.overrideMimeType("application/json");
+        
+        xhrHentBilde.onreadystatechange = function() {
+    if (xhrHentBilde.readyState == 4 && xhrHentBilde.status == 200) {  
+       bildeurl = xhrHentBilde.responseText;
+       console.log(bildeurl);
+       document.getElementById("bilde").src = bildeurl;
+    } //if
+} //onreadystatechange
+
+xhrHentBilde.send(null);
 }
 
 function getUrlVars() {
@@ -54,6 +76,8 @@ console.log(vars);
 });
 return vars;
 }
+
+
 
 function getMelding(StedObj){
 var ukedag = new Array(7);
