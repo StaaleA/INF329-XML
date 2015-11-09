@@ -5,6 +5,7 @@ html{
 body {
     /*    background-color: #FCFFF5;*/
     background-image: url('bilder/geiranger.jpg');
+       background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;

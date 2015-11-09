@@ -100,6 +100,7 @@ function searchDivs(input, event) {
 
 
         // Innhentet kode som kan navigere blant div'er
+        
          divs = document.getElementById('instantsearch').getElementsByTagName('div'),
             selectedDiv = 1;
             i;
@@ -144,40 +145,6 @@ if (!String.prototype.includes) {
   };
 }
 
-/*
-== Tøm forslags-listen
-====================================================================================
-*/
-function clearForslag() {
-    var fjernMeg = document.getElementsByClassName('forslag');
-    while(fjernMeg[0]) {
-        fjernMeg[0].parentNode.removeChild(fjernMeg[0]);
-    }
-}
-
-function celarID() {
-    var node = document.getElementById('instantsearch');
-    while (node.hasChildNodes()) {
-        node.removeChild(node.lastChild);
-    }
-}
-
-function refresh() {
-    var divs = document.getElementById('instantsearch').getElementsByTagName('div'),
-            selectedDiv = 0,
-            i;
-    for (i = 0; i < divs.length; i++)
-            divs[i].style.backgroundColor = '';
-            divs[i] = null;
-            divs[selectedDiv].style.backgroundColor = '#68F';
-            divs[i].onkeyup = (function(i) {
-                return function() {
-                    divs[selectedDiv].style.backgroundColor = '';
-                    selectedDiv = i;
-                    divs[selectedDiv].style.backgroundColor = '#68F';
-                }
-            })(i);
-}
 
 /*
 == Setter fokus til søk-feltet ved innlastning
@@ -186,65 +153,26 @@ function refresh() {
 document.getElementById('sok').focus();
 
 /*
-== EVENT LISTENER - Denne funksjonen skal erstatt kallet vi gjør i index.html 
-====================================================================================
-== Her har vi en god oversikt over hva vi sender vidre til funksjonen. 
-====================================================================================
-*/
-// document.getElementById('sok').addEventListener("keyup", function(){searchDivs(this.value, event)});
-// document.getElementById('stedsok').onsubmit = function() {return false;}
 
-// Sjekker at bruker har begynt å søke
-//document.getElementById('sok').addEventListener("keyup", nyInput);
-
-function nyInput(event) {
-    var e = event.which || event.keyCode;
-    var sokeord = document.getElementById('sok').value;
-    var x;
-
-    if(e==8){
-        // trykk på <- knappen
-        searchDivs(sokeord, event);
-    } 
-    else if (e==27) {
-        // Trykk på 'esc'
-        document.getElementById('sok').focus();
-        document.getElementById('instantsearch').innerHTML = '';
-        searchDivs('', event);
-    }
-    else if(e==13) {
-        // trykk på ENTER
-        x = searchDivs().getSelected();
-        document.getElementById('sok').innerHTML = x;
-        document.getElementById('stedsok').submit();
-    }
-    else if(e == 40 || e == 38) {
-        // Om piltastene er brukt, oppdaterer vi valg forslag
-        searchDivs(sokeord, event);
-    }
-    else if(x && !(e==40 || e==38)) {
-        // Om forslag er satt, og vi skriver
-    }
-    else {
-        searchDivs(sokeord, event);
-    }
-}
 
 
 /*
-== DET FØRSTE FORSØKET - SOM NESTEN GIKK... 
-== Her funker alt bortsett fra å nullstille divs[selecteDiv] når vi skriver noe nytt
+
 ====================================================================================
 */
 
 document.getElementById('sok').addEventListener("keyup", skrik);
 
 function skrik(event) {
+document.getElementById("instantsearch").style.display = "block";
     var e = event.which || event.keyCode;
     var x = getSelected(); 
     var sokeord = document.getElementById('sok').value;
     // alert(sokeord);
        
+    if(e==27){
+        document.getElementById("instantsearch").style.display = "none";
+       }
     if (e==8) { // tilbake-knappen <-
         searchDivs(sokeord, event);
     }
@@ -252,7 +180,7 @@ function skrik(event) {
     else if (!(e == 40 || e == 38)) { 
         // om bruker skriver OG divs[selectedDiv] er satt
         if(x) {
-            clearForslag();
+
             // celarID();
             // refresh();
             searchDivs(sokeord, event);
@@ -264,6 +192,7 @@ function skrik(event) {
         document.getElementById('sok').innerHTML = x;
         document.getElementById('stedsok').submit();
     }
+     
         if (sokeord=="") {
             searchDivs('a', event);
         }
