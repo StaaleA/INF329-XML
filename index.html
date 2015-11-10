@@ -1,72 +1,81 @@
 <!DOCTYPE html>
-<!-- 
-== This page is developed by Christian Rennemo and Ståle Andre Volden, last time changed: 6th of November 2015
+<!--
+== This page is developed by Christian Rennemo and Ståle Andre Volden, last time changed: 10th of November 2015
 == Page controlled by Ståle Andre Volden, last time 6th of November
 == -->
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300' rel='stylesheet' type='text/css'>
+        <link rel=stylesheet href="stylesheet.css">
+        <script src="http://maps.googleapis.com/maps/api/js"></script>
 
-<head>
-    <meta charset="utf-8">
-    <meta name=viewport content="width=device-width, initial-scale=1">
-    <link rel=stylesheet href="stylesheet.css">
-    <title>Værvarsel</title>
-</head>
-
-<body onload="onload();">
-    <script>
-    </script>
-    <div class="main-wrapper">
-        <div id="sokWrapper">
-            <a href="index.html"><h1 id="overskriftSide">Værvarsel</h1></a>
-            <form autocomplete="off" name="stedsok" onsubmit="return sjekk()">
-                <input type="hidden" id="formStedstype" name="stedstype" value="" />
-                <input type="hidden" id="formKommune" name="kommune" value="" />
-                <input type="search" name="sok" id="sok" placeholder="Stedsnavn" onkeyup="searchDivs(this.value, event)">
-                <div id="instantsearch"></div>
-            </form>
-            <!-- Her kommer RESULTAT!  -->
-            <span id="laster"></span>
-            <div id="melding">
-                <h1 id="overskrift"></h1>
-                <span id="stedsinfo"></span>
-                <span id="dagensdato"></span>
-                <div id="ikonoggrader">
-                    <div id="vaerikonnaa"></div>
-                    <div id="gradernaa"></div>
-                    <div id="gradernaasymbol"></div>
+        <title>Værvarsel</title>
+        
+        </head>
+        
+        <body onload="onload();">
+            <div id="sokWrapper">
+                <a href="index.html">
+                <div class="rektangel">
+                    <h1>Værvarsel</h1>
                 </div>
-                <div id="dagenstekst"></div>
-                <div style="clear:both;"></div>
-                <div id="dagvarsel">
+                </a>
+                <form autocomplete="off" name="stedsok" onsubmit="return sjekk()">
+                    <input type="hidden" id="formStedstype" name="stedstype" value="" />
+                    <input type="hidden" id="formKommune" name="kommune" value="" />
+                    <input type="search" name="sok" id="sok" placeholder="Stedsnavn" onkeyup="searchDivs(this.value, event)">
+                    <div id="instantsearch"></div>
+                </form>
+
+                <!-- Her kommer RESULTAT!  -->
+                <span id="laster"></span>
+
+                <!-- Melding begynner -->
+                <div id="melding">
+                    <div id="kart"></div>
+                    <h1 id="overskrift"></h1>
+                    <span id="stedsinfo"></span>
+                    <span id="dagensdato"></span>
+                    <div id="ikonoggrader">
+                        <div id="vaerikonnaa"></div>
+                        <div id="gradernaa"></div>
+                        <span id="gradernaasymbol"></span>
+                    </div>
+                    <div id="dagenstekst"></div>
+                    <div style="clear:both;"></div>
+                    <div id="dagvarsel">
+                    </div>
                 </div>
+                <!-- Melding ferdig -->
 
 
-            </div>
-            <div id="overskriftUtLinker">
-                <div class="overskriftBoks" style="margin-right:0.5%;">Yr</div>
-                <div class="overskriftBoks" style="margin-right:0.5%;">Google Maps</div>
-                <div class="overskriftBoks">Norgeskart</div>
-            </div>
-            <div style="clear:both"></div>
-            <div id="utLinker">
-                <a href="" id="yrLink" target="_blank">
+                <!-- Bilde-bokser begynner -->
+                <div id="overskriftUtLinker">
+                    <div class="overskriftBoks" style="margin-right:0.5%;">Yr</div>
+                    <div class="overskriftBoks" style="margin-right:0.5%;">Google Maps</div>
+                    <div class="overskriftBoks">Norgeskart</div>
+                </div>
+                <div style="clear:both"></div>
+                <div id="utLinker">
+                    <a href="" id="yrLink" target="_blank">
                     <div id="yrBoks" class="boks"></div>
-                </a>
-                <a href="" id="googleLink" target="_blank">
+                    </a>
+                    <a href="" id="googleLink" target="_blank">
                     <div id="googleBoks" class="boks"></div>
-                </a>
-                <div id="norgeskartBoks" class="boks" style="position:relative;">
-                    <iframe id="norgeskartIframe" src="" frameBorder="0"></iframe>
-                    <a id="norgeskartLink" href="" id="norgeskartLink" target="_blank"></a>
-                </div>
-            </div>
-            <div id="credits"></div>
-        </div>
-    </div>
-    <script type="text/javascript" src="vaermelding.js"></script>
-    <script type="text/javascript" src="search.js"></script>
-</body>
+                    </a>
+                    <div id="norgeskartBoks" class="boks" style="position:relative;">
+                        <iframe id="norgeskartIframe" src="" frameBorder="0"></iframe>
+                        <a id="norgeskartLink" href="" id="norgeskartLink" target="_blank"></a>
+                    </div>
+                </div><!-- Bilde-bokser ferdig -->
 
-</html>
-
+                <div id="credits"></div>
+            </div><!-- sok-wrapper ferdig -->
+            <script type="text/javascript" src="vaermelding.js"></script>
+            <script type="text/javascript" src="search.js"></script>
+            <script type="text/javascript" src="map.js"></script>
+        </body>
+    </html>
 </html>

@@ -1,196 +1,257 @@
-html{
-
- height: 100%;
+html {
+    height: 100%;
 }
+
+
 body {
-    /*    background-color: #FCFFF5;*/
-    background-image: url('bilder/geiranger.jpg');
-       background-attachment: fixed;
+    background-image: url('bilder/by_panorama.jpg');
+    background-attachment: fixed;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     height: 100%;
-    /*overflow: hidden;*/
     font-family: 'Lato', sans-serif;
-    color: white;
-    margin:0;
-    font-family: arial,sans-serif;
-    color:#eee;
+    font-weight: 300;
+    color: #E3E3E3;
+    margin: 0;
 }
+
+
+h1 {
+    font-weight: 300;
+    margin-bottom: 1px;
+}
+
 
 a {
     color: white;
 }
+
+
 a:link {
     text-decoration: none;
 }
 
-form, input{
-    -webkit-appearance: none;
-    -moz-appearance: none;
-	width: 100%;
-	opacity: 0.7;
-	font-size: 1.1em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-}
-.forslag {
-	width: 98%;
-	background-color: black;
-	font-family: 'Arial, Helvetica', sans-serif;
-	font-weight: 100;
-	padding-bottom: 0.3em;
-	padding-left: 2%;
-    padding-top: 0.3em;
-}
-
-.main-wrapper {
-	width: 100%;
-
-}
-
-.main-wrapper h1 {
-	/*text-align: center;*/
-}
-
+/*'Hoved-diven' som inneholder alt*/
 #sokWrapper {
-	max-width: 740px;
+    padding-top: 40px;
+    max-width: 740px;
     margin: 0 auto; /* Denne som sørger for å midtstille søk */
 }
 
 
+/*firkanten rundt tittel*/
+.rektangel {
+    top:0;
+    padding:10px;
+    width: 140px;
+    border: solid 1px;
+    border-color: rgba(255, 255, 255, 0.4);
+}
 
+
+/*Fjerner høyde på spesifikk h1*/
+.rektangel h1 {
+    margin-top: 0;
+}
+
+#kart {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width:210px;
+    float:right;
+    height:240px;
+    opacity: 0.8;
+}
+
+
+/*Superhack som fjerner footer og logo fra Google - HUSK: Dette BRYTER med terms of use!
+Men siden vi kun gjør dette i et skoleprosjekt syns vi det er greit. 
+Kilde: http://stackoverflow.com/questions/12499886/how-to-hide-or-disable-the-google-logo-footer-copyright-on-google-maps-javascr*/
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display:none;
+}
+.gmnoprint div {
+    background:none !important;
+}
+
+
+/*søkefeltet OG forslag*/
+form, input {
+    -webkit-appearance: none;/*tar vekk endringer som webkit gjør selv*/
+    -moz-appearance: none;
+    width: 100%;
+    opacity: 0.7;
+    font-size: 1.1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+
+/*søkefeltet*/
+#sok {
+    border: none;
+    background: transparent;
+    opacity: 1;
+    color: #202020;
+    padding-left: 15px;
+    border-bottom: solid 1px;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+
+/*egenskaper for forslagene*/
+.forslag {
+    width: 98%;
+    background-color: black;
+    font-family: 'Arial, Helvetica', sans-serif;
+    font-weight: 100;
+    padding-bottom: 0.3em;
+    padding-left: 2%;
+    padding-top: 0.3em;
+}
+
+
+/*info ved forslag*/
 .info {
     font-size: 0.8em;
 }
+
+
 #stedsinfo {
     font-size: 0.8em;
     display: block;
-    margin-bottom:10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid 1px;
+    border-color: rgba(255, 255, 255, 0.4);
+    width: 460px;
 }
 
-
-  #idagnum{
-font-size: 68px;
-float:left;
-
-margin-right:5px;
-}
-h1{
-margin-bottom:1px;
+#idagnum {
+    font-size: 68px;
+    float: left;
+    margin-right: 5px;
 }
 
-.dag{
+.dag {
+    border-right: solid 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+    /*border-color: rgba(0, 0, 0, 0.2);*/
     font-size: 13px;
-    text-align:center;
-    /*background-color:#EEE;*/
-    margin-right:5px;
-    margin-bottom:5px;
-    float:left;
-    width:65px;
-    height:85px;
+    text-align: center;
+    margin-right: 5px;
+    margin-bottom: 40px;
+    float: left;
+    width: 71px;
+    height: 85px;
 }
 
-
-#ikonnaa{
-float:left;
-background-color: green;
-
-}
-#gradernaa{
-margin-top:5px;
-float:left;
-font-size: 64px;
-color:#eee;
-width:50px;
+#ikonnaa {
+    float: left;
+    background-color: green;
 }
 
-#gradernaasymbol{
-    margin-left:-15px;
-float:left;
-font-size: 14px;
-margin-top:17px;
-color:#eee;
-}
-#laster{
-/*text-align: center;*/
-font-size: 20px;
-
-}
-#vaerikonnaa{
-float:left;
-
-/*width:100px;*/
-}
-#ikonoggrader{
-
-    /*width:600px;*/
-
+#gradernaa {
+    margin-top: 5px;
+    float: left;
+    font-size: 64px;
+    color: #eee;
+    max-width: 90px;
+    text-align: right;
+    padding-left: 10px;
 }
 
-#dagenstekst{
-float:left;
-margin:20px;
-max-width: 300px;
-font-size: 14px;
-
+#gradernaasymbol {
+    float: left;
+    font-size: 14px;
+    margin-top: 17px;
+    color: #eee;
+    text-align: right;
 }
 
+#laster {
+    font-size: 20px;
+}
 
+#vaerikonnaa {
+    float: left;
+}
 
-#melding{
-    display:none;
+#dagenstekst {
+    float: left;
+    margin: 20px;
+    max-width: 300px;
+    font-size: 14px;
+    margin-right: 0; /*for å være inntil kartet*/
+}
+
+#melding {
+    display: none;
     margin: 0 auto;
-    padding-left:20px;
-    padding-right:20px;
-    padding-top:1px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 1px;
     background-color: rgba(0, 0, 0, 0.6);
- 
-  /*fix for at div med float tar ikke opp vertical space.
-  Kilde: http://stackoverflow.com/questions/5774315/div-not-expanding-even-with-content-inside*/ 
+    /*fix for at div med float tar ikke opp vertical space.
+    Kilde: http://stackoverflow.com/questions/5774315/div-not-expanding-even-with-content-inside*/
+}
 
+#dagvarsel {
+    overflow: hidden;
+    /*fix for at div med float tar ikke opp vertical space.*/
 }
-#dagvarsel{
-  overflow: hidden; /*fix for at div med float tar ikke opp vertical space.*/
-}
+
 
 /*===========================*/
+
+
 /*Bokser med linker*/
+
+
 /*===========================*/
-#utLinker{
-    display:none;
-    overflow:hidden;
-    margin-top:0px;
+
+#utLinker {
+    display: none;
+    overflow: hidden;
+    margin-top: 0px;
 }
-#overskriftUtLinker{
-    display:none;
-    margin-top:10px;  
+
+#overskriftUtLinker {
+    display: none;
+    margin-top: 10px;
 }
-.boks{
-    float:left;
+
+.boks {
+    float: left;
     background-color: rgba(0, 0, 0, 0.6);
-    width:33%;
-    height:100px;
+    width: 33%;
+    height: 100px;
     opacity: 0.8;
 }
-#yrBoks{
-    margin-right:0.5%;
-  background-image: url('bilder/yr.png');
-background-repeat: no-repeat;
-    background-position: center; 
 
+#yrBoks {
+    margin-right: 0.5%;
+    background-image: url('bilder/yr.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }
-#googleBoks{
-    margin-right:0.5%;
+
+#googleBoks {
+    margin-right: 0.5%;
 }
-#norgeskartBoks{
-    float:right;
+
+#norgeskartBoks {
+    float: right;
 }
 
 #norgeskartLink {
     position: absolute;
-    top: 0; 
+    top: 0;
     left: 0;
     display: inline-block;
     width: 100%;
@@ -198,24 +259,23 @@ background-repeat: no-repeat;
     z-index: 5;
 }
 
-.overskriftBoks{
-    float:left;
+.overskriftBoks {
+    float: left;
     background-color: rgba(0, 0, 0, 0.6);
-    width:33%;
-    height:20px;
+    width: 33%;
+    height: 20px;
     text-align: center;
 }
 
-#credits{
+#credits {
     display: none;
-    margin-top:5px;
-    height:30px;
-    width:98%;
-    padding:1%;
+    margin-top: 5px;
+    height: 15px;
+    width: 98%;
+    padding: 1%;
     background-color: rgba(0, 0, 0, 0.6);
-    font-size: small;
-    color:#eee;
+    font-size: 12px;
+    color: #eee;
     text-align: center;
-    line-height: 30px;
+    /*line-height: 30px;*/
 }
-
