@@ -43,11 +43,10 @@ xmlhttp.send(null);
         var bildeurl;
         var xhrHentBilde = new XMLHttpRequest();
         sokeord = urlVars["sok"];
-        kommune = sokeord = urlVars["kommune"];
+        kommune = sokeord = urlVars["kommune"]; 
         sokeord = sokeord.split(" ").join("");
         sokeord = sokeord.split(",").join("");
-        var url = "hentbilde.php?sted="+sokeord+"&kommune="+kommune;
- 
+        var url = "hentbilde.php?sted="+sokeord+"&kommune="+kommune+"&fylke="+fylke;
 
         xhrHentBilde.open("GET", url, true);
         xhrHentBilde.overrideMimeType("application/json");
@@ -62,6 +61,26 @@ xmlhttp.send(null);
 
 xhrHentBilde.send(null);
 }
+
+
+
+        var xhrHentData = new XMLHttpRequest();
+        var url = "hentdata.php";
+
+        xhrHentData.open("GET", url, true);
+        xhrHentData.overrideMimeType("application/json");
+               
+        xhrHentData.onreadystatechange = function() {
+    if (xhrHentData.readyState == 4 && xhrHentData.status == 200) { 
+console.log(xhrHentData.responseText);
+       data = JSON.parse(xhrHentData.responseText);
+
+       console.log(data);
+    } //if
+} //onreadystatechange
+
+xhrHentData.send(null);
+
 
 function getUrlVars() {
 var uri = decodeURI(window.location.href); //Håndtere spesial characters
