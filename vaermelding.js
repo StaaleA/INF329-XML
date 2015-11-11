@@ -31,7 +31,11 @@ function onload() {
                     document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
                     send(ut);
                     getMelding(ut);
-                } //vars
+                } //vars 
+                else {
+                    // Om vars ikke er satt betyr det at vi er på startsiden, og vi setter fokus til søkefeltet
+                    document.getElementById('sok').focus();
+                }
 
 
 
@@ -80,6 +84,7 @@ function getUrlVars() {
 
 
 function getMelding(StedObj) {
+    document.getElementById('sok').value = ''; // Nullstiller søkefelt
     var ukedag = new Array(7);
     ukedag[0] = "Søndag";
     ukedag[1] = "Mandag";
@@ -159,12 +164,12 @@ function getMelding(StedObj) {
             document.getElementById("utLinker").style.display = "block";
             document.getElementById("overskriftUtLinker").style.display = "block";
             document.getElementById("norgeskartIframe").src = norgeskartIframeLink;
-            googleMap(); // Henter ut interaktivt kart
             document.getElementById("googleBoks").style.backgroundImage = "url('https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=10&size=250x150')";
-
             document.getElementById("credits").innerHTML = "<a href='" + yrLink + "'>" + arrayMelding.credit['@attributes'].tekst; + "</a>";
             document.getElementById("credits").style.display = "block";
-
+            document.getElementById('linkWrapper').style.visibility = 'visible';
+            googleMap(); // Henter ut interaktivt kart
+            window.focus();
         }
     }
     document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
@@ -172,10 +177,7 @@ function getMelding(StedObj) {
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send(null);
 }
-function call() {
-alert(document.getElementById('dag').style.backgroundColor);
-// document.getElementsById('dag').style.backgroundColor = 'red';
-}
+
 function senderURL(obj) {
     getMelding(obj);
 }

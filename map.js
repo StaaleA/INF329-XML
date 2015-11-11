@@ -26,10 +26,10 @@ function googleMap() {
 	var styledMap = new google.maps.StyledMapType(styles, {
 		name: "Stil"
 	});
-
 	// Lager KART-objektet
 	var mapOptions = {
 		zoom: 12,
+		scrollwheel: false,
 		center: new google.maps.LatLng(lat, lon),
 		mapTypeControlOptions: {
 			mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
@@ -37,8 +37,13 @@ function googleMap() {
 	};
 	var map = new google.maps.Map(document.getElementById('kart'),
 		mapOptions);
+	var map2 = new google.maps.Map(document.getElementById('mobilKart'),
+		mapOptions);
 
-	//Associate the styled map with the MapTypeId and set it to display.
+	//Legger til egendefinert stil til kart-objektet vårt
 	map.mapTypes.set('map_style', styledMap);
 	map.setMapTypeId('map_style');
+
+	map2.mapTypes.set('map_style', styledMap);
+	map2.setMapTypeId('map_style');
 }
