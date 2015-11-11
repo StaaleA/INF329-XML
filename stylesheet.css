@@ -46,12 +46,22 @@ a:link {
     width: 140px;
     border: solid 1px;
     border-color: rgba(255, 255, 255, 0.4);
+    -webkit-transition: color, background 0.3s;
+    -moz-transition: color, background 0.3s;
+    transition: color, background 0.3s;
 }
 
 
 /*Fjerner høyde på spesifikk h1*/
 .rektangel h1 {
     margin-top: 0;
+
+}
+
+.rektangel:hover,
+.rektangel:active {
+    color: #3E606F;
+    background: #fff;
 }
 
 #kart {
