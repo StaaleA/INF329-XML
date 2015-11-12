@@ -370,7 +370,7 @@ form, input {
 #credits {
     display: none;
     margin-top: 5px;
-    height: 15px;
+    height: 30px;
     width: 98%;
     padding: 1%;
     background-color: rgba(0, 0, 0, 0.6);
@@ -378,6 +378,42 @@ form, input {
     color: #eee;
     text-align: center;
     margin-bottom: 10px;
+}
+
+
+#credits a, #credits a {
+    color: #53bfec;
+    text-decoration: none;
+}
+#credits a:hover, #credits a:hover {
+    color: #00a8ee;
+}
+
+
+#wikipedia a, #stedsinfo a {
+    color: #53bfec;
+    text-decoration: none;
+}
+#wikipedia a:hover, #stedsinfo a:hover {
+    color: #00a8ee;
+}
+
+
+#wikipedia {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 100%;
+    padding:10px;
+    margin-top:10px;
+}
+
+h3{
+    margin:0px;
+}
+
+#utLinker {
+    display: none;
+    overflow: hidden;
 }
 
 

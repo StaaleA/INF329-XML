@@ -41,7 +41,7 @@ $link->addAttribute('tekst', 'Norgeskart');
 $xsl = simplexml_load_file("varsel.xsl");
 $xslt = new XSLTProcessor();
 $xslt->importStylesheet($xsl);
-//$xslt->transformToURI($xml,'varsel.xml');
+$xslt->transformToURI($xml,"varsel.xml");
 $nyxml = $xslt->transformToXML($xml);
 $xml = simplexml_load_string($nyxml);
 

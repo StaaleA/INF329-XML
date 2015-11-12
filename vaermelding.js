@@ -165,7 +165,7 @@ function getMelding(StedObj) {
             document.getElementById("overskriftUtLinker").style.display = "block";
             document.getElementById("norgeskartIframe").src = norgeskartIframeLink;
             document.getElementById("googleBoks").style.backgroundImage = "url('https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=10&size=250x150')";
-            document.getElementById("credits").innerHTML = "<a href='" + yrLink + "'>" + arrayMelding.credit['@attributes'].tekst; + "</a>";
+            document.getElementById("credits").innerHTML = "<a href='" + yrLink + "'>" + arrayMelding.credit['@attributes'].tekst + "</a> <br><a href='varsel.xml' id='xmllink'>Link til XML-dokument</a>";
 
 
 

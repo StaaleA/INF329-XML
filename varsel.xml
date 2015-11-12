@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Denne siden er utviklet av Ståle Andre Volden siste gang endret 25.10.2015
+Denne siden er kontrollert av Ståle Andre Volden, siste gang 25.10.2015-->
+<sted>
+  <stedsnavn>Rørvik</stedsnavn>
+  <type>Tettsted</type>
+  <kordinater latitude="64.8618568210118" longitude="11.2396920092366" elevation="6"/>
+  <melding>
+    <detaljert>
+      <tidspunkt fratid="2015-11-12T16:00:00" tiltid="2015-11-12T18:00:00" periode="2">
+        <symbol nr="03d" tekst="Delvis skyet"/>
+        <temperatur>6</temperatur>
+        <vind mps="2.1" tekst="Svak vind" retningKode="W" retningTekst="Vest"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-12T18:00:00" tiltid="2015-11-13T00:00:00" periode="3">
+        <symbol nr="mf/03n.02" tekst="Delvis skyet"/>
+        <temperatur>6</temperatur>
+        <vind mps="2.6" tekst="Svak vind" retningKode="WSW" retningTekst="Vest-sørvest"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-13T00:00:00" tiltid="2015-11-13T06:00:00" periode="0">
+        <symbol nr="mf/03n.05" tekst="Delvis skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="2.9" tekst="Svak vind" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-13T06:00:00" tiltid="2015-11-13T12:00:00" periode="1">
+        <symbol nr="46" tekst="Lett regn"/>
+        <temperatur>4</temperatur>
+        <vind mps="6.6" tekst="Laber bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-13T12:00:00" tiltid="2015-11-13T18:00:00" periode="2">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="6.1" tekst="Laber bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-13T18:00:00" tiltid="2015-11-14T00:00:00" periode="3">
+        <symbol nr="09" tekst="Regn"/>
+        <temperatur>4</temperatur>
+        <vind mps="3.7" tekst="Lett bris" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-14T00:00:00" tiltid="2015-11-14T06:00:00" periode="0">
+        <symbol nr="09" tekst="Regn"/>
+        <temperatur>4</temperatur>
+        <vind mps="4.7" tekst="Lett bris" retningKode="S" retningTekst="Sør"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-14T06:00:00" tiltid="2015-11-14T12:00:00" periode="1">
+        <symbol nr="02d" tekst="Lettskyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="3.5" tekst="Lett bris" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-14T12:00:00" tiltid="2015-11-14T18:00:00" periode="2">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="3.8" tekst="Lett bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-14T18:00:00" tiltid="2015-11-15T00:00:00" periode="3">
+        <symbol nr="09" tekst="Regn"/>
+        <temperatur>1</temperatur>
+        <vind mps="5.2" tekst="Lett bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-15T01:00:00" tiltid="2015-11-15T07:00:00" periode="0">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="4.6" tekst="Lett bris" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-15T07:00:00" tiltid="2015-11-15T13:00:00" periode="1">
+        <symbol nr="03d" tekst="Delvis skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="5.4" tekst="Lett bris" retningKode="E" retningTekst="Øst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-15T13:00:00" tiltid="2015-11-15T19:00:00" periode="2">
+        <symbol nr="03d" tekst="Delvis skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="4.6" tekst="Lett bris" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-15T19:00:00" tiltid="2015-11-16T01:00:00" periode="3">
+        <symbol nr="mf/03n.12" tekst="Delvis skyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="4.8" tekst="Lett bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-16T01:00:00" tiltid="2015-11-16T07:00:00" periode="0">
+        <symbol nr="mf/03n.15" tekst="Delvis skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="5.8" tekst="Laber bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-16T07:00:00" tiltid="2015-11-16T13:00:00" periode="1">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="7.9" tekst="Laber bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-16T13:00:00" tiltid="2015-11-16T19:00:00" periode="2">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="10.9" tekst="Liten kuling" retningKode="ESE" retningTekst="Øst-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-16T19:00:00" tiltid="2015-11-17T01:00:00" periode="3">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="12.0" tekst="Liten kuling" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-17T01:00:00" tiltid="2015-11-17T07:00:00" periode="0">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="11.5" tekst="Liten kuling" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-17T07:00:00" tiltid="2015-11-17T13:00:00" periode="1">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="9.6" tekst="Frisk bris" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-17T13:00:00" tiltid="2015-11-17T19:00:00" periode="2">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>6</temperatur>
+        <vind mps="9.3" tekst="Frisk bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-17T19:00:00" tiltid="2015-11-18T01:00:00" periode="3">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="9.0" tekst="Frisk bris" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-18T01:00:00" tiltid="2015-11-18T07:00:00" periode="0">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="8.4" tekst="Frisk bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-18T07:00:00" tiltid="2015-11-18T13:00:00" periode="1">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="9.0" tekst="Frisk bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-18T13:00:00" tiltid="2015-11-18T19:00:00" periode="2">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>5</temperatur>
+        <vind mps="8.7" tekst="Frisk bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-18T19:00:00" tiltid="2015-11-19T01:00:00" periode="3">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="8.4" tekst="Frisk bris" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-19T01:00:00" tiltid="2015-11-19T07:00:00" periode="0">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="9.0" tekst="Frisk bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-19T07:00:00" tiltid="2015-11-19T13:00:00" periode="1">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="7.9" tekst="Laber bris" retningKode="SSE" retningTekst="Sør-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-19T13:00:00" tiltid="2015-11-19T19:00:00" periode="2">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="6.2" tekst="Laber bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-19T19:00:00" tiltid="2015-11-20T01:00:00" periode="3">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="8.0" tekst="Frisk bris" retningKode="ESE" retningTekst="Øst-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-20T01:00:00" tiltid="2015-11-20T07:00:00" periode="0">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="6.1" tekst="Laber bris" retningKode="ESE" retningTekst="Øst-sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-20T07:00:00" tiltid="2015-11-20T13:00:00" periode="1">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>3</temperatur>
+        <vind mps="6.6" tekst="Laber bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-20T13:00:00" tiltid="2015-11-20T19:00:00" periode="2">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="5.9" tekst="Laber bris" retningKode="E" retningTekst="Øst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-20T19:00:00" tiltid="2015-11-21T01:00:00" periode="3">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="5.8" tekst="Laber bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-21T01:00:00" tiltid="2015-11-21T07:00:00" periode="0">
+        <symbol nr="mf/03n.32" tekst="Delvis skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="6.1" tekst="Laber bris" retningKode="E" retningTekst="Øst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-21T07:00:00" tiltid="2015-11-21T13:00:00" periode="1">
+        <symbol nr="03d" tekst="Delvis skyet"/>
+        <temperatur>2</temperatur>
+        <vind mps="5.9" tekst="Laber bris" retningKode="E" retningTekst="Øst"/>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-21T13:00:00" tiltid="2015-11-21T19:00:00" periode="2">
+        <symbol nr="04" tekst="Skyet"/>
+        <temperatur>4</temperatur>
+        <vind mps="7.1" tekst="Laber bris" retningKode="SE" retningTekst="Sørøst"/>
+      </tidspunkt>
+    </detaljert>
+    <tekst>
+      <tidspunkt fratid="2015-11-12" tiltid="2015-11-12">
+        <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Fredag og lørdag er det er risiko for høy vannstand, fredag estimert til 50-75 cm over høyden oppgitt i tidevannstabellen, lørdag 60-85 cm over høyden oppgitt i tabellene ventes på lørdag.</tekst>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-12" tiltid="2015-11-12">
+        <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Vest og sørvest frisk bris på kysten. Enkelte regnbyger, snøbyger over 700-900 m. Lite eller ingen nedbør i indre Sør-Trøndelag. I kveld økning til søraust liten kuling utsatte steder. Stort sett oppholdsvær.</tekst>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-12" tiltid="2015-11-12">
+        <tekst>&lt;strong&gt;Rørvik - Lødingen:&lt;/strong&gt; Sørlig periodevis frisk bris 10 m/s. Enkelte regnbyger. Fredag økning til søraustlig stiv og periodevis sterk kuling 20 utsatte steder. Spredt regn først og sist på dagen.</tekst>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-13" tiltid="2015-11-13">
+        <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Økning til søraust sterk kuling utsatte steder, om ettermiddagen minking til liten kuling. Oppholdsvær, fra fredag formiddag regn, fredag ettermiddag etter hvert oppholdsvær i sør og i ytre strøk. Fredag kveld sørvest stiv kuling på kysten. Litt regn i Indre Namdalen og regnbyger på kysten.</tekst>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-14" tiltid="2015-11-14">
+        <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Minking til søraust bris, liten kuling utsatte steder. Lørdag kveld dreiende sørvestlig. Tilskyende. Fra om ettermiddagen regn og regnbyger, først i sørlige områder. &lt;strong&gt;Rørvik - Andenes:&lt;/strong&gt; Søraustlig liten kuling 12 m/s utsatte steder. I nord minking til skiftende bris, av og til frisk bris 10. Litt regn av og til.</tekst>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-15" tiltid="2015-11-15">
+        <tekst>&lt;strong&gt;Trøndelag:&lt;/strong&gt; Sørvestlig bris, senere sørøstlig bris. Oppholdsvær og perioder med sol. Omtrent uendret temperatur.</tekst>
+      </tidspunkt>
+      <tidspunkt fratid="2015-11-16" tiltid="2015-11-16">
+        <tekst>&lt;strong&gt;Møre og Romsdal og Trøndelag:&lt;/strong&gt; Økning til sørøstlig kuling utsatte steder. Etter hvert regn, først i sør. Tirsdag minkende vind og nedbør. Varierende temperatur.</tekst>
+      </tidspunkt>
+    </tekst>
+    <oppdatert sist="2015-11-12T09:47:00" neste="2015-11-12T17:00:00"/>
+  </melding>
+  <linker>
+    <googlemap type="bilde" tekst="Google Maps" url="http://maps.google.com/?q=64.8618568210118,11.2396920092366"/>
+    <norgeskart type="iframe" tekst="Norgeskart" url="http://www.norgeskart.no/statisk.html#10/64.8618568210118/11.2396920092366/+embedMaskLayer/+embed.box"/>
+  </linker>
+  <credit tekst="Værvarsel fra yr.no, levert av NRK og Meteorologisk institutt" url="http://www.yr.no/sted/Norge/Nord-Trøndelag/Vikna/Rørvik/"/>
+</sted>
