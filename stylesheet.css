@@ -252,10 +252,16 @@ form, input {
 #dagenstekst {
     float: left;
     margin: 20px;
-    max-width: 260px;
+    width: 260px;
     font-size: 14px;
     margin-right: 0;
     /*for å være inntil kartet*/
+}
+
+#dagOversikt {
+    height: 100px;
+    width: 480px;
+    display: block;
 }
 
 #melding {
@@ -415,6 +421,14 @@ Her kommer MOBIL-versjonen
         /*opacity: 0.8;*/
     }
 
+    #dagOversikt {
+        width: 100%;
+    }
+
+    #dagenstekst {
+        width: 60%;
+    }
+
     #overskriftUtLinker {
         margin-top: 0;
     }
@@ -440,7 +454,27 @@ Her kommer MOBIL-versjonen
 @media (max-width: 630px) {.dag, .dagTi {
         width: 23%;
         
-    }}
+    }
+    #dagenstekst {
+        width: 50%;
+    }
+    }
+
+@media (max-width: 510px) {
+    #overskrift, #stedsinfo {
+        text-align: center;
+    }
+
+    #dagenstekst {
+        width: 90%;
+    }
+     #ikonoggrader {
+        padding-left: 25%;
+    }
+    #dagensdato {
+        padding-left: 40%;
+    }
+}
 @media (max-width: 440px) {.dag, .dagTi {
         width: 30%;
     }}
