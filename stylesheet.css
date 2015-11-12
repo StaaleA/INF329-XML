@@ -40,16 +40,16 @@ a:link {
 
 
 /*firkanten rundt tittel*/
-.rektangel {
-/*    top: 0;
+/*.rektangel {
+    top: 0;
     padding: 10px;
     width: 140px;
     border: solid 1px;
     border-color: rgba(255, 255, 255, 0.4);
     -webkit-transition: color, background 0.3s;
     -moz-transition: color, background 0.3s;
-    transition: color, background 0.3s;*/
-}
+    transition: color, background 0.3s;
+}*/
 
 
 /*Fjerner høyde på spesifikk h1*/
@@ -114,16 +114,6 @@ form, input {
 #searchIcon {
     text-align: center;
     position: absolute;
-}
-
-.ikon {
-    background: url(bilder/searchHvit.png);
-    background-size: 40px 40px;
-    background-repeat: no-repeat;
-    /*display: block;*/
-    width: 100%;
-    height: 100%;
-    z-index: -1000;
 }
 
 /*søkefeltet*/
@@ -213,6 +203,21 @@ form, input {
     transition: width 1s;
 }
 
+.dagTi {
+    border-right: solid 1px;
+    border-color: rgba(255, 255, 255, 0.2);
+    /*border-color: rgba(0, 0, 0, 0.2);*/
+    font-size: 13px;
+    text-align: center;
+    margin-right: 5px;
+    margin-bottom: 40px;
+    float: left;
+    width: 64px;
+    height: 85px;
+    -webkit-transition: width 1s;  /*Safari*/ 
+    transition: width 1s;
+}
+
 #ikonnaa {
     float: left;
     background-color: green;
@@ -247,7 +252,7 @@ form, input {
 #dagenstekst {
     float: left;
     margin: 20px;
-    max-width: 300px;
+    max-width: 260px;
     font-size: 14px;
     margin-right: 0;
     /*for å være inntil kartet*/
@@ -381,7 +386,7 @@ Her kommer MOBIL-versjonen
         text-align: center;
     }
 
-    .dag {
+    .dag .dagTi {
         width: 80px;
     }
 
@@ -420,22 +425,22 @@ Her kommer MOBIL-versjonen
         margin: 0;
     }
 }
-@media (max-width: 720px) {.dag {
+@media (max-width: 720px) {.dag, .dagTi {
         width: 90px;
         
     }}
-@media (max-width: 700px) {.dag {
+@media (max-width: 700px) {.dag, .dagTi {
         width: 100px;
         
     }}
-@media (max-width: 660px) {.dag {
+@media (max-width: 660px) {.dag, .dagTi {
         width: 115px;
         
     }}
-@media (max-width: 630px) {.dag {
+@media (max-width: 630px) {.dag, .dagTi {
         width: 23%;
         
     }}
-@media (max-width: 440px) {.dag {
+@media (max-width: 440px) {.dag, .dagTi {
         width: 30%;
     }}

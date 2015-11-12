@@ -124,11 +124,11 @@ function getMelding(StedObj) {
             document.getElementById("gradernaasymbol").innerHTML = "&#8451";
             document.getElementById("dagenstekst").innerHTML = arrayMelding.melding.tekst.tidspunkt[0].tekst;
             var utTekst = "";
-            var x = 0;
+            var antDager = 0;
             for (var i = 0; i < arrayMelding.melding.detaljert.tidspunkt.length; i++) {
                 var obj = arrayMelding.melding.detaljert.tidspunkt[i];
                 if (obj["@attributes"].periode == 2) {
-                    x++;
+                    antDager++;
                     divstart = "<div class='dag'>";
                     divslutt = "</div>";
                     fratid = new Date(obj["@attributes"].fratid);
@@ -143,9 +143,9 @@ function getMelding(StedObj) {
 
             // Vi kan ha både 9 og 10 dager - Vi må sette riktig bredde utifra hvor mange dager det er. 9=71 og 10=64
             var alleDager = document.querySelectorAll(".dag");
-            if (x == 10) {
+            if (antDager == 10) {
                 for (var i = 0; i < alleDager.length; i++) {
-                    alleDager[i].style.width = '64px';
+                    alleDager[i].className = "dagTi";
                 }
             }
             // Kilde http://stackoverflow.com/questions/14094697/javascript-how-to-create-new-div-dynamically-change-it-move-it-modify-it-in
