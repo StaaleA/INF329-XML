@@ -26,7 +26,10 @@
                 <form autocomplete="off" name="stedsok" onsubmit="return sjekk()">
                     <input type="hidden" id="formStedstype" name="stedstype" value="" />
                     <input type="hidden" id="formKommune" name="kommune" value="" />
+                    <div id="sokfelt">
+                    <span id="searchIcon"><img src="bilder/searchHvit.png" height="40" width="40" alt=""></span>
                     <input type="search" name="sok" id="sok" placeholder="Søk..." onkeyup="searchDivs(this.value, event)">
+                    </div>
                     <div id="instantsearch"></div>
                 </form>
 
