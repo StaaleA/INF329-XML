@@ -83,7 +83,7 @@ function getUrlVars() {
 
 
 
-function getMelding(StedObj) {
+function getMelding(StedObj) {    
     document.getElementById('sok').value = ''; // Nullstiller søkefelt
     var ukedag = new Array(7);
     ukedag[0] = "Søndag";
@@ -166,6 +166,26 @@ function getMelding(StedObj) {
             document.getElementById("norgeskartIframe").src = norgeskartIframeLink;
             document.getElementById("googleBoks").style.backgroundImage = "url('https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=10&size=250x150')";
             document.getElementById("credits").innerHTML = "<a href='" + yrLink + "'>" + arrayMelding.credit['@attributes'].tekst; + "</a>";
+
+
+
+var xmlhttp = new XMLHttpRequest();
+var url = "hentdata.php/?stedsnavn="+arrayMelding.stedsnavn;
+
+xmlhttp.onreadystatechange = function() {
+if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    var wikiepdiatekst = xmlhttp.responseText;
+    console.log(wikiepdiatekst);
+    document.getElementById("wikipedia").style.display = "block";
+    document.getElementById("wikipedia").innerHTML = "<h3>Info om " +arrayMelding.stedsnavn+ " fra Wikipedia</h3>" + wikiepdiatekst;
+    }
+};
+
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+
+
             document.getElementById("credits").style.display = "block";
             document.getElementById('linkWrapper').style.visibility = 'visible';
             googleMap(); // Henter ut interaktivt kart
