@@ -41,14 +41,14 @@ a:link {
 
 /*firkanten rundt tittel*/
 .rektangel {
-    top: 0;
+/*    top: 0;
     padding: 10px;
     width: 140px;
     border: solid 1px;
     border-color: rgba(255, 255, 255, 0.4);
     -webkit-transition: color, background 0.3s;
     -moz-transition: color, background 0.3s;
-    transition: color, background 0.3s;
+    transition: color, background 0.3s;*/
 }
 
 
@@ -60,8 +60,8 @@ a:link {
 
 .rektangel:hover,
 .rektangel:active {
-    color: #3E606F;
-    background: #fff;
+  /*  color: #3E606F;
+    background: #fff;*/
 }
 
 #kart {
@@ -114,15 +114,31 @@ form, input {
 /*søkefeltet*/
 
 #sok {
-    border: none;
+    border:  solid 1px;
     background: transparent;
     opacity: 1;
-    color: #202020;
+    color: white;
     padding-left: 15px;
-    border-bottom: solid 1px;
+    font-weight: 100;
+   
     border-color: rgba(255, 255, 255, 0.4);
 }
 
+::-webkit-input-placeholder {
+   color: #eee;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #eee;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #eee;  
+}
+
+:-ms-input-placeholder {  
+   color: #eee;  
+}
 
 /*egenskaper for forslagene*/
 
