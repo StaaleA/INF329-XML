@@ -23,7 +23,7 @@ $xmlKartverket = simplexml_load_file($url);
 
 //Bearbeiding av XML-dokumentet
 $locationNode = $xml->location[0]; //Finner noden "Location" i XML-dokumentet fra YR
-$locationNode->addChild('elevation',"" ); //Legger til en node under Location
+$locationNode->addChild('elevation',$elevation ); //Legger til en node under Location
 
 //Lager link node til google maps
 $link = $xml->addChild('googlemap');
