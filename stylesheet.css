@@ -424,6 +424,10 @@ Her kommer MOBIL-versjonen
 =======================================================
 */
 @media (max-width: 750px) {
+    #sokefelt {
+        margin: 5px;
+    }
+
     .rektangel {
         margin: 0 auto;
         width: 80%;
