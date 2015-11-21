@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-<xsl:output method='xml' version='1.0' indent='yes' encoding="UTF-8"/>
+<xsl:output method='xml' version='1.0' indent='yes' encoding="UTF-8" />
 
 <xsl:template match="/">
 
 <xsl:comment>Denne siden er utviklet av Ståle Andre Volden siste gang endret 21.11.2015
-Denne siden er kontrollert av Ståle Andre Volden, siste gang 21.11	.2015</xsl:comment>
+Denne siden er kontrollert av Ståle Andre Volden, siste gang 21.11.2015</xsl:comment>
 
 <sted>	
 	<stedsnavn>
