@@ -4,8 +4,8 @@
 
 <xsl:template match="/">
 
-<xsl:comment>Denne siden er utviklet av Ståle Andre Volden siste gang endret 25.10.2015
-Denne siden er kontrollert av Ståle Andre Volden, siste gang 25.10.2015</xsl:comment>
+<xsl:comment>Denne siden er utviklet av Ståle Andre Volden siste gang endret 21.11.2015
+Denne siden er kontrollert av Ståle Andre Volden, siste gang 21.11	.2015</xsl:comment>
 
 <sted>	
 	<stedsnavn>
@@ -114,8 +114,11 @@ Denne siden er kontrollert av Ståle Andre Volden, siste gang 25.10.2015</xsl:co
 		<xsl:attribute name="tekst">
 			<xsl:value-of select="weatherdata/googlemap/@tekst"/>
 		</xsl:attribute>
-		<xsl:attribute name="url">
-			<xsl:value-of select="weatherdata/googlemap/@url"/>
+		<xsl:attribute name="linkurl">
+			<xsl:value-of select="weatherdata/googlemap/@linkurl"/>
+		</xsl:attribute>
+		<xsl:attribute name="bildeurl">
+			<xsl:value-of select="weatherdata/googlemap/@bildeurl"/>
 		</xsl:attribute>
 		</googlemap>
 		<norgeskart>
@@ -125,11 +128,24 @@ Denne siden er kontrollert av Ståle Andre Volden, siste gang 25.10.2015</xsl:co
 		<xsl:attribute name="tekst">
 			<xsl:value-of select="weatherdata/norgeskart/@tekst"/>
 		</xsl:attribute>
-		<xsl:attribute name="url">
-			<xsl:value-of select="weatherdata/norgeskart/@url"/>
+		<xsl:attribute name="linkurl">
+			<xsl:value-of select="weatherdata/norgeskart/@linkurl"/>
+		</xsl:attribute>
+		<xsl:attribute name="bildeurl">
+			<xsl:value-of select="weatherdata/norgeskart/@bildeurl"/>
 		</xsl:attribute>
 		</norgeskart>
 	</linker>
+
+	<wikipedia>
+		<xsl:attribute name="url">
+			<xsl:value-of select="weatherdata/wikipediaurl" />
+		</xsl:attribute>
+		<tekst>
+			<xsl:value-of select="weatherdata/wikipediatekst" />
+		</tekst>
+	</wikipedia>
+
 	<credit>
 		<xsl:attribute name="tekst">
 		<xsl:value-of select="weatherdata/credit/link/@text"/>

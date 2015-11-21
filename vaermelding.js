@@ -154,36 +154,23 @@ function getMelding(StedObj) {
             yrLink = arrayMelding.credit['@attributes'].url;
             lat = arrayMelding.kordinater['@attributes'].latitude;
             lon = arrayMelding.kordinater['@attributes'].longitude;
-            console.log(arrayMelding);
-            googlelink = arrayMelding.linker.googlemap["@attributes"].url;
-            norgeskartIframeLink = arrayMelding.linker.norgeskart["@attributes"].url;
-            norgeskartLink = "http://www.norgeskart.no/#12/" + lat + "/" + lon;
+            googlelink = arrayMelding.linker.googlemap["@attributes"].linkurl;
+            norgeskartIframeLink = arrayMelding.linker.norgeskart["@attributes"].bildeurl;
+            norgeskartLink = arrayMelding.linker.norgeskart["@attributes"].linkurl;
+            googlemapbilde = arrayMelding.linker.googlemap["@attributes"].bildeurl;
+
             document.getElementById("yrLink").href = yrLink;
             document.getElementById("googleLink").href = googlelink;
             document.getElementById("norgeskartLink").href = norgeskartLink;
             document.getElementById("utLinker").style.display = "block";
             document.getElementById("overskriftUtLinker").style.display = "block";
             document.getElementById("norgeskartIframe").src = norgeskartIframeLink;
-            document.getElementById("googleBoks").style.backgroundImage = "url('https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=10&size=250x150')";
+            document.getElementById("googleBoks").style.backgroundImage = "url("+googlemapbilde+")";
             document.getElementById("credits").innerHTML = "<a href='" + yrLink + "'>" + arrayMelding.credit['@attributes'].tekst + "</a> <br><a href='varsel.xml' id='xmllink'>Link til XML-dokument</a>";
 
-
-
-var xmlhttp = new XMLHttpRequest();
-var url = "hentdata.php/?stedsnavn="+arrayMelding.stedsnavn;
-
-xmlhttp.onreadystatechange = function() {
-if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    var wikiepdiatekst = xmlhttp.responseText;
-    console.log(wikiepdiatekst);
-    document.getElementById("wikipedia").style.display = "block";
-    document.getElementById("wikipedia").innerHTML = "<h3>Info om " +arrayMelding.stedsnavn+ " fra Wikipedia</h3>" + wikiepdiatekst;
-    }
-};
-
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
-
+            wikipedialink = arrayMelding.wikipedia["@attributes"].url;
+            document.getElementById("wikipedia").style.display = "block";
+            document.getElementById("wikipedia").innerHTML = "<h3>Info om " +arrayMelding.stedsnavn+ " fra Wikipedia</h3>" + arrayMelding.wikipedia.tekst + "<br><a href='"+wikipedialink+"' target='_blank'>Les mer på Wikipedia</a>";
 
 
             document.getElementById("credits").style.display = "block";
