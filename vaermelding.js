@@ -115,11 +115,11 @@ function getMelding(StedObj) {
             //Overskrift
             document.getElementById("overskrift").innerHTML = arrayMelding.stedsnavn;
             document.getElementById("stedsinfo").innerHTML = kommune + " (" + fylke + ")<br>" + arrayMelding.kordinater["@attributes"].elevation + " moh.";
-            //Dagens dato (navn)
+            //Dagens dato (navn
             var dagensdato = new Date(arrayMelding.melding.detaljert.tidspunkt[0]["@attributes"].fratid);
             document.getElementById("dagensdato").innerHTML = "<b>I dag</b> " + [dagensdato.getDate()] + ". " + maaned[dagensdato.getMonth()];
             //Dagens tekstvarsel
-            document.getElementById("vaerikonnaa").innerHTML = "<img src='b100/" + arrayMelding.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
+            document.getElementById("vaerikonnaa").innerHTML = "<img src='bilder/ikoner/b100/" + arrayMelding.melding.detaljert.tidspunkt[0].symbol["@attributes"].nr + ".png'/>";
             document.getElementById("gradernaa").innerHTML = arrayMelding.melding.detaljert.tidspunkt[0].temperatur;
             document.getElementById("gradernaasymbol").innerHTML = "&#8451";
             document.getElementById("dagenstekst").innerHTML = arrayMelding.melding.tekst.tidspunkt[0].tekst;
@@ -132,7 +132,7 @@ function getMelding(StedObj) {
                     divstart = "<div class='dag'>";
                     divslutt = "</div>";
                     fratid = new Date(obj["@attributes"].fratid);
-                    dagsymbol = "<img src='b38/" + obj.symbol["@attributes"].nr + ".png'><br>";
+                    dagsymbol = "<img src='bilder/ikoner/b48/" + obj.symbol["@attributes"].nr + ".png'><br>";
                     daggrader = obj.temperatur + "&#8451;";
                     utTekst += divstart + "<b>" + ukedag[fratid.getDay()] + "</b><br> " + fratid.getDate() + ". " + maaned[fratid.getMonth()] + ".<br>" + dagsymbol + daggrader + divslutt;
 
