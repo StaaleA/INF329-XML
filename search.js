@@ -9,14 +9,14 @@
 //     this.url = url;
 //   }
 // }
- steder = [];
+steder = [];
 
 function Sted(navn, kommune, fylke, stedstype, url) {
-  this.navn = navn;
-  this.kommune = kommune;
-  this.fylke = fylke;
-  this.stedstype = stedstype;
-  this.url = url;
+    this.navn = navn;
+    this.kommune = kommune;
+    this.fylke = fylke;
+    this.stedstype = stedstype;
+    this.url = url;
 }
 /*
 == SØKE-funksjon som går igjennom JSON-filen
@@ -47,49 +47,62 @@ function Sted(navn, kommune, fylke, stedstype, url) {
 ====================================================================================
 */
 var divs = [];
+
 function searchDivs(input, event) {
     var e = event.which;
 
     if (e != 40) {
-      
+
         var funnet = false;
         var url;
         var teller = 0;
         var hint = '';
         var søkefelt = document.getElementById('instantsearch');
         søkefelt.innerHTML = hint;
-        
-         selectedDiv = 0;
+
+        selectedDiv = 0;
         if (input.length !== 0) {
 
             input = input.toUpperCase();
-            steder = [];
+            var steder = [];
+
             for (i = 0; i < liste.length; i++) {
                 var sokDenne = liste[i].navn.toUpperCase();
-                if (sokDenne.indexOf(input, 0) === 0 && teller < 9) {
-
-                    // Prøver objekter
-                    // var sted = {
-                    //     navn: liste[i].navn,
-                    //     url: liste[i].url
-                    // };
+                if (sokDenne == input) {
                     var etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].stedstype, liste[i].url);
                     steder.push(etsted);
-
-                    
-                    // url = liste[i].url;
-                    // Tar vekk URL, lag heller klasse, lettere å hente ut etterpå
-                    // hint = hint + '<div class="forslag" id=' + teller + '><a href=' + 
-                    //url + '>' + liste[i].navn + '</a></div>';
-                    hint = hint + '<a href="?stedstype='+etsted.stedstype+'&kommune='+etsted.kommune+'&sok='+etsted.navn+'"><div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype +'<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div></a>';
-                    søkefelt.innerHTML = hint;
-                   
-                    søkefelt.getElementsByTagName('div')[0].style.backgroundColor = '#68F';
+                    hint = hint + '<a href="?stedstype=' + etsted.stedstype + '&kommune=' + etsted.kommune + '&sok=' + etsted.navn + '"><div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype + '<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div></a>';
                     teller++;
+                    console.log("Perfect Match");
+                }
+            }
+            for (i = 0; i < liste.length; i++) {
+                var sokDenne = liste[i].navn.toUpperCase();
+                var sokURL = liste[i].url;
 
+                if (sokDenne.indexOf(input, 0) === 0 && teller < 9) {
+                    if(steder.length > 0){
+                    for (x = 0; x < steder.length; x++) {
+                      
+                        if (sokURL != steder[x].url) {
+                            console.log("ingen perfect match fra før")
+
+                            var etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].stedstype, liste[i].url);
+                            steder.push(etsted);
+
+                            hint = hint + '<a href="?stedstype=' + etsted.stedstype + '&kommune=' + etsted.kommune + '&sok=' + etsted.navn + '"><div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype + '<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div></a>';
+                            søkefelt.innerHTML = hint;
+
+                            søkefelt.getElementsByTagName('div')[0].style.backgroundColor = '#68F';
+                            teller++;
+                        }else{
+                            console.log("steder tom fra før");
+                        }
+                    }
                 }
 
             }
+        }
             if (teller === 0) {
                 søkefelt.innerHTML = 'ingen treff';
             }
@@ -100,16 +113,16 @@ function searchDivs(input, event) {
 
 
         // Innhentet kode som kan navigere blant div'er
-        
-         divs = document.getElementById('instantsearch').getElementsByTagName('div'),
+
+        divs = document.getElementById('instantsearch').getElementsByTagName('div'),
             selectedDiv = 1;
-            i;
+        i;
         document.getElementById('instantsearch').getElementsByTagName('div')[0].style.backgroundColor = "";
 
         divs[selectedDiv].style.backgroundColor = '#68F';
         document.getElementById('sok').onkeyup = function(e) {
-              document.getElementById('instantsearch').getElementsByTagName('div')[0].style.backgroundColor = "";
-            if(!(e.keyCode == 38 || e.keyCode == 40)) {
+            document.getElementById('instantsearch').getElementsByTagName('div')[0].style.backgroundColor = "";
+            if (!(e.keyCode == 38 || e.keyCode == 40)) {
                 selectedDiv = 0;
                 divs[selectedDiv].style.backgroundColor = '#68F';
             } else {
@@ -120,20 +133,21 @@ function searchDivs(input, event) {
                 else
                     return;
 
-                                divs[selectedDiv].style.backgroundColor = '';
+                divs[selectedDiv].style.backgroundColor = '';
                 selectedDiv = ((selectedDiv + x) % divs.length);
                 selectedDiv = selectedDiv < 0 ?
                     divs.length + selectedDiv : selectedDiv;
                 divs[selectedDiv].style.backgroundColor = '#68F';
             }
-    }
+        }
 
-    
+
     }
 }
+
 function getSelected() {
-        return divs[selectedDiv];
-    }
+    return divs[selectedDiv];
+}
 
 /*
 
@@ -143,38 +157,35 @@ function getSelected() {
 document.getElementById('sok').addEventListener("keyup", skrik);
 
 function skrik(event) {
-document.getElementById("instantsearch").style.display = "block";
+    document.getElementById("instantsearch").style.display = "block";
     var e = event.which || event.keyCode;
-    var x = getSelected(); 
+    var x = getSelected();
     var sokeord = document.getElementById('sok').value;
     // alert(sokeord);
-       
-    if(e==27){
-        document.getElementById("instantsearch").style.display = "none";
-       }
-    if (e==8) { // tilbake-knappen <-
-        searchDivs(sokeord, event);
-    }
 
-    else if (!(e == 40 || e == 38)) { 
+    if (e == 27) {
+        document.getElementById("instantsearch").style.display = "none";
+    }
+    if (e == 8) { // tilbake-knappen <-
+        searchDivs(sokeord, event);
+    } else if (!(e == 40 || e == 38)) {
         // om bruker skriver OG divs[selectedDiv] er satt
-        if(x) {
+        if (x) {
 
             // celarID();
             // refresh();
             searchDivs(sokeord, event);
         }
-    }
-    else if(e==13) {
+    } else if (e == 13) {
         // trykk på ENTER
         x = getSelected();
         document.getElementById('sok').innerHTML = x;
         document.getElementById('stedsok').submit();
     }
-     
-        if (sokeord=="") {
-            searchDivs('a', event);
-        }
+
+    if (sokeord == "") {
+        searchDivs('a', event);
+    }
 }
 
 /*
@@ -195,24 +206,24 @@ function send(x) {
 == sjekk()
 ====================================================================================
 */
-function sjekk () {
+function sjekk() {
     var divs = document.getElementById('instantsearch').getElementsByTagName('div');
 
     // Sjekker om du har valgt et forslag
     var funnet = false;
     var i = 0;
-    while(i < divs.length && !funnet) {
+    while (i < divs.length && !funnet) {
         farge = divs[i].style.backgroundColor;
-        if(farge === 'rgb(102, 136, 255)') {
+        if (farge === 'rgb(102, 136, 255)') {
             funnet = true;
         }
         i++;
     }
 
     // Forslag er brukt
-    if(funnet) {
+    if (funnet) {
         //x = searchDivs.getSelected();
-        var obj = steder[i-1];
+        var obj = steder[i - 1];
         senderURL(obj);
 
         send(obj);
@@ -231,12 +242,12 @@ function sjekk () {
 }
 
 // Enkel søkefunksjon som kun søker på inputfelt
-function simpleSearch (string) {
+function simpleSearch(string) {
     var funnet = false;
     var i = 0;
     var soktreff;
-    while(!funnet) {
-        if(liste[i].navn.includes(string)) {
+    while (!funnet) {
+        if (liste[i].navn.includes(string)) {
             funnet = true;
             return liste[i].navn;
         }
@@ -249,8 +260,8 @@ function getAtrSok(sted, stedstype, kommune) {
     var i = 1;
     var soktreff;
 
-    while(!funnet) {
-        if(liste[i].navn == sted && liste[i].stedstype == stedstype && liste[i].kommune == kommune) {
+    while (!funnet) {
+        if (liste[i].navn == sted && liste[i].stedstype == stedstype && liste[i].kommune == kommune) {
             funnet = true;
             return liste[i];
         }
@@ -258,15 +269,14 @@ function getAtrSok(sted, stedstype, kommune) {
     }
 }
 
-function getURL (sted) {
+function getURL(sted) {
     var funnet = false;
     var i = 0;
-    while(!funnet) {
-        if(liste[i].navn.includes(sted)) {
+    while (!funnet) {
+        if (liste[i].navn.includes(sted)) {
             funnet = true;
             return liste[i].url;
         }
         i++;
     }
 }
-

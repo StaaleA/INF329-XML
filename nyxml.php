@@ -1,6 +1,6 @@
 <?php
-//Denne siden er utviklet av Ståle Andre Volden siste gang endret 21.11.2015
-//Denne siden er kontrollert av Christian Rennemo, siste gang 21.11.2015
+//Denne siden er utviklet av Ståle Andre Volden siste gang endret 27.11.2015
+//Denne siden er kontrollert av Christian Rennemo, siste gang 27.11.2015
 
 $url= $_GET["url"];
 $xml = simplexml_load_file($url);
@@ -48,6 +48,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
 
 $data = curl_exec($ch);
+
 //Feilhåndtering
 if (!$data) {
   $wikipediatekst = "Noe gikk galt ved henting av wikipedia-tekst.";
@@ -61,7 +62,7 @@ if(array_key_exists('-1', $arr['query']['pages'])){
 	$url = "";
 }else{ //hvis tekst om stedet finnes
 
-$output_details = reset($arr['query']['pages']); //Velger første element da id er dynamisk. http://php.net/manual/en/function.reset.php
+$output_details = reset($arr['query']['pages']); //Velger første element da id er dynamisk. Kilde: http://php.net/manual/en/function.reset.php
 $wikipediatekst = $output_details['extract']; // Henter ut teksten
 $wikipediaurl = "https://no.wikipedia.org/wiki/".$stedsnavn;
 	}
@@ -71,22 +72,14 @@ $wikipediaurl = "https://no.wikipedia.org/wiki/".$stedsnavn;
 $xml->addChild('wikipediatekst', $wikipediatekst);
 $xml->addChild('wikipediaurl', $wikipediaurl);
 
-
 //Benytter en XSL-fil for å lage den sammensatte xml-fila
 $xsl = simplexml_load_file("varsel.xsl");
 $xslt = new XSLTProcessor();
 $xslt->importStylesheet($xsl);
-$xslt->transformToURI($xml,"varsel.xml");
+$xslt->transformToURI($xml,"varsel.xml"); //lagrer til fil
 $nyxml = $xslt->transformToXML($xml);
 $xml = simplexml_load_string($nyxml);
 
-//Faktaark om sted fra KARTVERKET
-//$url = "http://faktaark.statkart.no/SSRFakta/faktaarkfraobjektid?enhet=".$ssrid."&format=xml";
-//$xmlFaktaarkSted = simplexml_load_file($url);
-
-//$nyxml2 = simplexml_load_string($nyxml);
 $json = json_encode($xml);
 echo $json; //Returnerer et SimpleXMLElement basert på den nye XML-fila
-
-
 ?>
