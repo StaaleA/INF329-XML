@@ -1,3 +1,4 @@
+//Deklareringer
 var arrayMelding;
 var liste;
 var sokeord;
@@ -12,8 +13,6 @@ function onload() {
     var xmlhttp = new XMLHttpRequest();
     var url = "steder.json";
 
-
-
     xmlhttp.open("GET", url, true);
     xmlhttp.overrideMimeType("application/json");
     xmlhttp.onreadystatechange = function() {
@@ -22,13 +21,13 @@ function onload() {
                 liste = JSON.parse(xmlhttp.responseText);
 
                 //Hvis vars er satt (get fra url) så last inn værmeldingen
-                if (urlVars["sok"] != null) {
-                    sokeord = urlVars["sok"];
-                    stedstype = urlVars["stedstype"];
-                    kommune = urlVars["kommune"];
+                if (urlVars.sok !== null) {
+                    sokeord = urlVars.sok;
+                    stedstype = urlVars.stedstype;
+                    kommune = urlVars.kommune;
                     ut = getAtrSok(sokeord, stedstype, kommune);
                     fylke = ut.fylke;
-                    document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
+                    document.getElementById("laster").innerHTML = '<img src="bilder/laster.gif" /><br>Laster inn værmeldingen';
                     send(ut);
                     getMelding(ut);
                 } //vars 
@@ -36,35 +35,11 @@ function onload() {
                     // Om vars ikke er satt betyr det at vi er på startsiden, og vi setter fokus til søkefeltet
                     document.getElementById('sok').focus();
                 }
-
-
-
             } //if
-        } //onreadystatechange
+        }; //onreadystatechange
 
     xmlhttp.send(null);
 
-    var bildeurl;
-    var xhrHentBilde = new XMLHttpRequest();
-    sokeord = urlVars["sok"];
-    kommune = sokeord = urlVars["kommune"];
-    sokeord = sokeord.split(" ").join("");
-    sokeord = sokeord.split(",").join("");
-    var url = "hentbilde.php?sted=" + sokeord + "&kommune=" + kommune;
-
-
-    xhrHentBilde.open("GET", url, true);
-    xhrHentBilde.overrideMimeType("application/json");
-
-    xhrHentBilde.onreadystatechange = function() {
-            if (xhrHentBilde.readyState == 4 && xhrHentBilde.status == 200) {
-                bildeurl = xhrHentBilde.responseText;
-                console.log(bildeurl);
-                document.getElementById("bilde").src = bildeurl;
-            } //if
-        } //onreadystatechange
-
-    xhrHentBilde.send(null);
 }
 
 function getUrlVars() {
@@ -76,14 +51,11 @@ function getUrlVars() {
         value = value.split("%2C").join(",");
 
         vars[key] = value;
-        console.log(vars);
     });
     return vars;
 }
 
-
-
-function getMelding(StedObj) {    
+function getMelding(StedObj) {
     document.getElementById('sok').value = ''; // Nullstiller søkefelt
     var ukedag = new Array(7);
     ukedag[0] = "Søndag";
@@ -115,7 +87,7 @@ function getMelding(StedObj) {
             //Overskrift
             document.getElementById("overskrift").innerHTML = arrayMelding.stedsnavn;
             document.getElementById("stedsinfo").innerHTML = kommune + " (" + fylke + ")<br>" + arrayMelding.kordinater["@attributes"].elevation + " moh.";
-            //Dagens dato (navn
+            //Dagens dato (navn)
             var dagensdato = new Date(arrayMelding.melding.detaljert.tidspunkt[0]["@attributes"].fratid);
             document.getElementById("dagensdato").innerHTML = "<b>I dag</b> " + [dagensdato.getDate()] + ". " + maaned[dagensdato.getMonth()];
             //Dagens tekstvarsel
@@ -144,7 +116,7 @@ function getMelding(StedObj) {
             // Vi kan ha både 9 og 10 dager - Vi må sette riktig bredde utifra hvor mange dager det er. 9=71 og 10=64
             var alleDager = document.querySelectorAll(".dag");
             if (antDager == 10) {
-                for (var i = 0; i < alleDager.length; i++) {
+                for (i = 0; i < alleDager.length; i++) {
                     alleDager[i].className = "dagTi";
                 }
             }
@@ -165,12 +137,12 @@ function getMelding(StedObj) {
             document.getElementById("utLinker").style.display = "block";
             document.getElementById("overskriftUtLinker").style.display = "block";
             document.getElementById("norgeskartIframe").src = norgeskartIframeLink;
-            document.getElementById("googleBoks").style.backgroundImage = "url("+googlemapbilde+")";
+            document.getElementById("googleBoks").style.backgroundImage = "url(" + googlemapbilde + ")";
             document.getElementById("credits").innerHTML = "<a href='" + yrLink + "'>" + arrayMelding.credit['@attributes'].tekst + "</a> <br><a href='varsel.xml' id='xmllink'>Link til XML-dokument</a>";
 
             wikipedialink = arrayMelding.wikipedia["@attributes"].url;
             document.getElementById("wikipedia").style.display = "block";
-            document.getElementById("wikipedia").innerHTML = "<h3>Info om " +arrayMelding.stedsnavn+ " fra Wikipedia</h3>" + arrayMelding.wikipedia.tekst + "<br><a href='"+wikipedialink+"' target='_blank'>Les mer på Wikipedia</a>";
+            document.getElementById("wikipedia").innerHTML = "<h3>Info om " + arrayMelding.stedsnavn + " fra Wikipedia</h3>" + arrayMelding.wikipedia.tekst + "<br><a href='" + wikipedialink + "' target='_blank'>Les mer på Wikipedia</a>";
 
 
             document.getElementById("credits").style.display = "block";
@@ -178,7 +150,7 @@ function getMelding(StedObj) {
             googleMap(); // Henter ut interaktivt kart
             window.focus();
         }
-    }
+    };
     document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
     http.open("GET", url + "?url=" + StedObj.url, true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");

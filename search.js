@@ -3,12 +3,6 @@
 == This page was initiated 27th of October 2015.
 ==
 */
-// class steder {
-//   constructor(navn, url) {
-//     this.navn = navn;
-//     this.url = url;
-//   }
-// }
 steder = [];
 
 function Sted(navn, kommune, fylke, stedstype, url) {
@@ -131,10 +125,9 @@ function searchDivs(input, event) {
 
 
 
-        // Innhentet kode som kan navigere blant div'er
-        divs = document.getElementById('instantsearch').getElementsByTagName('div'),
-            selectedDiv = 1;
-        i;
+        // Navigasjon blant forslagene. Ved pil opp og ned så blir forslag markert, og bagrunnsfarge forandres.
+        divs = document.getElementById('instantsearch').getElementsByTagName('div');
+        selectedDiv = 1;
         document.getElementById('instantsearch').getElementsByTagName('div')[0].style.backgroundColor = "";
 
         divs[selectedDiv].style.backgroundColor = '#68F';
@@ -217,7 +210,6 @@ function send(x) {
     document.getElementById('sok').value = x.navn;
     document.getElementById('formStedstype').value = x.stedstype;
     document.getElementById('formKommune').value = x.kommune;
-    //document.getElementById('stedsok').submit();
 }
 
 /*
