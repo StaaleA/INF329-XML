@@ -52,14 +52,14 @@ $data = curl_exec($ch);
 //Feilhåndtering
 if (!$data) {
   $wikipediatekst = "Noe gikk galt ved henting av wikipedia-tekst.";
-  $url = "";
+  $wikipediaurl = "";
 } else { //hvis alt ok med henting av data
 
 $arr = json_decode($data,true); //Gjør dataen om til array
 
 if(array_key_exists('-1', $arr['query']['pages'])){
 	$wikipediatekst = 'Dette stedet har ikke en Wikipedia-artikkel. <a href="https://no.wikipedia.org/wiki/'.$stedsnavn.'"">Kanskje du kan lage en?</a>';
-	$url = "";
+	$wikipediaurl = "";
 }else{ //hvis tekst om stedet finnes
 
 $output_details = reset($arr['query']['pages']); //Velger første element da id er dynamisk. Kilde: http://php.net/manual/en/function.reset.php
