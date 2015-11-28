@@ -69,11 +69,13 @@ function searchDivs(input, event) {
             var etSted;
             var antallEksakteMatch = 0;
 
+            //Sjekker om søket gir eksakt match. Disse skal da legges øverst i forslagene
+            //Legger ikke til maksantall her, da en må få opp alle eksakte treff. (tester ikke på teller < 10)
+            for (i = 0; i < liste.length; i++) {
+                sokDenne = liste[i];
 
-              for (i = 0; i < liste.length; i++) {
-                 sokDenne = liste[i];
-                 if (sokDenne.navn.toUpperCase() == input && teller < 9) {
-                etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].stedstype, liste[i].url);
+                if (sokDenne.navn.toUpperCase() == input) {
+                    etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].stedstype, liste[i].url);
                     steder.push(etsted);
 
                     hint = hint + '<a href="?stedstype=' + etsted.stedstype + '&kommune=' + etsted.kommune + '&sok=' + etsted.navn + '"><div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype + '<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div></a>';
@@ -82,37 +84,44 @@ function searchDivs(input, event) {
                     søkefelt.getElementsByTagName('div')[0].style.backgroundColor = '#68F';
                     teller++;
                     antallEksakteMatch++;
-              }
-}
+                }
+            }
 
             for (i = 0; i < liste.length; i++) {
-                     sokDenne = liste[i];
-                     
-                if (sokDenne.navn.toUpperCase().indexOf(input, 0) === 0 && teller < 9) {
-            
-                     var finnesFraFoer = false;
+                sokDenne = liste[i];
 
-                     for(x = 0;x < antallEksakteMatch;x++){
-                        if(sokDenne.url == steder[x].url){
+                if (sokDenne.navn.toUpperCase().indexOf(input, 0) === 0 && teller < 10) {
+
+                    //Sjekker om matchen allerede ligger i listen (eksakt match)
+                    var finnesFraFoer = false;
+                    for (x = 0; x < antallEksakteMatch; x++) {
+                        if (sokDenne.url == steder[x].url) {
                             finnesFraFoer = true;
                         }
-                     }
-                     if(!finnesFraFoer){
-                    etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].stedstype, liste[i].url);
-                    steder.push(etsted);
+                    }
+                    if (!finnesFraFoer) {
+                        etsted = new Sted(liste[i].navn, liste[i].kommune, liste[i].fylke, liste[i].stedstype, liste[i].url);
+                        steder.push(etsted);
 
-                    hint = hint + '<a href="?stedstype=' + etsted.stedstype + '&kommune=' + etsted.kommune + '&sok=' + etsted.navn + '"><div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype + '<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div></a>';
-                    søkefelt.innerHTML = hint;
+                        hint = hint + '<a href="?stedstype=' + etsted.stedstype + '&kommune=' + etsted.kommune + '&sok=' + etsted.navn + '"><div class="forslag" id=' + teller + '>' + etsted.navn + ' - ' + etsted.stedstype + '<br><span class="info">' + etsted.kommune + ' / ' + etsted.fylke + '</span></div></a>';
+                        søkefelt.innerHTML = hint;
 
-                    søkefelt.getElementsByTagName('div')[0].style.backgroundColor = '#68F';
-                    
-                }
-                teller++;
+                        søkefelt.getElementsByTagName('div')[0].style.backgroundColor = '#68F';
 
+                    }
+                    teller++;
                 }
 
             }
+            //Hvis det er flere enn 10 eksakte treff så settes det på scroll på alternativene
+            if (teller > 10) {
+                document.getElementById("instantsearch").style.overflowY = "scroll";
+            } else {
+                document.getElementById("instantsearch").style.overflow = "hidden";
+            }
+            
             if (teller === 0) {
+
                 søkefelt.innerHTML = 'ingen treff';
             }
         } else {
@@ -121,8 +130,8 @@ function searchDivs(input, event) {
     } else {
 
 
-        // Innhentet kode som kan navigere blant div'er
 
+        // Innhentet kode som kan navigere blant div'er
         divs = document.getElementById('instantsearch').getElementsByTagName('div'),
             selectedDiv = 1;
         i;
