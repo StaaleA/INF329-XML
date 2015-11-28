@@ -1,3 +1,5 @@
+//Denne siden er utviklet av Christian Rennemo siste gang endret 28.11.2015
+//Denne siden er kontrollert av Christian Rennemo, siste gang 28.11.2015
 function googleMap() {
 	// Dette er standard-stilen som ligger hos google sin DEV-guide
 	var styles = [{

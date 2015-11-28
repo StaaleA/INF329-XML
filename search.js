@@ -1,6 +1,6 @@
 /*
-== This page is developed by Christian Rennemo, last time changed: 30th of October 2015
-== This page was initiated 27th of October 2015.
+//Denne siden er utviklet av Christian Rennemo siste gang endret av Ståle Andre Volden 28.11.2015
+//Denne siden er kontrollert av Christian Rennemo, siste gang 28.11.2015
 ==
 */
 steder = [];
@@ -81,6 +81,7 @@ function searchDivs(input, event) {
                 }
             }
 
+            //Itterer gjennom stedslista, og finne treff som begynner på inputfeltet
             for (i = 0; i < liste.length; i++) {
                 sokDenne = liste[i];
 
@@ -122,8 +123,6 @@ function searchDivs(input, event) {
             søkefelt.innerHTML = '';
         }
     } else {
-
-
 
         // Navigasjon blant forslagene. Ved pil opp og ned så blir forslag markert, og bagrunnsfarge forandres.
         divs = document.getElementById('instantsearch').getElementsByTagName('div');
@@ -172,8 +171,6 @@ function skrik(event) {
     var e = event.which || event.keyCode;
     var x = getSelected();
     var sokeord = document.getElementById('sok').value;
-    // alert(sokeord);
-
     if (e == 27) {
         document.getElementById("instantsearch").style.display = "none";
     }
@@ -182,9 +179,6 @@ function skrik(event) {
     } else if (!(e == 40 || e == 38)) {
         // om bruker skriver OG divs[selectedDiv] er satt
         if (x) {
-
-            // celarID();
-            // refresh();
             searchDivs(sokeord, event);
         }
     } else if (e == 13) {
@@ -202,7 +196,7 @@ function skrik(event) {
 /*
 == KONTROLL før sending
 ====================================================================================
-== Ulike funksjoner som foretar kontroll som sørger for at vi sender riktig info
+== Funksjoner som sørger for at vi sender riktig info
 ====================================================================================
 */
 

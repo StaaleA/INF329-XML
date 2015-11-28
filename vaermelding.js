@@ -1,3 +1,5 @@
+//Denne siden er utviklet av Ståle Andre Volden siste gang endret 28.11.2015
+//Denne siden er kontrollert av Christian Rennemo, siste gang 28.11.2015
 //Deklareringer
 var arrayMelding;
 var liste;
