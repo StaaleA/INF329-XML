@@ -153,7 +153,7 @@ function getMelding(StedObj) {
             window.focus();
         }
     };
-    document.getElementById("laster").innerHTML = '<img src="laster.gif" /><br>Laster inn værmeldingen';
+    document.getElementById("laster").innerHTML = '<img src="bilder/laster.gif" /><br>Laster inn værmeldingen';
     http.open("GET", url + "?url=" + StedObj.url, true);
     http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     http.send(null);
