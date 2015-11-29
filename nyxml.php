@@ -1,6 +1,6 @@
 <?php
-//Denne siden er utviklet av Ståle Andre Volden siste gang endret 28.11.2015
-//Denne siden er kontrollert av Christian Rennemo, siste gang 28.11.2015
+//Denne siden er utviklet av Ståle Andre Volden siste gang endret 29.11.2015
+//Denne siden er kontrollert av Christian Rennemo, siste gang 29.11.2015
 
 $url= $_GET["url"];
 $xml = simplexml_load_file($url);
@@ -17,7 +17,6 @@ $xmlKartverket = simplexml_load_file($url);
 	if ($xmlKartverket->xpath('//wps:ExecuteResponse/wps:ProcessOutputs')) { //Sjekker at  det finnes en ProcessOutputs.  
 		$output = $xmlKartverket->xpath('//wps:ExecuteResponse/wps:ProcessOutputs')[0]; 
         $elevation = round((float)$output->xpath('wps:Output[ows:Identifier/text()="elevation"]/wps:Data/wps:LiteralData')[0]);
-        //$ssrid     = (int)$output->xpath('wps:Output[ows:Identifier/text()="ssrid"]/wps:Data/wps:LiteralData')[0]; //$ssrid brukes opp mot Faktaark
     } 
     	else { echo "Noe gikk galt med følgende url: " + $url; };
 

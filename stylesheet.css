@@ -1,5 +1,5 @@
-/*Denne siden er utviklet av Christian Rennemo og Ståle Andre Volden siste gang endret 28.11.2015
-//Denne siden er kontrollert av Ståle Andre Volden, siste gang 28.11.2015*/
+/*Denne siden er utviklet av Christian Rennemo og Ståle Andre Volden siste gang endret 29.11.2015
+//Denne siden er kontrollert av Ståle Andre Volden, siste gang 29.11.2015*/
 html {
     height: 100%;
 }
@@ -72,11 +72,6 @@ a:link {
     visibility: hidden;
 }
 
-
-/*Superhack som fjerner footer og logo fra Google - HUSK: Dette BRYTER med terms of use!
-Men siden vi kun gjør dette i et skoleprosjekt syns vi det er greit. 
-Kilde: http://stackoverflow.com/questions/12499886/how-to-hide-or-disable-the-google-logo-footer-copyright-on-google-maps-javascr*/
-
 a[href^="http://maps.google.com/maps"] {
     display: none !important
 }
@@ -112,7 +107,6 @@ input {
 
 
 /*span før søkefelt*/
-
 #searchIcon {
     text-align: center;
     position: absolute;

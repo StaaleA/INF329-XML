@@ -1,6 +1,6 @@
 /*
-//Denne siden er utviklet av Christian Rennemo siste gang endret av Ståle Andre Volden 28.11.2015
-//Denne siden er kontrollert av Christian Rennemo, siste gang 28.11.2015
+//Denne siden er utviklet av Christian Rennemo siste gang endret av Ståle Andre Volden 29.11.2015
+//Denne siden er kontrollert av Christian Rennemo, siste gang 29.11.2015
 ==
 */
 steder = [];
@@ -36,15 +36,14 @@ function Sted(navn, kommune, fylke, stedstype, url) {
 ==
 == Koden: sammen med hva som blir søkt på, sender vi også 'event', da kan vi finne ut
 == hvilken taster brukeren har trykket på. Og ved trykke på opp eller ned-piltastene
-== ønsker vi å la brukeren navigere ned lista. Her bruker vi altså koden fra jsfiddle.
-== Kilde: http://jsfiddle.net/uEBSV/
+== ønsker vi å la brukeren navigere ned lista. 
 ====================================================================================
 */
 var divs = [];
 
 function searchDivs(input, event) {
     var e = event.which;
-
+    //Hvis piltast ned
     if (e != 40) {
 
         var funnet = false;
@@ -136,9 +135,9 @@ function searchDivs(input, event) {
                 selectedDiv = 0;
                 divs[selectedDiv].style.backgroundColor = '#68F';
             } else {
-                if (e.keyCode == 38)
+                if (e.keyCode == 38) //pil opp
                     x = -1;
-                else if (e.keyCode == 40)
+                else if (e.keyCode == 40) //pil ned 
                     x = 1;
                 else
                     return;
@@ -171,7 +170,7 @@ function skrik(event) {
     var e = event.which || event.keyCode;
     var x = getSelected();
     var sokeord = document.getElementById('sok').value;
-    if (e == 27) {
+    if (e == 27) { //Esc
         document.getElementById("instantsearch").style.display = "none";
     }
     if (e == 8) { // tilbake-knappen <-
@@ -226,7 +225,6 @@ function sjekk() {
 
     // Forslag er brukt
     if (funnet) {
-        //x = searchDivs.getSelected();
         var obj = steder[i - 1];
         senderURL(obj);
 
@@ -240,8 +238,6 @@ function sjekk() {
         send(url);
 
     }
-    // x = searchDivs.getSelected();
-    // send(x.innerHTML);
     return true;
 }
 
